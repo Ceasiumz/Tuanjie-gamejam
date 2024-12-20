@@ -8,6 +8,7 @@ using System.Linq;
 
 public class HorizontalCardHolder : MonoBehaviour
 {
+    public int point = 0;
 
     [SerializeField] private Card selectedCard;
     [SerializeReference] private Card hoveredCard;
@@ -18,10 +19,37 @@ public class HorizontalCardHolder : MonoBehaviour
     [Header("Spawn Settings")]
     [SerializeField] private int cardsToSpawn = 7;
     public List<Card> cards;
+    public int cardCount = 0;
 
     bool isCrossing = false;
     [SerializeField] private bool tweenCardReturn = true;
 
+    public void drawCard()
+    {
+        GameObject cardObject = Instantiate(slotPrefab, transform);
+        Card card = cardObject.GetComponentInChildren<Card>();
+        cards.Add(card);
+        card.PointerEnterEvent.AddListener(CardPointerEnter);
+        card.PointerExitEvent.AddListener(CardPointerExit);
+        card.BeginDragEvent.AddListener(BeginDrag);
+        card.EndDragEvent.AddListener(EndDrag);
+        card.name = cardCount.ToString();
+        cardCount++;
+        if (gameObject.tag == "Enemy")
+        {
+            card.isEnemy = true;
+        }
+        StartCoroutine(uniFrame());
+        IEnumerator uniFrame()
+        {
+            yield return new WaitForSecondsRealtime(.1f);
+            for (int i = 0; i < cards.Count; i++)
+            {
+                if (card.cardVisual != null)
+                    card.cardVisual.UpdateIndex(transform.childCount);
+            }
+        }
+    }
     void Start()
     {
         for (int i = 0; i < cardsToSpawn; i++)
@@ -32,7 +60,7 @@ public class HorizontalCardHolder : MonoBehaviour
         rect = GetComponent<RectTransform>();
         cards = GetComponentsInChildren<Card>().ToList();
 
-        int cardCount = 0;
+
 
         foreach (Card card in cards)
         {
@@ -42,6 +70,10 @@ public class HorizontalCardHolder : MonoBehaviour
             card.EndDragEvent.AddListener(EndDrag);
             card.name = cardCount.ToString();
             cardCount++;
+            if (gameObject.tag == "Enemy")
+            {
+                card.isEnemy = true;
+            }
         }
 
         StartCoroutine(Frame());
@@ -68,7 +100,7 @@ public class HorizontalCardHolder : MonoBehaviour
         if (selectedCard == null)
             return;
 
-        selectedCard.transform.DOLocalMove(selectedCard.selected ? new Vector3(0,selectedCard.selectionOffset,0) : Vector3.zero, tweenCardReturn ? .15f : 0).SetEase(Ease.OutBack);
+        selectedCard.transform.DOLocalMove(selectedCard.selected ? new Vector3(0, selectedCard.selectionOffset, 0) : Vector3.zero, tweenCardReturn ? .15f : 0).SetEase(Ease.OutBack);
 
         rect.sizeDelta += Vector2.right;
         rect.sizeDelta -= Vector2.right;

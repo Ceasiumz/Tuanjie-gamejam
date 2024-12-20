@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler, IPointerDownHandler
 {
+    public bool isEnemy;
     private Canvas canvas;
     private Image imageComponent;
     [SerializeField] private bool instantiateVisual = true;
@@ -40,6 +41,8 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
      public UnityEvent<Card> BeginDragEvent;
      public UnityEvent<Card> EndDragEvent;
      public UnityEvent<Card, bool> SelectEvent;
+
+     public UnityEvent<Card> DrawEvent;
 
     void Start()
     {
