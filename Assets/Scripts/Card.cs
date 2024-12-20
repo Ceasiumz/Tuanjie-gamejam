@@ -24,6 +24,8 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     private float pointerDownTime;
     private float pointerUpTime;
 
+    public int points = 0;
+
     [Header("Visual")]
     [SerializeField] private GameObject cardVisualPrefab;
     [HideInInspector] public CardVisual cardVisual;
@@ -42,7 +44,7 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
      public UnityEvent<Card> EndDragEvent;
      public UnityEvent<Card, bool> SelectEvent;
 
-     public UnityEvent<Card> DrawEvent;
+     
 
     void Start()
     {
@@ -55,6 +57,9 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         visualHandler = FindObjectOfType<VisualCardsHandler>();
         cardVisual = Instantiate(cardVisualPrefab, visualHandler ? visualHandler.transform : canvas.transform).GetComponent<CardVisual>();
         cardVisual.Initialize(this);
+        if(points == 0)
+            points = Random.Range(1, 11);
+        Debug.Log("Card points: " + points);
     }
 
     void Update()
