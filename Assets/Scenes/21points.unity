@@ -1110,9 +1110,6 @@ MonoBehaviour:
   DrawEvent:
     m_PersistentCalls:
       m_Calls: []
-  DrawOutEvent:
-    m_PersistentCalls:
-      m_Calls: []
   DrawButton: {fileID: 627900029}
 --- !u!114 &667881469
 MonoBehaviour:
@@ -1323,7 +1320,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allyPoints: 0
+  lim: 100
   holder: {fileID: 667881467}
+  DrawOutEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &847259877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2044,9 +2045,6 @@ MonoBehaviour:
   cardCount: 0
   tweenCardReturn: 1
   DrawEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  DrawOutEvent:
     m_PersistentCalls:
       m_Calls: []
   DrawButton: {fileID: 0}
