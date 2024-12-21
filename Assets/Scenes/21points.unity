@@ -151,7 +151,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 53076950}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f910dcfd7335b074eac6f4a674d482ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 01ef19b5b3f74f046996985122b61bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
@@ -159,8 +159,8 @@ MonoBehaviour:
   attack: 10
   isPlayerSuspension: 0
   cardPoints: 0
-  enemyMaxHealth: 10
-  enemyCurrentHealth: 10
+  enemyMaxHealth: 100
+  enemyCurrentHealth: 100
   enemyAttack: 10
   isEnemySuspension: 0
   enemyCardPoints: 0
@@ -2157,7 +2157,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1296720585}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 526fa80ea00f5b1439caeff9c53c757c, type: 3}
+  m_Script: {fileID: 11500000, guid: 60ddf1df5635fdd459f2e272438efb79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardsPoint: []
