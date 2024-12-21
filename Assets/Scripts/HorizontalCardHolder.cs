@@ -29,6 +29,7 @@ public class HorizontalCardHolder : MonoBehaviour
 
     public GameObject DrawButton;
     [SerializeField] private CardDack cardDack;
+    public bool isEnemy;
 
 
 
@@ -67,6 +68,9 @@ public class HorizontalCardHolder : MonoBehaviour
                 break;
         }
         card.CardRename(card);
+
+        GamePointBoard.Instance.UpdatePlayerCardPoints(isEnemy,cards);
+        
         
         card.PointerEnterEvent.AddListener(CardPointerEnter);
         card.PointerExitEvent.AddListener(CardPointerExit);
@@ -234,6 +238,11 @@ public class HorizontalCardHolder : MonoBehaviour
         {
             card.cardVisual.UpdateIndex(transform.childCount);
         }
+    }
+
+    public void resetCardList()
+    {
+        cards.Clear();
     }
 
 }
