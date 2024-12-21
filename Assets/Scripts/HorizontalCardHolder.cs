@@ -6,7 +6,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Linq;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
+
 
 public class HorizontalCardHolder : MonoBehaviour
 {
@@ -26,35 +26,28 @@ public class HorizontalCardHolder : MonoBehaviour
     bool isCrossing = false;
     [SerializeField] private bool tweenCardReturn = true;
     public UnityEvent<Card> DrawEvent;
-    public UnityEvent<Card> DrawOutEvent;
+
     public GameObject DrawButton;
 
-    public void DrawOutTest(Card card)
+
+
+
+    private void LateUpdate()
     {
-        if (AllyPoint.Instance.allyPoints == 21){
-            
-        }
-        if (AllyPoint.Instance.allyPoints > 21)
-        {
-            DrawOutEvent.Invoke(card);
-            DrawButton.SetActive(false);
-            Invoke("Restart", 1f);
-        }
+        
     }
 
-    public void Restart() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     public void DrawCard()
     {
+
         GameObject cardObject = Instantiate(slotPrefab, transform);
         Card card = cardObject.GetComponentInChildren<Card>();
         cards.Add(card);
-        card.points = UnityEngine.Random.Range(1, 11);
         card.PointerEnterEvent.AddListener(CardPointerEnter);
         card.PointerExitEvent.AddListener(CardPointerExit);
         card.BeginDragEvent.AddListener(BeginDrag);
         card.EndDragEvent.AddListener(EndDrag);
-        card.name = cardCount.ToString();
         cardCount++;
         if (gameObject.tag == "Enemy")
         {
@@ -71,8 +64,9 @@ public class HorizontalCardHolder : MonoBehaviour
                     card.cardVisual.UpdateIndex(transform.childCount);
             }
         }
-        DrawOutTest(card);
+
     }
+
     void Start()
     {
         //DrawEvent.AddListener(DrawOutTest);

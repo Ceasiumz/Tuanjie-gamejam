@@ -1,12 +1,12 @@
 %YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
+%TAG !u! tag:yousandi.cn,2023:
 --- !u!1 &8994356602663114153
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 6964580406683806308}
   - component: {fileID: 3479498278798631746}
@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8562604021319485591}
   - component: {fileID: -3148967189081000219}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,9 +61,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d103f73c46c407db068681e2811968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnemy: 0
+  instantiateVisual: 1
   moveSpeedLimit: 50
   selected: 0
   selectionOffset: 25
+  points: 0
   cardVisualPrefab: {fileID: 7310339964073049012, guid: bddd0263814164da396aa8d1438dd810, type: 3}
   cardVisual: {fileID: 0}
   isHovering: 0
@@ -86,9 +90,13 @@ MonoBehaviour:
   EndDragEvent:
     m_PersistentCalls:
       m_Calls: []
+  IsAceEvent:
+    m_PersistentCalls:
+      m_Calls: []
   SelectEvent:
     m_PersistentCalls:
       m_Calls: []
+  startran: 8
 --- !u!114 &7486306067316991545
 MonoBehaviour:
   m_ObjectHideFlags: 0

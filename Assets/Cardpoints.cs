@@ -17,6 +17,6 @@ public class Cardpoints : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = cardVisual.parentCard.points.ToString();
+        text.text = cardVisual.parentCard.name;
     }
 }

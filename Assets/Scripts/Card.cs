@@ -36,17 +36,19 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     [HideInInspector] public bool wasDragged;
 
     [Header("Events")]
-     public UnityEvent<Card> PointerEnterEvent;
-     public UnityEvent<Card> PointerExitEvent;
-     public UnityEvent<Card, bool> PointerUpEvent;
-     public UnityEvent<Card> PointerDownEvent;
-     public UnityEvent<Card> BeginDragEvent;
-     public UnityEvent<Card> EndDragEvent;
-     public UnityEvent<Card, bool> SelectEvent;
+    public UnityEvent<Card> PointerEnterEvent;
+    public UnityEvent<Card> PointerExitEvent;
+    public UnityEvent<Card, bool> PointerUpEvent;
+    public UnityEvent<Card> PointerDownEvent;
+    public UnityEvent<Card> BeginDragEvent;
+    public UnityEvent<Card> EndDragEvent;
 
-     
+    public UnityEvent<Card> IsAceEvent;
+    public UnityEvent<Card, bool> SelectEvent;
+    public int startran = 1;
 
-    void Start()
+
+    void Start()// spawn card with visual sprite and random points
     {
         canvas = GetComponentInParent<Canvas>();
         imageComponent = GetComponent<Image>();
@@ -57,11 +59,51 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         visualHandler = FindObjectOfType<VisualCardsHandler>();
         cardVisual = Instantiate(cardVisualPrefab, visualHandler ? visualHandler.transform : canvas.transform).GetComponent<CardVisual>();
         cardVisual.Initialize(this);
-        if(points == 0)
-            points = Random.Range(1, 11);
-        Debug.Log("Card points: " + points);
+        if (points == 0)
+            points = Random.Range(startran, 14);
+        CardRename(this);
+    //Debug.Log("Card points: " + points);
+        postPoints();
     }
 
+    public void CardRename(Card card)
+    {
+        switch (card.points)
+        {
+            case 1: card.name = "A"; break;
+            case 11: card.name = "J"; card.points = 10; break;
+            case 12: card.name = "Q"; card.points = 10; break;
+            case 13: card.name = "K"; card.points = 10; break;
+            default: card.name = card.points.ToString(); break;
+        }
+    }
+
+    void postPoints()//special points effects
+    {
+        switch (points)
+        {
+            case 1: this.IsAceEvent.AddListener(IsAce); break;
+            case 11: //points = 10; break;
+            case 12: //points = 10; break;
+            case 13: //points = 10; break;
+            default: return;
+        }
+    }
+
+    void IsAce(Card card)
+    {//if card is ace, change points to 11 or 1
+        if (card.points == 1 && AllyPoint.Instance.allyPoints <= 10)
+        {
+            card.points = 11;
+        }
+        else if (card.points == 11)
+        {// if out of 21, change points to 1
+            if (AllyPoint.Instance.allyPoints > AllyPoint.Instance.lim)
+            {
+                card.points = 1;
+            }
+        }
+    }
     void Update()
     {
         ClampPosition();
@@ -73,6 +115,8 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
             Vector2 velocity = direction * Mathf.Min(moveSpeedLimit, Vector2.Distance(transform.position, targetPosition) / Time.deltaTime);
             transform.Translate(velocity * Time.deltaTime);
         }
+
+        IsAceEvent.Invoke(this);
     }
 
     void ClampPosition()
@@ -192,7 +236,7 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 
     private void OnDestroy()
     {
-        if(cardVisual != null)
-        Destroy(cardVisual.gameObject);
+        if (cardVisual != null)
+            Destroy(cardVisual.gameObject);
     }
 }
