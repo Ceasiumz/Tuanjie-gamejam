@@ -23,7 +23,7 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     public float selectionOffset = 50;
     private float pointerDownTime;
     private float pointerUpTime;
-
+    
     public int points = 0;
 
     [Header("Visual")]
