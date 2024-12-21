@@ -27,6 +27,7 @@ public class HorizontalCardHolder : MonoBehaviour
     [SerializeField] private bool tweenCardReturn = true;
     public UnityEvent<Card> DrawEvent;
     public UnityEvent<Card> DrawOutEvent;
+    public GameObject DrawButton;
 
     public void DrawOutTest(Card card)
     {
@@ -36,9 +37,12 @@ public class HorizontalCardHolder : MonoBehaviour
         if (AllyPoint.Instance.allyPoints > 21)
         {
             DrawOutEvent.Invoke(card);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            DrawButton.SetActive(false);
+            Invoke("Restart", 1f);
         }
     }
+
+    public void Restart() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     public void DrawCard()
     {
