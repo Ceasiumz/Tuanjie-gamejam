@@ -23,7 +23,7 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     public float selectionOffset = 50;
     private float pointerDownTime;
     private float pointerUpTime;
-
+    
     public int points = 0;
 
     [Header("Visual")]
@@ -59,9 +59,9 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         visualHandler = FindObjectOfType<VisualCardsHandler>();
         cardVisual = Instantiate(cardVisualPrefab, visualHandler ? visualHandler.transform : canvas.transform).GetComponent<CardVisual>();
         cardVisual.Initialize(this);
-        if (points == 0)
-            points = Random.Range(startran, 14);
-        CardRename(this);
+        // if (points == 0)
+        //     points = Random.Range(startran, 14);
+        // CardRename(this);
     //Debug.Log("Card points: " + points);
         postPoints();
     }
@@ -77,7 +77,8 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
             default: card.name = card.points.ToString(); break;
         }
     }
-
+    
+    
     void postPoints()//special points effects
     {
         switch (points)

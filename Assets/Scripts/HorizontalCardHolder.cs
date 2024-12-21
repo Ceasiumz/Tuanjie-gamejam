@@ -28,6 +28,8 @@ public class HorizontalCardHolder : MonoBehaviour
     public UnityEvent<Card> DrawEvent;
 
     public GameObject DrawButton;
+    [SerializeField] private CardDack cardDack;
+    public bool isEnemy;
 
 
 
@@ -44,6 +46,38 @@ public class HorizontalCardHolder : MonoBehaviour
         GameObject cardObject = Instantiate(slotPrefab, transform);
         Card card = cardObject.GetComponentInChildren<Card>();
         cards.Add(card);
+        //从牌库抽取卡牌
+        //判断抽排堆是否为空
+        if (cardDack.cardsPoint.Count == 0)
+        {
+            cardDack.RecoverDiscard();
+            cardDack.ShuffleCards(cardDack.cardsPoint);
+        }
+        String cardPoint= cardDack.DrawCard();
+        Debug.Log("抽取点数"+cardPoint);
+        switch (cardPoint)
+        {
+            case "A":
+                card.points = 1;
+                break;
+            case "J":
+                card.points = 11;
+                break;
+            case "Q":
+                card.points = 12;
+                break;
+            case "K":
+                card.points = 13;
+                break;
+            default:
+                card.points = int.Parse(cardPoint);
+                break;
+        }
+        card.CardRename(card);
+
+        GamePointBoard.Instance.UpdatePlayerCardPoints(isEnemy,cards);
+        
+        
         card.PointerEnterEvent.AddListener(CardPointerEnter);
         card.PointerExitEvent.AddListener(CardPointerExit);
         card.BeginDragEvent.AddListener(BeginDrag);
@@ -210,6 +244,22 @@ public class HorizontalCardHolder : MonoBehaviour
         {
             card.cardVisual.UpdateIndex(transform.childCount);
         }
+    }
+
+    public void DiscardHandCard()
+    {
+        
+        foreach (var card in cards)
+        {
+            cardDack.discardDeck.Add(card.name);
+        }
+        cards.Clear();
+    }
+
+    public void DiscoverCardDeck()
+    {
+        cardDack.RecoverDiscard();
+        cardDack.ShuffleCards(cardDack.cardsPoint);
     }
 
 }
