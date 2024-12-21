@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class CardDack : MonoBehaviour
 {
+    //抽牌堆
      public List<String> cardsPoint;
-    
+     //弃牌堆
+     public List<String> discardDeck;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,7 @@ public class CardDack : MonoBehaviour
         ShuffleCards(cardsPoint);
     }
     
-    void ShuffleCards(List<String> cardsPoint)
+    public void ShuffleCards(List<String> cardsPoint)
     {
         for (int i = cardsPoint.Count - 1; i > 0; i--)
         {
@@ -50,5 +52,12 @@ public class CardDack : MonoBehaviour
         cardsPoint.RemoveAt(randomIndex);
 
         return drawnCard;
+    }
+        
+        //将弃牌堆的卡放入到抽牌堆
+        public void RecoverDiscard()
+    {
+        cardsPoint.AddRange(discardDeck);
+        discardDeck.Clear();
     }
 }

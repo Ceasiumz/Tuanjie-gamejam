@@ -60,8 +60,28 @@ public class GamePointBoard : MonoBehaviour
         int tempoint = 0;
         foreach (var card in cards)
         {
+            //点数结算
             tempoint+=card.points;
+            
         }
+        //计算超过21点后检查卡牌是否有A 如果有把卡牌改成1
+        if (tempoint>21)
+        {
+            int tempoint2 = 0;
+            foreach (var card in cards)
+            {
+                if (card.name == "A")
+                {
+                    tempoint2 += 1;
+                }
+                else
+                {
+                    tempoint2 += card.points;
+                }
+            }
+            tempoint=tempoint2;
+        }
+        
         if(!isEnemy)
         {
             cardPoints = tempoint;
@@ -69,6 +89,12 @@ public class GamePointBoard : MonoBehaviour
         else
         {
             enemyCardPoints = tempoint;
+        }
+        
+        //21点直接胜利
+        if (tempoint == 21)
+        {
+            AllyPoint.Instance.WinSettlement(isEnemy);
         }
         //爆牌结算
         if (tempoint > 21)

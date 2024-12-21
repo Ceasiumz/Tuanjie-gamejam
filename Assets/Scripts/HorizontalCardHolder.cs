@@ -47,6 +47,12 @@ public class HorizontalCardHolder : MonoBehaviour
         Card card = cardObject.GetComponentInChildren<Card>();
         cards.Add(card);
         //从牌库抽取卡牌
+        //判断抽排堆是否为空
+        if (cardDack.cardsPoint.Count == 0)
+        {
+            cardDack.RecoverDiscard();
+            cardDack.ShuffleCards(cardDack.cardsPoint);
+        }
         String cardPoint= cardDack.DrawCard();
         Debug.Log("抽取点数"+cardPoint);
         switch (cardPoint)
@@ -240,9 +246,20 @@ public class HorizontalCardHolder : MonoBehaviour
         }
     }
 
-    public void resetCardList()
+    public void DiscardHandCard()
     {
+        
+        foreach (var card in cards)
+        {
+            cardDack.discardDeck.Add(card.name);
+        }
         cards.Clear();
+    }
+
+    public void DiscoverCardDeck()
+    {
+        cardDack.RecoverDiscard();
+        cardDack.ShuffleCards(cardDack.cardsPoint);
     }
 
 }

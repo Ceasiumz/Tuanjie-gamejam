@@ -159,8 +159,8 @@ MonoBehaviour:
   attack: 10
   isPlayerSuspension: 0
   cardPoints: 0
-  enemyMaxHealth: 100
-  enemyCurrentHealth: 100
+  enemyMaxHealth: 10
+  enemyCurrentHealth: 10
   enemyAttack: 10
   isEnemySuspension: 0
   enemyCardPoints: 0
@@ -1598,7 +1598,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 667881467}
         m_TargetAssemblyTypeName: HorizontalCardHolder, Assembly-CSharp
-        m_MethodName: resetCardList
+        m_MethodName: DiscardHandCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1610,7 +1610,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1772936770}
         m_TargetAssemblyTypeName: HorizontalCardHolder, Assembly-CSharp
-        m_MethodName: resetCardList
+        m_MethodName: DiscardHandCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2161,6 +2161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsPoint: []
+  discardDeck: []
 --- !u!1 &1307597422
 GameObject:
   m_ObjectHideFlags: 0

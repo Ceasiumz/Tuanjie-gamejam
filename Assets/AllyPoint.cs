@@ -132,6 +132,28 @@ public class AllyPoint : MonoBehaviour
         DeadCheck();
         EnemyDeadCheck();
     }
+    
+    //21点胜利结算
+    public void WinSettlement(bool isEnemy)
+    {
+        //敌人获胜
+        if (isEnemy)
+        {
+            GamePointBoard.Instance.currentHealth -= GamePointBoard.Instance.enemyAttack;
+            DrawOutEvent.Invoke();
+            GamePointBoard.Instance.ClearCardPoints();
+        }
+        else//玩家获胜
+        {
+            GamePointBoard.Instance.enemyCurrentHealth -= GamePointBoard.Instance.attack;
+            DrawOutEvent.Invoke();
+            GamePointBoard.Instance.ClearCardPoints();
+        }
+        //死亡判断
+        DeadCheck();
+        EnemyDeadCheck();
+    }
+    
     //玩家死亡判断 玩家死亡重新加载场景
     public void DeadCheck()
     {
@@ -147,6 +169,8 @@ public class AllyPoint : MonoBehaviour
         {
             // TODO:对手死亡处理 暂定处理重新加满生命值
             GamePointBoard.Instance.enemyCurrentHealth = GamePointBoard.Instance.enemyMaxHealth;
+            DrawOutEvent.Invoke();
+            holder.DiscoverCardDeck();
         }
     }
     public void Restart()// latecheck if the ally points are over lim
