@@ -49,7 +49,8 @@ public class HorizontalCardHolder : MonoBehaviour
             Card card = cardObject.GetComponentInChildren<Card>();
             cards.Add(card);
             //
-            if(hidenFlag == 1){
+            if (hidenFlag == 1)
+            {
                 card.cardVisual.sprite.color = Color.black;
                 card.isHiden = true;
             }
@@ -82,10 +83,6 @@ public class HorizontalCardHolder : MonoBehaviour
         //从牌库抽取卡牌
         String cardPoint = cardDack.DrawCard();
         Debug.Log("抽取点数" + cardPoint);
-        if(cards.Count ==1){
-            if(card.cardVisual != null)
-                Debug.Log("1121");
-        }
 
         // 根据抽取的牌面设置点数
         switch (cardPoint)
@@ -142,7 +139,16 @@ public class HorizontalCardHolder : MonoBehaviour
                 cards[i].cardVisual.UpdateIndex(transform.childCount);
         }
     }
-
+    private void Awake()
+    {
+        //TurnManager.Instance.PlayerTurn_Start.AddListener();
+        if (gameObject.tag != "Enemy")
+        {
+            TurnManager.Instance.PlayerTurn_Draw.AddListener(DrawCard);
+        }else{
+            //TurnManager.Instance.EnemyTurn_Draw.AddListener(DrawCard);
+        }
+    }
     void Start()
     {
         //DrawEvent.AddListener(DrawOutTest);
@@ -156,7 +162,7 @@ public class HorizontalCardHolder : MonoBehaviour
 
         StartCoroutine(UpdateCardVisual());
 
-    
+
     }
 
     private void AddCardEventListeners(Card card)
@@ -286,6 +292,7 @@ public class HorizontalCardHolder : MonoBehaviour
     public void DiscardHandCard()
     {
         StartCoroutine(WaitToDiscardHandCard());
+        TurnManager.Instance.PlayerTurn_start();
     }
 
     private IEnumerator WaitToDiscardHandCard()
