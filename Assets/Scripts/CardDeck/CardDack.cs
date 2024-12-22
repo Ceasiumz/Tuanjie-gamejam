@@ -45,7 +45,7 @@ public class CardDack : MonoBehaviour
         }
 
         // 随机抽取一张牌
-        int randomIndex = UnityEngine.Random.Range(0, cardsPoint.Count);
+        int randomIndex = 0;
         string drawnCard = cardsPoint[randomIndex];
 
         // 从列表中移除这张牌

@@ -29,6 +29,8 @@ public class HorizontalCardHolder : MonoBehaviour
 
     public GameObject DrawButton;
     [SerializeField] private CardDack cardDack;
+
+    public float discardWaitTime = 0.5f;
     public bool isEnemy;
 
 
@@ -36,7 +38,7 @@ public class HorizontalCardHolder : MonoBehaviour
 
     private void LateUpdate()
     {
-        
+
     }
 
 
@@ -53,8 +55,8 @@ public class HorizontalCardHolder : MonoBehaviour
             cardDack.RecoverDiscard();
             cardDack.ShuffleCards(cardDack.cardsPoint);
         }
-        String cardPoint= cardDack.DrawCard();
-        Debug.Log("抽取点数"+cardPoint);
+        String cardPoint = cardDack.DrawCard();
+        Debug.Log("抽取点数" + cardPoint);
         switch (cardPoint)
         {
             case "A":
@@ -75,9 +77,9 @@ public class HorizontalCardHolder : MonoBehaviour
         }
         card.CardRename(card);
 
-        GamePointBoard.Instance.UpdatePlayerCardPoints(isEnemy,cards);
-        
-        
+        GamePointBoard.Instance.UpdatePlayerCardPoints(isEnemy, cards);
+
+
         card.PointerEnterEvent.AddListener(CardPointerEnter);
         card.PointerExitEvent.AddListener(CardPointerExit);
         card.BeginDragEvent.AddListener(BeginDrag);
@@ -175,12 +177,7 @@ public class HorizontalCardHolder : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Delete))
         {
-            if (hoveredCard != null)
-            {
-                Destroy(hoveredCard.transform.parent.gameObject);
-                cards.Remove(hoveredCard);
-
-            }
+            DestroyCard(hoveredCard);
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -220,6 +217,16 @@ public class HorizontalCardHolder : MonoBehaviour
         }
     }
 
+    private void DestroyCard(Card card)
+    {
+        if (card != null)
+        {
+            cardDack.discardDeck.Add(card.name);
+            Destroy(card.transform.parent.gameObject);
+            cards.Remove(card);
+        }
+    }
+
     void Swap(int index)
     {
         isCrossing = true;
@@ -248,12 +255,17 @@ public class HorizontalCardHolder : MonoBehaviour
 
     public void DiscardHandCard()
     {
-        
-        foreach (var card in cards)
+        StartCoroutine(wait());
+    }
+    IEnumerator wait()
+    {
+        DrawButton.SetActive(false);
+        while(cards.Count > 0)
         {
-            cardDack.discardDeck.Add(card.name);
+            DestroyCard(cards[0]);
+            yield return new WaitForSeconds(discardWaitTime);
         }
-        cards.Clear();
+        DrawButton.SetActive(true);
     }
 
     public void DiscoverCardDeck()
