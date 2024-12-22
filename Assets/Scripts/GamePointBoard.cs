@@ -106,13 +106,15 @@ public class GamePointBoard : MonoBehaviour
     public void RecordSuspension(bool isEnemy)
     {
         //停牌后应禁用抽牌 停牌 和加注
-        if(!isEnemy)
+        if(!isEnemy)//玩家停牌
         {
             isPlayerSuspension = true;
+            TurnManager.Instance.PlayerTurn_end();
         }
-        else
+        else//敌人停牌
         {
             isEnemySuspension = true;
+            TurnManager.Instance.EnemyTurn_end();
         }
         //双方都停牌时 触发结算比较牌面大小
         if (isPlayerSuspension == true && isEnemySuspension == true)
