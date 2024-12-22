@@ -380,7 +380,8 @@ MonoBehaviour:
   swapTransition: 0.2
   swapVibrato: 5
   curve: {fileID: 11400000, guid: d4dd399fb2dab44429d866dc2259bb4b, type: 2}
-  sprite: {fileID: 1145312962996155630}
+  spriteObject: {fileID: 1145312962996155630}
+  sprite: {fileID: 7697484841366769644}
 --- !u!223 &4132845374223140069
 Canvas:
   m_ObjectHideFlags: 0

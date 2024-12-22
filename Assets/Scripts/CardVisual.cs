@@ -61,7 +61,8 @@ public class CardVisual : MonoBehaviour
     [Header("Curve")]
     [SerializeField] private CurveParameters curve;
 
-    public GameObject sprite;
+    public GameObject spriteObject;
+    public Image sprite;
 
     private float curveYOffset;
     private float curveRotationOffset;
@@ -69,6 +70,9 @@ public class CardVisual : MonoBehaviour
 
     private void Start()
     {
+        if(spriteObject != null){
+            sprite = spriteObject.GetComponent<Image>();
+        }
         shadowDistance = visualShadow.localPosition;
     }
 
@@ -89,7 +93,7 @@ public class CardVisual : MonoBehaviour
         parentCard.PointerUpEvent.AddListener(PointerUp);
         parentCard.SelectEvent.AddListener(Select);
         parentCard.isEnemyEvent.AddListener(Inverse);
-        Debug.Log("Instantiate"+parentCard.isEnemy);
+        //Debug.Log("Instantiate"+parentCard.isEnemy);
         //Initialization
         initalize = true;
 
@@ -97,7 +101,7 @@ public class CardVisual : MonoBehaviour
 
     public void Inverse(Card card)
     {
-        sprite.transform.eulerAngles = new Vector3(180, 0, 0);
+        spriteObject.transform.eulerAngles = new Vector3(180, 0, 0);
     }
 
     public void UpdateIndex(int length)

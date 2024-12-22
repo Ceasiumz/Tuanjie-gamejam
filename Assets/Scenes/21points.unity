@@ -1158,15 +1158,15 @@ MonoBehaviour:
   selectedCard: {fileID: 0}
   hoveredCard: {fileID: 0}
   slotPrefab: {fileID: 3655645598659960977, guid: e99c361e7acdd41f0b904fef6be48fea, type: 3}
-  cardsToSpawn: 0
+  cardsToSpawn: 2
   cards: []
-  cardCount: 0
   tweenCardReturn: 1
   DrawEvent:
     m_PersistentCalls:
       m_Calls: []
   DrawButton: {fileID: 627900029}
   cardDack: {fileID: 1296720587}
+  discardWaitTime: 0.5
   isEnemy: 0
 --- !u!114 &667881469
 MonoBehaviour:
@@ -2842,15 +2842,15 @@ MonoBehaviour:
   selectedCard: {fileID: 0}
   hoveredCard: {fileID: 0}
   slotPrefab: {fileID: 3655645598659960977, guid: e99c361e7acdd41f0b904fef6be48fea, type: 3}
-  cardsToSpawn: 0
+  cardsToSpawn: 1
   cards: []
-  cardCount: 0
   tweenCardReturn: 1
   DrawEvent:
     m_PersistentCalls:
       m_Calls: []
-  DrawButton: {fileID: 0}
+  DrawButton: {fileID: 1687660128}
   cardDack: {fileID: 1296720587}
+  discardWaitTime: 0.5
   isEnemy: 1
 --- !u!1 &1773305147
 GameObject:

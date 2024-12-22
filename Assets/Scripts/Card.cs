@@ -10,6 +10,7 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 {
     public bool isEnemy;
     public UnityEvent<Card> isEnemyEvent;
+    public bool isHiden;
     private Canvas canvas;
     private Image imageComponent;
     [SerializeField] private bool instantiateVisual = true;
@@ -167,12 +168,18 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     {
         PointerEnterEvent.Invoke(this);
         isHovering = true;
+        if(isHiden){
+            cardVisual.sprite.color = Color.white;
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         PointerExitEvent.Invoke(this);
         isHovering = false;
+        if(isHiden){
+            cardVisual.sprite.color = Color.black;
+        }
     }
 
 

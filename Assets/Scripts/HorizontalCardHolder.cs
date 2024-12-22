@@ -35,10 +35,10 @@ public class HorizontalCardHolder : MonoBehaviour
     public void DrawCard()
     {
         // 使用协程来等待异步实例化操作完成，避免死循环占用资源
-        StartCoroutine(WaitForInstantiationAndProcessCard());
+        StartCoroutine(WaitForInstantiationAndProcessCard(0));
     }
 
-    private IEnumerator WaitForInstantiationAndProcessCard()
+    private IEnumerator WaitForInstantiationAndProcessCard(int hidenFlag)
     {
         var op = InstantiateAsync(slotPrefab, transform);
         yield return op;
@@ -48,7 +48,11 @@ public class HorizontalCardHolder : MonoBehaviour
             GameObject cardObject = op.Result[0];
             Card card = cardObject.GetComponentInChildren<Card>();
             cards.Add(card);
-
+            //
+            if(hidenFlag == 1){
+                card.cardVisual.sprite.color = Color.black;
+                card.isHiden = true;
+            }
             // 抽取卡牌及相关逻辑处理
             ProcessDrawnCard(card);
 
@@ -142,24 +146,17 @@ public class HorizontalCardHolder : MonoBehaviour
     void Start()
     {
         //DrawEvent.AddListener(DrawOutTest);
+        cards = GetComponentsInChildren<Card>().ToList();
         for (int i = 0; i < cardsToSpawn; i++)
         {
-            Instantiate(slotPrefab, transform);
+            StartCoroutine(WaitForInstantiationAndProcessCard(1));
         }
 
         rect = GetComponent<RectTransform>();
-        cards = GetComponentsInChildren<Card>().ToList();
-
-        foreach (Card card in cards)
-        {
-            AddCardEventListeners(card);
-            if (gameObject.tag == "Enemy")
-            {
-                card.isEnemy = true;
-            }
-        }
 
         StartCoroutine(UpdateCardVisual());
+
+    
     }
 
     private void AddCardEventListeners(Card card)
