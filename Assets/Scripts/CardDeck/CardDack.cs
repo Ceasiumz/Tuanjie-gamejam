@@ -14,8 +14,8 @@ public class CardDack : MonoBehaviour
     {
         InitializeCardPoints();
     }
-    
-    
+
+
     //牌堆初始化
     void InitializeCardPoints()
     {
