@@ -33,22 +33,22 @@ public class TurnManager : MonoBehaviour
     [SerializeField] public Turn turn;
     [System.Serializable] public struct Turn
     {
-        public bool PlayerTurn_Start;
-        public bool PlayerTurn_Draw;
-        public bool PlayerTurn_End;
-        public bool EnemyTurn_Start;
-        public bool EnemyTurn_Draw;
-        public bool EnemyTurn_End;
+        public bool playerTurn_Start;
+        public bool playerTurn_Draw;
+        public bool playerTurn_End;
+        public bool enemyTurn_Start;
+        public bool enemyTurn_Draw;
+        public bool enemyTurn_End;
 
         public Turn(bool playerTurnStart, bool playerTurnDraw, bool playerTurnEnd
         , bool enemyTurnStart, bool enemyTurnDraw, bool enemyTurnEnd)
         {
-            PlayerTurn_Start = playerTurnStart;
-            PlayerTurn_Draw = playerTurnDraw;
-            PlayerTurn_End = playerTurnEnd;
-            EnemyTurn_Start = enemyTurnStart;
-            EnemyTurn_Draw = enemyTurnDraw;
-            EnemyTurn_End = enemyTurnEnd;
+            playerTurn_Start = playerTurnStart;
+            playerTurn_Draw = playerTurnDraw;
+            playerTurn_End = playerTurnEnd;
+            enemyTurn_Start = enemyTurnStart;
+            enemyTurn_Draw = enemyTurnDraw;
+            enemyTurn_End = enemyTurnEnd;
         }
     }
     void Start()
@@ -58,64 +58,69 @@ public class TurnManager : MonoBehaviour
     public void PlayerTurn_start()
     {
         turn = new Turn(false, false, false, false, false, false);
-        if (turn.PlayerTurn_Start == false)
+        if (turn.playerTurn_Start == false)
         {
+            turn.playerTurn_Start = true;
             PlayerTurn_Start.Invoke();
-            turn.PlayerTurn_Start = true;
         }
     }
     public void PlayerTurn_draw()
     {
-        if (turn.PlayerTurn_Draw == false && turn.PlayerTurn_Start == true)
+        if (turn.playerTurn_Draw == false && turn.playerTurn_Start == true)
         {
+            turn.playerTurn_Draw = true;
             PlayerTurn_Draw.Invoke();
-            turn.PlayerTurn_Draw = true;
         }
     }
 
     public void PlayerTurn_suspend()
     {
-        if (turn.PlayerTurn_Draw == false && turn.PlayerTurn_Start == true)
+        if (turn.playerTurn_Draw == false && turn.playerTurn_Start == true)
         {
+            turn.playerTurn_Draw = true;
             PlayerTurn_Suspend.Invoke();
-            turn.PlayerTurn_Draw = true;
         }
     }
     public void PlayerTurn_end()
     {
-        if (turn.PlayerTurn_End == false && turn.PlayerTurn_Draw == true)
+        if (turn.playerTurn_End == false && turn.playerTurn_Draw == true)
         {
+            turn.playerTurn_End = true;
             PlayerTurn_End.Invoke();
-            turn.PlayerTurn_End = true;
             EnemyTurn_start();
         }
     }
     public void EnemyTurn_start()
     {
-        if (turn.EnemyTurn_Start == false)
+        if (turn.enemyTurn_Start == false)
         {
+            turn.enemyTurn_Start = true;
             EnemyTurn_Start.Invoke();
-            turn.EnemyTurn_Start = true;
         }
     }
     public void EnemyTurn_draw()
     {
-        if (turn.EnemyTurn_Draw == false && turn.EnemyTurn_Start == true)
+        //if(GamePointBoard.Instance.isEnemySuspension){
+        //   turn.enemyTurn_Draw = true;
+        //}
+        //Debug.Log("EnemyTurn_draw"+turn.enemyTurn_Draw+"enemyTurn_Start"+turn.enemyTurn_Start);
+        if (turn.enemyTurn_Draw == false && turn.enemyTurn_Start == true)
         {
+            turn.enemyTurn_Draw = true;
             EnemyTurn_Draw.Invoke();
-            turn.EnemyTurn_Draw = true;
         }
     }
     public void EnemyTurn_end()
     {
-        if (turn.EnemyTurn_End == false && turn.EnemyTurn_Draw == true)
+        if (turn.enemyTurn_End == false && turn.enemyTurn_Draw == true)
         {
+            turn.enemyTurn_End = true;
             EnemyTurn_End.Invoke();
-            turn.EnemyTurn_End = true;
             PlayerTurn_start();
         }
     }
 
+    
     // Update is called once per frame
     void Update()
     {
