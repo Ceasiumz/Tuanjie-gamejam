@@ -127,5 +127,11 @@ public class GamePointBoard : MonoBehaviour
         cardPoints = 0;
         enemyCardPoints = 0;
     }
+
+    public void ResetSuspension()
+    {
+        isPlayerSuspension = false;
+        isEnemySuspension = false;
+    }
     
 }

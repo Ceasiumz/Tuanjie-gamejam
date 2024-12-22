@@ -95,16 +95,16 @@ public class AllyPoint : MonoBehaviour
             //TODO:清除场景中卡牌
                 //受伤 刷新牌桌上卡牌
                 GamePointBoard.Instance.enemyCurrentHealth -= GamePointBoard.Instance.attack;
-                DrawOutEvent.Invoke();
-                GamePointBoard.Instance.ClearCardPoints();
+
         }
         else
         {
             //玩家爆牌结算
             GamePointBoard.Instance.currentHealth -= GamePointBoard.Instance.enemyAttack;
-            DrawOutEvent.Invoke();
-            GamePointBoard.Instance.ClearCardPoints();
         }
+        DrawOutEvent.Invoke();
+        GamePointBoard.Instance.ClearCardPoints();
+        GamePointBoard.Instance.ResetSuspension();
         //死亡判断
         DeadCheck();
         EnemyDeadCheck();
@@ -116,18 +116,16 @@ public class AllyPoint : MonoBehaviour
         if (GamePointBoard.Instance.cardPoints > GamePointBoard.Instance.enemyCardPoints)
         {
             GamePointBoard.Instance.enemyCurrentHealth -= GamePointBoard.Instance.attack;
-            DrawOutEvent.Invoke();
-            GamePointBoard.Instance.ClearCardPoints();
         }else if(GamePointBoard.Instance.cardPoints < GamePointBoard.Instance.enemyCardPoints)//玩家失败
         {
             GamePointBoard.Instance.currentHealth -= GamePointBoard.Instance.enemyAttack;
-            DrawOutEvent.Invoke();
-            GamePointBoard.Instance.ClearCardPoints();
         }else//平局
         {
-            DrawOutEvent.Invoke();
-            GamePointBoard.Instance.ClearCardPoints();
+
         }
+        DrawOutEvent.Invoke();
+        GamePointBoard.Instance.ClearCardPoints();
+        GamePointBoard.Instance.ResetSuspension();
         //死亡判断
         DeadCheck();
         EnemyDeadCheck();
@@ -140,15 +138,13 @@ public class AllyPoint : MonoBehaviour
         if (isEnemy)
         {
             GamePointBoard.Instance.currentHealth -= GamePointBoard.Instance.enemyAttack;
-            DrawOutEvent.Invoke();
-            GamePointBoard.Instance.ClearCardPoints();
         }
         else//玩家获胜
         {
             GamePointBoard.Instance.enemyCurrentHealth -= GamePointBoard.Instance.attack;
-            DrawOutEvent.Invoke();
-            GamePointBoard.Instance.ClearCardPoints();
         }
+        DrawOutEvent.Invoke();
+        GamePointBoard.Instance.ClearCardPoints();
         //死亡判断
         DeadCheck();
         EnemyDeadCheck();
