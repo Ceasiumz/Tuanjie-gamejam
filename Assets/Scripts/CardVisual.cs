@@ -61,7 +61,7 @@ public class CardVisual : MonoBehaviour
     [Header("Curve")]
     [SerializeField] private CurveParameters curve;
 
-    [SerializeField]GameObject sprite;
+    public GameObject sprite;
 
     private float curveYOffset;
     private float curveRotationOffset;
@@ -88,15 +88,15 @@ public class CardVisual : MonoBehaviour
         parentCard.PointerDownEvent.AddListener(PointerDown);
         parentCard.PointerUpEvent.AddListener(PointerUp);
         parentCard.SelectEvent.AddListener(Select);
-        if(parentCard.isEnemy){
-            Inverse();
-        }
+        parentCard.isEnemyEvent.AddListener(Inverse);
+        Debug.Log("Instantiate"+parentCard.isEnemy);
         //Initialization
         initalize = true;
-        
+
     }
 
-    public void Inverse(){
+    public void Inverse(Card card)
+    {
         sprite.transform.eulerAngles = new Vector3(180, 0, 0);
     }
 
@@ -161,9 +161,9 @@ public class CardVisual : MonoBehaviour
         DOTween.Kill(2, true);
         float dir = state ? 1 : 0;
         shakeParent.DOPunchPosition(shakeParent.up * selectPunchAmount * dir, scaleTransition, 10, 1);
-        shakeParent.DOPunchRotation(Vector3.forward * (hoverPunchAngle/2), hoverTransition, 20, 1).SetId(2);
+        shakeParent.DOPunchRotation(Vector3.forward * (hoverPunchAngle / 2), hoverTransition, 20, 1).SetId(2);
 
-        if(scaleAnimations)
+        if (scaleAnimations)
             transform.DOScale(scaleOnHover, scaleTransition).SetEase(scaleEase);
 
     }
@@ -179,7 +179,7 @@ public class CardVisual : MonoBehaviour
 
     private void BeginDrag(Card card)
     {
-        if(scaleAnimations)
+        if (scaleAnimations)
             transform.DOScale(scaleOnSelect, scaleTransition).SetEase(scaleEase);
 
         canvas.overrideSorting = true;
@@ -193,7 +193,7 @@ public class CardVisual : MonoBehaviour
 
     private void PointerEnter(Card card)
     {
-        if(scaleAnimations)
+        if (scaleAnimations)
             transform.DOScale(scaleOnHover, scaleTransition).SetEase(scaleEase);
 
         DOTween.Kill(2, true);
@@ -208,7 +208,7 @@ public class CardVisual : MonoBehaviour
 
     private void PointerUp(Card card, bool longPress)
     {
-        if(scaleAnimations)
+        if (scaleAnimations)
             transform.DOScale(longPress ? scaleOnHover : scaleOnSelect, scaleTransition).SetEase(scaleEase);
         canvas.overrideSorting = false;
 
@@ -218,9 +218,9 @@ public class CardVisual : MonoBehaviour
 
     private void PointerDown(Card card)
     {
-        if(scaleAnimations)
+        if (scaleAnimations)
             transform.DOScale(scaleOnSelect, scaleTransition).SetEase(scaleEase);
-            
+
         visualShadow.localPosition += (-Vector3.up * shadowOffset);
         shadowCanvas.overrideSorting = false;
     }

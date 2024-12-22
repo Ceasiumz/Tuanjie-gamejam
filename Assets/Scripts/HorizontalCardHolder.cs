@@ -7,22 +7,17 @@ using DG.Tweening;
 using System.Linq;
 using UnityEngine.Events;
 
-
 public class HorizontalCardHolder : MonoBehaviour
 {
     public int point = 0;
-
     [SerializeField] private Card selectedCard;
-    [SerializeReference] private Card hoveredCard;
-
+    [SerializeField] private Card hoveredCard;
     [SerializeField] private GameObject slotPrefab;
     private RectTransform rect;
 
     [Header("Spawn Settings")]
     [SerializeField] private int cardsToSpawn = 7;
-    public List<Card> cards;
-    public int cardCount = 0;
-
+    public List<Card> cards = new List<Card>();
     bool isCrossing = false;
     [SerializeField] private bool tweenCardReturn = true;
     public UnityEvent<Card> DrawEvent;
@@ -33,30 +28,62 @@ public class HorizontalCardHolder : MonoBehaviour
     public float discardWaitTime = 0.5f;
     public bool isEnemy;
 
-
-
-
     private void LateUpdate()
     {
-
     }
-
 
     public void DrawCard()
     {
+        // 使用协程来等待异步实例化操作完成，避免死循环占用资源
+        StartCoroutine(WaitForInstantiationAndProcessCard());
+    }
 
-        GameObject cardObject = Instantiate(slotPrefab, transform);
-        Card card = cardObject.GetComponentInChildren<Card>();
-        cards.Add(card);
-        //从牌库抽取卡牌
-        //判断抽排堆是否为空
-        if (cardDack.cardsPoint.Count == 0)
+    private IEnumerator WaitForInstantiationAndProcessCard()
+    {
+        var op = InstantiateAsync(slotPrefab, transform);
+        yield return op;
+
+        if (op.isDone)
         {
-            cardDack.RecoverDiscard();
-            cardDack.ShuffleCards(cardDack.cardsPoint);
+            GameObject cardObject = op.Result[0];
+            Card card = cardObject.GetComponentInChildren<Card>();
+            cards.Add(card);
+
+            // 抽取卡牌及相关逻辑处理
+            ProcessDrawnCard(card);
+
+            // 注册事件监听器
+            RegisterCardEventListeners(card);
+            if (gameObject.tag == "Enemy")
+            {
+                card.isEnemy = true;
+                card.isEnemyEvent?.Invoke(card);
+            }
+
+            // 触发抽牌事件
+            DrawEvent?.Invoke(card);
+
+            // 等待一小段时间后更新卡牌视觉相关逻辑
+            yield return UpdateCardVisual();
         }
+        else
+        {
+            Debug.LogError("实例化卡牌失败！");
+            // 可以根据实际情况考虑进一步的错误处理逻辑，比如重试等
+        }
+    }
+
+    private void ProcessDrawnCard(Card card)
+    {
+        //从牌库抽取卡牌
         String cardPoint = cardDack.DrawCard();
         Debug.Log("抽取点数" + cardPoint);
+        if(cards.Count ==1){
+            if(card.cardVisual != null)
+                Debug.Log("1121");
+        }
+
+        // 根据抽取的牌面设置点数
         switch (cardPoint)
         {
             case "A":
@@ -72,35 +99,44 @@ public class HorizontalCardHolder : MonoBehaviour
                 card.points = 13;
                 break;
             default:
-                card.points = int.Parse(cardPoint);
+                if (int.TryParse(cardPoint, out int parsedPoint))
+                {
+                    card.points = parsedPoint;
+                }
+                else
+                {
+                    Debug.LogError($"无法解析牌面点数 {cardPoint}，设置默认点数为0");
+                    card.points = 0;
+                }
                 break;
         }
+
         card.CardRename(card);
 
         GamePointBoard.Instance.UpdatePlayerCardPoints(isEnemy, cards);
 
-
-        card.PointerEnterEvent.AddListener(CardPointerEnter);
-        card.PointerExitEvent.AddListener(CardPointerExit);
-        card.BeginDragEvent.AddListener(BeginDrag);
-        card.EndDragEvent.AddListener(EndDrag);
-        cardCount++;
-        if (gameObject.tag == "Enemy")
+        // 可以考虑在这里统一判断抽牌堆是否为空，而不是每次抽牌都判断，减少重复操作
+        // 示例如下（具体逻辑可能需根据实际情况微调）：
+        if (cardDack.cardsPoint.Count == 0)
         {
-            card.isEnemy = true;
+            cardDack.RecoverDiscard();
+            cardDack.ShuffleCards(cardDack.cardsPoint);
         }
-        DrawEvent.Invoke(card);
-        StartCoroutine(uniFrame());
-        IEnumerator uniFrame()
-        {
-            yield return new WaitForSecondsRealtime(.1f);
-            for (int i = 0; i < cards.Count; i++)
-            {
-                if (card.cardVisual != null)
-                    card.cardVisual.UpdateIndex(transform.childCount);
-            }
-        }
+    }
 
+    private void RegisterCardEventListeners(Card card)
+    {
+        AddCardEventListeners(card);
+    }
+
+    private IEnumerator UpdateCardVisual()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        for (int i = 0; i < cards.Count; i++)
+        {
+            if (cards[i].cardVisual != null)
+                cards[i].cardVisual.UpdateIndex(transform.childCount);
+        }
     }
 
     void Start()
@@ -114,40 +150,30 @@ public class HorizontalCardHolder : MonoBehaviour
         rect = GetComponent<RectTransform>();
         cards = GetComponentsInChildren<Card>().ToList();
 
-
-
         foreach (Card card in cards)
         {
-            card.PointerEnterEvent.AddListener(CardPointerEnter);
-            card.PointerExitEvent.AddListener(CardPointerExit);
-            card.BeginDragEvent.AddListener(BeginDrag);
-            card.EndDragEvent.AddListener(EndDrag);
-            card.name = cardCount.ToString();
-            cardCount++;
+            AddCardEventListeners(card);
             if (gameObject.tag == "Enemy")
             {
                 card.isEnemy = true;
             }
         }
 
-        StartCoroutine(Frame());
+        StartCoroutine(UpdateCardVisual());
+    }
 
-        IEnumerator Frame()
-        {
-            yield return new WaitForSecondsRealtime(.1f);
-            for (int i = 0; i < cards.Count; i++)
-            {
-                if (cards[i].cardVisual != null)
-                    cards[i].cardVisual.UpdateIndex(transform.childCount);
-            }
-        }
+    private void AddCardEventListeners(Card card)
+    {
+        card.PointerEnterEvent.AddListener(CardPointerEnter);
+        card.PointerExitEvent.AddListener(CardPointerExit);
+        card.BeginDragEvent.AddListener(BeginDrag);
+        card.EndDragEvent.AddListener(EndDrag);
     }
 
     private void BeginDrag(Card card)
     {
         selectedCard = card;
     }
-
 
     void EndDrag(Card card)
     {
@@ -160,7 +186,6 @@ public class HorizontalCardHolder : MonoBehaviour
         rect.sizeDelta -= Vector2.right;
 
         selectedCard = null;
-
     }
 
     void CardPointerEnter(Card card)
@@ -222,8 +247,16 @@ public class HorizontalCardHolder : MonoBehaviour
         if (card != null)
         {
             cardDack.discardDeck.Add(card.name);
-            Destroy(card.transform.parent.gameObject);
-            cards.Remove(card);
+            // 更安全地从集合中移除卡牌，可考虑倒序遍历避免索引问题
+            for (int i = cards.Count - 1; i >= 0; i--)
+            {
+                if (cards[i] == card)
+                {
+                    Destroy(cards[i].transform.parent.gameObject);
+                    cards.RemoveAt(i);
+                    break;
+                }
+            }
         }
     }
 
@@ -255,17 +288,25 @@ public class HorizontalCardHolder : MonoBehaviour
 
     public void DiscardHandCard()
     {
-        StartCoroutine(wait());
+        StartCoroutine(WaitToDiscardHandCard());
     }
-    IEnumerator wait()
+
+    private IEnumerator WaitToDiscardHandCard()
     {
-        DrawButton.SetActive(false);
-        while(cards.Count > 0)
+        if (DrawButton != null)
         {
-            DestroyCard(cards[0]);
-            yield return new WaitForSeconds(discardWaitTime);
+            DrawButton.SetActive(false);
+            for (int i = cards.Count - 1; i >= 0; i--)
+            {
+                yield return new WaitForSeconds(discardWaitTime);
+                DestroyCard(cards[i]);
+            }
+            DrawButton.SetActive(true);
         }
-        DrawButton.SetActive(true);
+        else
+        {
+            Debug.Log("DrawButton已隐藏");
+        }
     }
 
     public void DiscoverCardDeck()
@@ -273,5 +314,4 @@ public class HorizontalCardHolder : MonoBehaviour
         cardDack.RecoverDiscard();
         cardDack.ShuffleCards(cardDack.cardsPoint);
     }
-
 }
