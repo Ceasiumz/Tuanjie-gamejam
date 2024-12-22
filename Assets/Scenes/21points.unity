@@ -417,7 +417,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1026788825}
         m_TargetAssemblyTypeName: TurnManager, Assembly-CSharp
-        m_MethodName: EnemyTurn_end
+        m_MethodName: PlayerTurn_end
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1291,8 +1291,7 @@ MonoBehaviour:
   point: 0
   selectedCard: {fileID: 0}
   hoveredCard: {fileID: 0}
-  slotPrefab: {fileID: 3655645598659960977, guid: e99c361e7acdd41f0b904fef6be48fea,
-    type: 3}
+  slotPrefab: {fileID: 3655645598659960977, guid: e99c361e7acdd41f0b904fef6be48fea, type: 3}
   cardsToSpawn: 1
   cards: []
   tweenCardReturn: 1
@@ -1833,6 +1832,9 @@ MonoBehaviour:
   PlayerTurn_Draw:
     m_PersistentCalls:
       m_Calls: []
+  PlayerTurn_Suspend:
+    m_PersistentCalls:
+      m_Calls: []
   PlayerTurn_End:
     m_PersistentCalls:
       m_Calls: []
@@ -1845,6 +1847,13 @@ MonoBehaviour:
   EnemyTurn_End:
     m_PersistentCalls:
       m_Calls: []
+  turn:
+    playerTurn_Start: 0
+    playerTurn_Draw: 0
+    playerTurn_End: 0
+    enemyTurn_Start: 0
+    enemyTurn_Draw: 0
+    enemyTurn_End: 0
 --- !u!4 &1026788826
 Transform:
   m_ObjectHideFlags: 0
@@ -2451,7 +2460,7 @@ GameObject:
   - component: {fileID: 1309289588}
   m_Layer: 0
   m_HasEditorInfo: 1
-  m_Name: '------------Character----------'
+  m_Name: ------------Character----------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2758,6 +2767,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449878462}
   m_CullTransparentMesh: 1
+--- !u!1 &1500802444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 7
+  m_Component:
+  - component: {fileID: 1500802446}
+  - component: {fileID: 1500802445}
+  m_Layer: 0
+  m_HasEditorInfo: 1
+  m_Name: SkillPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1500802445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500802444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969e04dc5cb6c524a951d16a8eacfd86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalSkill:
+  - {fileID: 11400000, guid: 4edc1a4b8e2484d4ba9bb3280c1f9f1a, type: 2}
+  skillPool: []
+  playerSkill: []
+--- !u!4 &1500802446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500802444}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.7479999, y: 0.56540096, z: 0.016821023}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1531353934
 GameObject:
   m_ObjectHideFlags: 0
@@ -2812,55 +2870,6 @@ MonoBehaviour:
   playerHolder: {fileID: 667881467}
   enemy: {fileID: 0}
   enemyIndex: 0
---- !u!1 &1500802444
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 7
-  m_Component:
-  - component: {fileID: 1500802446}
-  - component: {fileID: 1500802445}
-  m_Layer: 0
-  m_HasEditorInfo: 1
-  m_Name: SkillPool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1500802445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1500802444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 969e04dc5cb6c524a951d16a8eacfd86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normalSkill:
-  - {fileID: 11400000, guid: 4edc1a4b8e2484d4ba9bb3280c1f9f1a, type: 2}
-  skillPool: []
-  playerSkill: []
---- !u!4 &1500802446
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1500802444}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7479999, y: 0.56540096, z: 0.016821023}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1608072349
 GameObject:
   m_ObjectHideFlags: 0
@@ -3136,7 +3145,7 @@ GameObject:
   - component: {fileID: 1732107127}
   m_Layer: 0
   m_HasEditorInfo: 1
-  m_Name: '--------------Button-------------'
+  m_Name: --------------Button-------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3356,8 +3365,7 @@ MonoBehaviour:
   point: 0
   selectedCard: {fileID: 0}
   hoveredCard: {fileID: 0}
-  slotPrefab: {fileID: 3655645598659960977, guid: e99c361e7acdd41f0b904fef6be48fea,
-    type: 3}
+  slotPrefab: {fileID: 3655645598659960977, guid: e99c361e7acdd41f0b904fef6be48fea, type: 3}
   cardsToSpawn: 1
   cards: []
   tweenCardReturn: 1
@@ -3538,8 +3546,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee,
-    type: 3}
+  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

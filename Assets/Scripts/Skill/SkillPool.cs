@@ -46,12 +46,53 @@ public class SkillPool : MonoBehaviour
     //玩家所拥有技能
     public List<BaseSkill> playerSkill;
     
-    //放到一个列表里
-    //根据结算阶段去区分 再各个阶段去遍历所分的结算列表 遍历执行
-    //抽牌后结算
-    private List<BaseSkill> drawedCardSettle;
-    //测试方法调用
+    //备注： 开始时应初始化 skillpool当局技能池为本轮游戏可获得技能
+    //游戏开局时应在技能组池中选择一组技能加入到当局游戏技能池中 通用技能池中技能也应加入到当局游戏技能池中
 
+    //玩家技能组添加技能
+    public void AddPlayerSkill(BaseSkill skill)
+    {
+        playerSkill.Add(skill);
+        //当技能可重复获得时不从技能池中移除技能
+        if (!skill.isRepeatable)
+        {
+            skillPool.Remove(skill);
+        }
+        //被动技能应立即触发效果
+        skill.skillEffect.ForEach(x =>
+        {
+            x.subscribeEvent();
+            x.PropertyChange();
+        });
+    }
+    
+    //玩家技能组移除技能
+    public void RemovePlayerSkill(BaseSkill skill)
+    {
+        playerSkill.Remove(skill);
+        skill.skillEffect.ForEach(x => x.unsubscribeEvent());
+    }
+    
+    //执行技能
+    public void ExecuteSkill(BaseSkill skill)
+    {
+        skill.skillEffect.ForEach(x => x.Execute());
+        playerSkill.Remove(skill);
+        //技能使用后返回技能组池中判定
+        if (skill.isUsedReturn)
+        {
+            skillPool.Add(skill);
+        }
+    }
+    
+    //将技能放回进技能组池中
+    public void ReturnSkill(BaseSkill skill)
+    {
+        skillGroup.Add(skillPool);
+    }
+    
+    
+    //以下为测试代码 此代码将normalskill中技能默认设置为激活
     public void OnEnable()
     {
         foreach (var skill in normalSkill)
@@ -61,7 +102,9 @@ public class SkillPool : MonoBehaviour
                 skilleff.subscribeEvent();
             }
         }
+        
     }
+    
 
     public void OnDisable()
     {

@@ -19,5 +19,13 @@ public  class SkillEffectTest:BaseEffect
     {
         Debug.Log("事件系统 输出抽取到的卡牌花色和点数"+card.suit+card.name);
     }
+    public override void Execute()
+    {
+        
+    }
     
+    public override void PropertyChange()
+    {
+        
+    }
 }
