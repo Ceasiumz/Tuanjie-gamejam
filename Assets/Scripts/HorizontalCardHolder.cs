@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using DG.Tweening;
 using System.Linq;
+using CardDeck;
 using UnityEngine.Events;
 
 public class HorizontalCardHolder : MonoBehaviour
@@ -80,14 +81,15 @@ public class HorizontalCardHolder : MonoBehaviour
     private void ProcessDrawnCard(Card card)
     {
         //从牌库抽取卡牌
-        String cardPoint = cardDack.DrawCard();
-        Debug.Log("抽取点数" + cardPoint);
-        if(cards.Count ==1){
-            if(card.cardVisual != null)
-                Debug.Log("1121");
+        //判断抽排堆是否为空
+        if (cardDack.cardsPoint.Count == 0)
+        {
+            cardDack.RecoverDiscard();
+            cardDack.ShuffleCards(cardDack.cardsPoint);
         }
-
-        // 根据抽取的牌面设置点数
+        CardString cardStruct = cardDack.DrawCard();
+        string cardPoint = cardStruct.point;
+        Debug.Log("抽取点数" + cardPoint);
         switch (cardPoint)
         {
             case "A":
@@ -115,6 +117,7 @@ public class HorizontalCardHolder : MonoBehaviour
                 break;
         }
 
+        card.suit = cardStruct.suit;
         card.CardRename(card);
 
         GamePointBoard.Instance.UpdatePlayerCardPoints(isEnemy, cards);
@@ -243,7 +246,7 @@ public class HorizontalCardHolder : MonoBehaviour
     {
         if (card != null)
         {
-            cardDack.discardDeck.Add(card.name);
+            cardDack.discardDeck.Add( new CardString(card.name, card.suit));
             // 更安全地从集合中移除卡牌，可考虑倒序遍历避免索引问题
             for (int i = cards.Count - 1; i >= 0; i--)
             {

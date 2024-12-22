@@ -1158,7 +1158,7 @@ MonoBehaviour:
   selectedCard: {fileID: 0}
   hoveredCard: {fileID: 0}
   slotPrefab: {fileID: 3655645598659960977, guid: e99c361e7acdd41f0b904fef6be48fea, type: 3}
-  cardsToSpawn: 2
+  cardsToSpawn: 1
   cards: []
   tweenCardReturn: 1
   DrawEvent:
