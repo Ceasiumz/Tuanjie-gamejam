@@ -20,6 +20,7 @@ public class AllyPoint : MonoBehaviour
     Text text;
     private bool isDead = false;
 
+
     void Start()
     {
         if (Instance == null)

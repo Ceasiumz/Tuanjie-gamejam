@@ -21,7 +21,6 @@ public class GamePointBoard : MonoBehaviour
     public bool isEnemySuspension;
     public int enemyCardPoints;
     
-    
     private static GamePointBoard _instance;
     public static GamePointBoard Instance
     {

@@ -28,7 +28,9 @@ public class HorizontalCardHolder : MonoBehaviour
 
     public float discardWaitTime = 0.5f;
     public bool isEnemy;
+    
 
+    
     private void LateUpdate()
     {
     }
@@ -120,6 +122,10 @@ public class HorizontalCardHolder : MonoBehaviour
         card.suit = cardStruct.suit;
         card.CardRename(card);
 
+        //测试代码
+        //技能触发 抽卡后触发技能 传入参数为抽取到的卡牌
+        DynamicEventBus.Publish("AfterDrawCardSettle", card);
+        
         GamePointBoard.Instance.UpdatePlayerCardPoints(isEnemy, cards);
 
         // 可以考虑在这里统一判断抽牌堆是否为空，而不是每次抽牌都判断，减少重复操作
