@@ -2931,8 +2931,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3eefa4ca29fc84147be009e0fd8558f1, type: 2}
   - {fileID: 11400000, guid: c276b11d711ffbd468e1869d1616d1b3, type: 2}
   - {fileID: 11400000, guid: abc819e9e473f5549a2034f885223626, type: 2}
+  - {fileID: 11400000, guid: 3716f2c0f96651f488992aafe6b3811b, type: 2}
+  - {fileID: 11400000, guid: 1869498ef11f6ca418f12f51ea96a90b, type: 2}
+  - {fileID: 11400000, guid: 859ac242d54c99b46ab0152c55ed8a6d, type: 2}
+  - {fileID: 11400000, guid: c9944c6d607b86647ba101d2dea75c72, type: 2}
+  - {fileID: 11400000, guid: 2042616e4caffad47a91a390bef867cd, type: 2}
   skillPool: []
-  skillGroup: []
+  skillGroup:
+  - {fileID: 11400000, guid: 9af350d3b60943f46877ae62eb587ee4, type: 2}
   playerSkill: []
   skillTestPool:
   - {fileID: 11400000, guid: 4edc1a4b8e2484d4ba9bb3280c1f9f1a, type: 2}

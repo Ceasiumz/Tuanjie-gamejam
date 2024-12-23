@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SkillEffect", menuName = "Data/SkillEffect/A110Effect")]
+[CreateAssetMenu(fileName = "SkillEffect", menuName = "Data/SkillEffect/Normal/A110Effect")]
 public class A110Effect : BaseEffect
 {
     public override void subscribeEvent()
@@ -64,6 +64,7 @@ public class A110Effect : BaseEffect
             }
         }
         playerCard.Remove(minCard);
+        //结算
         GamePointBoard.Instance.UpdatePlayerCardPoints(false, playerCard);
         GamePointBoard.Instance.UpdatePlayerCardPoints(true, enemyCard);
 

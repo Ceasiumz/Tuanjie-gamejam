@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "SkillEffect", menuName = "Data/SkillEffect/A101Effect")]
+[CreateAssetMenu(fileName = "SkillEffect", menuName = "Data/SkillEffect/Normal/A101Effect")]
 public  class A101Effect:BaseEffect
 {
     public override void subscribeEvent()

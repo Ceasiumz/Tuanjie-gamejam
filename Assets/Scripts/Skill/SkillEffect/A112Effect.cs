@@ -1,7 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SkillEffect", menuName = "Data/SkillEffect/Normal/A104Effect")]
-public class A104Effect : BaseEffect
+[CreateAssetMenu(fileName = "SkillEffect", menuName = "Data/SkillEffect/Normal/A112Effect")]
+public class A112Effect : BaseEffect
 {
     public override void subscribeEvent()
     {
@@ -24,7 +26,8 @@ public class A104Effect : BaseEffect
     }
     public void EventSkill()
     {
-        GamePointBoard.Instance.attack += 2;
-        
+        GamePointBoard.Instance.currentHealth += Mathf.RoundToInt(
+            (GamePointBoard.Instance.attack + GamePointBoard.Instance.attackAddition) *
+            GamePointBoard.Instance.attackMultiple * 0.2f);
     }
 }

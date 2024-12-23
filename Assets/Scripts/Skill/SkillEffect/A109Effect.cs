@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SkillEffect", menuName = "Data/SkillEffect/A109Effect")]
+[CreateAssetMenu(fileName = "SkillEffect", menuName = "Data/SkillEffect/Normal/A109Effect")]
 public class A109Effect : BaseEffect
 {
     public override void subscribeEvent()
