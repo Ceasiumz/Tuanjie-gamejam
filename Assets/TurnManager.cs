@@ -69,6 +69,11 @@ public class TurnManager : MonoBehaviour
             turn.playerTurn_Start = true;
             PlayerTurn_Start.Invoke();
         }
+        StartCoroutine(SuspendWait());
+    }
+    
+    IEnumerator SuspendWait(){
+        yield return new WaitForSeconds(0.4f);
         if(GamePointBoard.Instance.isPlayerSuspension){
             turn.playerTurn_Draw = true;
         }

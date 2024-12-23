@@ -22,6 +22,7 @@ public class HorizontalCardHolder : MonoBehaviour
     bool isCrossing = false;
     [SerializeField] private bool tweenCardReturn = true;
     public UnityEvent<Card> DrawEvent;
+    public UnityEvent DisCardCompeletedEvent;
 
     public GameObject DrawButton;
     [SerializeField] private CardDack cardDack;
@@ -118,10 +119,10 @@ public class HorizontalCardHolder : MonoBehaviour
     {
         //从牌库抽取卡牌
         //判断抽排堆是否为空
-        if (cardDack.cardsPoint.Count == 0)
+        if (cardDack.cardsDeck.Count == 0)
         {
             cardDack.RecoverDiscard();
-            cardDack.ShuffleCards(cardDack.cardsPoint);
+            cardDack.ShuffleCards(cardDack.cardsDeck);
         }
         CardString cardStruct = cardDack.DrawCard();
         string cardPoint = cardStruct.point;
@@ -166,10 +167,10 @@ public class HorizontalCardHolder : MonoBehaviour
 
         // 可以考虑在这里统一判断抽牌堆是否为空，而不是每次抽牌都判断，减少重复操作
         // 示例如下（具体逻辑可能需根据实际情况微调）：
-        if (cardDack.cardsPoint.Count == 0)
+        if (cardDack.cardsDeck.Count == 0)
         {
             cardDack.RecoverDiscard();
-            cardDack.ShuffleCards(cardDack.cardsPoint);
+            cardDack.ShuffleCards(cardDack.cardsDeck);
         }
     }
 
@@ -197,20 +198,24 @@ public class HorizontalCardHolder : MonoBehaviour
             //TurnManager.Instance.EnemyTurn_Draw.AddListener(DrawCard);
         }
     }
-    void Start()
+    public void Start()
     {
         //DrawEvent.AddListener(DrawOutTest);
         cards = GetComponentsInChildren<Card>().ToList();
-        for (int i = 0; i < cardsToSpawn; i++)
-        {
-            StartCoroutine(WaitForInstantiationAndProcessCard(1));
-        }
-
+        
         rect = GetComponent<RectTransform>();
 
         StartCoroutine(UpdateCardVisual());
 
 
+    }
+
+    public void StartDraw()
+    {
+        for (int i = 0; i < cardsToSpawn; i++)
+        {
+            StartCoroutine(WaitForInstantiationAndProcessCard(1));
+        }
     }
 
     private void AddCardEventListeners(Card card)
@@ -363,11 +368,13 @@ public class HorizontalCardHolder : MonoBehaviour
             {
                 DestroyCard(cards[i]);
             }
+        DisCardCompeletedEvent?.Invoke();
     }
+    
 
     public void DiscoverCardDeck()//重置牌组并洗牌
     {
         cardDack.RecoverDiscard();
-        cardDack.ShuffleCards(cardDack.cardsPoint);
+        cardDack.ShuffleCards(cardDack.cardsDeck);
     }
 }

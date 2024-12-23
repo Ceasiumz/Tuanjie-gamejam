@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,8 @@ using UnityEngine;
 public abstract class EnemyBase : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int health = 100;
-    public int maxPointsInHand = 15;
+    [NonSerialized]public int health = 100;
+    [NonSerialized]public int maxPointsInHand = 15;
     protected EnemyAchive eA;
     void Start()
     {

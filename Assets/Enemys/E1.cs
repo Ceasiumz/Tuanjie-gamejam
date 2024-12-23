@@ -5,10 +5,12 @@ using UnityEngine;
 public class E1 : EnemyBase
 {
     // Start is called before the first frame update
+    [SerializeField] int Ehealth;
+    [SerializeField] int EmaxPointsInHand;
     private void Awake()
     {
-        health = 99;
-        maxPointsInHand = 15;
+        health = Ehealth;
+        maxPointsInHand = EmaxPointsInHand;
     }
     void Start()
     {
@@ -42,9 +44,9 @@ public class E1 : EnemyBase
 
     IEnumerator DrawCardIdentify()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForEndOfFrame();
         List<Card> playerCards = eA.playerHolder.cards;
-        Debug.Log(playerCards[playerCards.Count - 1].suit);
+        //Debug.Log(playerCards[playerCards.Count - 1].suit);
         // 实现“闪电”技能，玩家抽到黑桃2-9就要多抽一张牌
         if (playerCards[playerCards.Count - 1].points < 10 &&
         playerCards[playerCards.Count - 1].points > 1 &&

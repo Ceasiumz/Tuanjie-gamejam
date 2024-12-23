@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAchive : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Start is called before the first frame aupdate
     [SerializeField] public HorizontalCardHolder enemyHolder;
     [SerializeField] public HorizontalCardHolder playerHolder;
     List<GameObject> enemyList;
@@ -36,6 +36,7 @@ public class EnemyAchive : MonoBehaviour
             enemyIndex = 0;
         }
         SelectEnemy(enemyIndex);
+        
     }
     public void SelectEnemy(int IndexOfEnemyToSelect){
         enemy.gameObject.SetActive(false);

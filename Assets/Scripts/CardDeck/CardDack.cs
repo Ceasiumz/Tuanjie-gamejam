@@ -7,7 +7,7 @@ public class CardDack : MonoBehaviour
 {
     
     //抽牌堆
-    [SerializeField] public List<CardString> cardsPoint=new List<CardString>();
+    [SerializeField] public List<CardString> cardsDeck=new List<CardString>();
      //弃牌堆
      [SerializeField] public List<CardString> discardDeck=new List<CardString>();
      private static CardDack _instance;
@@ -57,11 +57,11 @@ public class CardDack : MonoBehaviour
         {
             foreach (var str in point)
             {
-                cardsPoint.Add(new CardString(str, (CardSuit)suit));
+                cardsDeck.Add(new CardString(str, (CardSuit)suit));
             }
         }
         //洗牌
-        ShuffleCards(cardsPoint);
+        ShuffleCards(cardsDeck);
     }
     
     public void ShuffleCards(List<CardString> cardsPoint)
@@ -78,7 +78,7 @@ public class CardDack : MonoBehaviour
     
         public CardString DrawCard()
     {
-        if (cardsPoint.Count == 0)
+        if (cardsDeck.Count == 0)
         {
             Debug.LogWarning("No cards left in the deck.");
             return new CardString("0", CardSuit.黑桃);
@@ -86,10 +86,10 @@ public class CardDack : MonoBehaviour
 
         // 随机抽取一张牌
         int randomIndex = 0;
-        CardString drawnCard = cardsPoint[randomIndex];
+        CardString drawnCard = cardsDeck[randomIndex];
 
         // 从列表中移除这张牌
-        cardsPoint.RemoveAt(randomIndex);
+        cardsDeck.RemoveAt(randomIndex);
 
         return drawnCard;
     }
@@ -97,7 +97,7 @@ public class CardDack : MonoBehaviour
         //将弃牌堆的卡放入到抽牌堆
         public void RecoverDiscard()
     {
-        cardsPoint.AddRange(discardDeck);
+        cardsDeck.AddRange(discardDeck);
         discardDeck.Clear();
     }
 }
