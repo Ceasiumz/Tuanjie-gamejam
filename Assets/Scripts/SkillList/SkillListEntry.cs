@@ -13,9 +13,9 @@ public class SkillListEntry
         _name=visualElement.Query<Label>("SkillName");
     }
 
-    public void SetSKillData(SkillDataTemp data)
+    public void SetSKillData(BaseSkill data)
     {
-        _name.text=data.SkillName;
-        _icon.style.backgroundImage=data.SkillIcon;
+        _name.text=data.skillName;
+        //_icon.style.backgroundImage=data.SkillIcon;
     }
 }

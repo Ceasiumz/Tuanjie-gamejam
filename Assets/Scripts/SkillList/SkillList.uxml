@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="Base" style="flex-grow: 1; width: 35%; right: 0; position: absolute; margin-top: 2%; margin-bottom: 2%; margin-right: 1%; height: 90%;">
+    <ui:VisualElement name="Base" style="flex-grow: 1; width: 35%; right: 0; position: absolute; margin-top: 2%; margin-bottom: 2%; margin-right: 1%; height: 90%; display: flex; visibility: hidden;">
         <ui:Label tabindex="-1" text="技能" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" style="align-items: stretch; justify-content: flex-start; align-self: center; width: 100%; -unity-text-align: upper-center; font-size: 24px; -unity-font-style: bold; background-color: rgb(56, 56, 56); color: rgb(255, 255, 255); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: auto;" />
         <ui:ListView virtualization-method="FixedHeight" name="ListView" style="background-color: rgba(56, 56, 56, 0.87);" />
     </ui:VisualElement>

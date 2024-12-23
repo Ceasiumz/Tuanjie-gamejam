@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SkillPool : MonoBehaviour
 {
- 
+
     private static SkillPool _instance;
     public static SkillPool Instance
     {
@@ -123,7 +123,17 @@ public class SkillPool : MonoBehaviour
         }
         
     }
-    
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            OnSkillListButtonDown?.Invoke();
+        }
+    }
+
+    public event Action OnSkillListButtonDown;
+
 
     public void OnDisable()
     {

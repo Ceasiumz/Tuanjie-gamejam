@@ -9,8 +9,9 @@ public class SkillList : MonoBehaviour
 {
     [SerializeField] private VisualTreeAsset _listEntryTemplate;
     [SerializeField] private int _itemHeight;
+    [SerializeField] private int _scrollSize;
 
-    [SerializeField] private List<SkillDataTemp> _skillList;
+    private List<BaseSkill> _skillList;
 
     private VisualElement _root;
     private VisualElement _base;
@@ -24,12 +25,35 @@ public class SkillList : MonoBehaviour
 
         _listView = _root.Query<ListView>();
 
+        ScrollView scrollView = _listView.Query<ScrollView>();
+        scrollView.mouseWheelScrollSize = _scrollSize;
+
         InitializeSkillList();
 
-        _root.visible = false;
+
+        SkillPool.Instance.OnSkillListButtonDown += OnShowList;
     }
 
-    
+    private void OnShowList()
+    {
+        
+        if (_base.style.visibility == Visibility.Visible)
+        {
+            _base.style.visibility = Visibility.Hidden;
+        }
+        else
+        {
+            
+            _base.style.visibility = Visibility.Visible;
+        }
+    }
+
+    private void OnGUI()
+    {
+        _skillList = SkillPool.Instance.playerSkill;
+        _listView.itemsSource = _skillList;
+        _listView.Rebuild();
+    }
 
     private void InitializeSkillList()
     {
@@ -47,12 +71,18 @@ public class SkillList : MonoBehaviour
 
         _listView.selectionType = SelectionType.Single;
 
-        _listView.itemsChosen += objs => Debug.Log(objs.ElementAt(0));
+        _listView.itemsChosen += objs => { };
 
-        _listView.selectionChanged += objs => Debug.Log(objs.ElementAt(0));
+        _listView.selectionChanged += OnSelectionChanged;
 
         _listView.style.flexGrow = 1;
         _base.Add(_listView);
+    }
+
+    private void OnSelectionChanged(IEnumerable<object> objs)
+    {
+        BaseSkill skill = objs.ElementAt(0) as BaseSkill;
+        SkillPool.Instance.ExecuteSkill(skill);
     }
 
     private VisualElement OnMakeItem()
