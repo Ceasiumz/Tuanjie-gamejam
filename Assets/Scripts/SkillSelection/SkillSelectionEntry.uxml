@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Base" style="flex-grow: 1; background-color: rgb(32, 32, 32); width: 30%;">
+        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" style="color: rgb(255, 255, 255); font-size: 20px; -unity-font-style: bold; padding-left: 8%;" />
+        <ui:VisualElement name="CardImage" style="flex-grow: 1; width: 60%; height: 60%; margin-left: 0; margin-right: 0; margin-top: 5%; margin-bottom: 0; justify-content: flex-start; align-self: center; align-items: auto; max-height: 50%; background-image: url(&quot;project://database/Assets/Sprites/SkillTestIcon.jpg?fileID=2800000&amp;guid=ffd0c97ecd7e39e4facd795f7b46ce8e&amp;type=3#SkillTestIcon&quot;);" />
+        <ui:ScrollView>
+            <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Content" style="color: rgb(255, 255, 255);" />
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>

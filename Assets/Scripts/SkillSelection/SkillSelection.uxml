@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Base" style="flex-grow: 1; height: auto; margin-top: 15%; margin-bottom: 15%;">
+        <ui:VisualElement name="EntryContainer" style="flex-grow: 1;" />
+        <ui:Button text="确认" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ConfirmButton" style="width: 15%; align-self: center; padding-top: 0; padding-left: 0; height: 15%; background-color: rgb(56, 56, 56); color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-outline-color: rgb(56, 56, 56); font-size: 20px; -unity-text-align: middle-center; padding-right: 0; padding-bottom: 0;" />
+    </ui:VisualElement>
+</ui:UXML>
