@@ -24,7 +24,7 @@ public  class SkillEffectTest:BaseEffect
         
     }
     
-    public override void PropertyChange()
+    public override void ImmediateTrigger()
     {
         
     }

@@ -157,6 +157,10 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   attack: 10
+  attackAddition: 0
+  injuryReduction: 0
+  attackMultiple: 0
+  injuryMultiple: 1
   isPlayerSuspension: 0
   cardPoints: 0
   enemyMaxHealth: 100
@@ -1727,6 +1731,7 @@ MonoBehaviour:
   allyPoints: 0
   lim: 21
   holder: {fileID: 667881467}
+  ememyHolder: {fileID: 1772936770}
   DrawOutEvent:
     m_PersistentCalls:
       m_Calls:
@@ -2799,8 +2804,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalSkill:
   - {fileID: 11400000, guid: 4edc1a4b8e2484d4ba9bb3280c1f9f1a, type: 2}
+  - {fileID: 11400000, guid: 7a20c0cb8674aba4a861ebb3bea6cc93, type: 2}
+  - {fileID: 11400000, guid: ccb1e941fd423a349aa9802d23fdd448, type: 2}
+  - {fileID: 11400000, guid: 3eefa4ca29fc84147be009e0fd8558f1, type: 2}
+  - {fileID: 11400000, guid: c276b11d711ffbd468e1869d1616d1b3, type: 2}
+  - {fileID: 11400000, guid: abc819e9e473f5549a2034f885223626, type: 2}
   skillPool: []
+  skillGroup: []
   playerSkill: []
+  skillTestPool:
+  - {fileID: 11400000, guid: 4edc1a4b8e2484d4ba9bb3280c1f9f1a, type: 2}
 --- !u!4 &1500802446
 Transform:
   m_ObjectHideFlags: 0

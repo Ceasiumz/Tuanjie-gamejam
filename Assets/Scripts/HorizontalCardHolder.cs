@@ -30,6 +30,39 @@ public class HorizontalCardHolder : MonoBehaviour
     public bool isEnemy;
     
 
+    // private static HorizontalCardHolder _instance;
+    // private static HorizontalCardHolder _instance2;
+    // public static HorizontalCardHolder PlayerInstance
+    // {
+    //     get
+    //     {
+    //         if (_instance == null)
+    //         {
+    //             _instance = FindObjectOfType<HorizontalCardHolder>();
+    //             if (_instance == null)
+    //             {
+    //                 GameObject obj = new GameObject("HorizontalCardHolder");
+    //                 _instance = obj.AddComponent<HorizontalCardHolder>();
+    //             }
+    //         }
+    //         return _instance;
+    //     }
+    // }
+    //
+    // private void Awake()
+    // {
+    //     if (_instance == null)
+    //     {
+    //         _instance = this;
+    //         DontDestroyOnLoad(gameObject);
+    //     }
+    //     else if (_instance != this)
+    //     {
+    //         Destroy(gameObject);
+    //     }
+    // }
+    
+    
     
     private void LateUpdate()
     {

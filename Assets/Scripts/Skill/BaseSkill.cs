@@ -7,6 +7,7 @@ public  class BaseSkill : ScriptableObject
 {
     public string skillID;
     public string skillName;
+    
     //是否一次性
     public bool isOneTime;
     //是否为主动技能
@@ -15,5 +16,10 @@ public  class BaseSkill : ScriptableObject
     public bool isRepeatable;
     //技能使用后是否回到技能池
     public bool isUsedReturn;
+
+    public bool canUse;
+    //备注
+    [TextArea(3, 10)]
+    public string remark;
     public List<BaseEffect> skillEffect;
 }

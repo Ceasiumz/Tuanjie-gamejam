@@ -12,7 +12,7 @@ public abstract class BaseEffect:ScriptableObject
     //主动技能执行
     public abstract void Execute();
     
-    //对属性做直接修改技能触发
-    public abstract void PropertyChange();
+    //立刻触发效果 
+    public abstract void ImmediateTrigger();
     
 }

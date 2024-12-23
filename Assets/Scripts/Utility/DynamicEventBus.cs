@@ -47,7 +47,49 @@ public static class DynamicEventBus
             }
         }
     }
+    
+    // 订阅无参数事件
+    public static void Subscribe(string eventName, Action listener)
+    {
+        if (eventTable.ContainsKey(eventName))
+        {
+            eventTable[eventName] = Delegate.Combine(eventTable[eventName], listener);
+        }
+        else
+        {
+            eventTable[eventName] = listener;
+        }
+    }
 
+    // 取消订阅无参数事件
+    public static void Unsubscribe(string eventName, Action listener)
+    {
+        if (eventTable.ContainsKey(eventName))
+        {
+            eventTable[eventName] = Delegate.Remove(eventTable[eventName], listener);
+            if (eventTable[eventName] == null)
+            {
+                eventTable.Remove(eventName);
+            }
+        }
+    }
+    
+    // 触发无参数事件
+    public static void Publish(string eventName)
+    {
+        if (eventTable.ContainsKey(eventName))
+        {
+            if (eventTable[eventName] is Action callback)
+            {
+                callback.Invoke();
+            }
+            else
+            {
+                throw new Exception($"Event {eventName} is not a parameterless event.");
+            }
+        }
+    }
+    
     // 动态创建事件名称（便于动态化管理）
     public static string CreateEventName(string baseName, params object[] parameters)
     {

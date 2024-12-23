@@ -9,6 +9,14 @@ public class GamePointBoard : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public int attack;
+    //攻击附加值
+    public int attackAddition=0;
+    //受伤减免值
+    public int injuryReduction=0;
+    //攻击伤害倍率
+    public float attackMultiple=1f;
+    //受伤伤害倍率
+    public float injuryMultiple=1f;
     //玩家是否停牌
     public bool isPlayerSuspension;
     public  int cardPoints=0;
@@ -133,6 +141,14 @@ public class GamePointBoard : MonoBehaviour
     {
         isPlayerSuspension = false;
         isEnemySuspension = false;
+    }
+    //重置伤害增值和倍率
+    public void ResetDamageMultipl()
+    {
+        attackAddition = 0;
+        attackMultiple = 1f;
+        injuryReduction = 0;
+        injuryMultiple = 1f;
     }
     
 }

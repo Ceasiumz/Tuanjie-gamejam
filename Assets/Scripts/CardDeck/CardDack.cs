@@ -10,6 +10,38 @@ public class CardDack : MonoBehaviour
     [SerializeField] public List<CardString> cardsPoint=new List<CardString>();
      //弃牌堆
      [SerializeField] public List<CardString> discardDeck=new List<CardString>();
+     private static CardDack _instance;
+     
+     public static CardDack Instance
+     {
+         get
+         {
+             if (_instance == null)
+             {
+                 _instance = FindObjectOfType<CardDack>();
+                 if (_instance == null)
+                 {
+                     GameObject obj = new GameObject("SkillPool");
+                     _instance = obj.AddComponent<CardDack>();
+                 }
+             }
+             return _instance;
+         }
+     }
+    
+     private void Awake()
+     {
+         if (_instance == null)
+         {
+             _instance = this;
+             DontDestroyOnLoad(gameObject);
+         }
+         else if (_instance != this)
+         {
+             Destroy(gameObject);
+         }
+     }
+     
     // Start is called before the first frame update
     void Start()
     {

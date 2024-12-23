@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f3ed9c03abd48b38caab3dcfe156b28, type: 3}
-  m_Name: A101
+  m_Name: A104
   m_EditorClassIdentifier: 
-  skillID: A101
-  skillName: "\u5C4F\u5E55\u9ED1\u4E86\uFF1F\u53CC\u51FB\u8BD5\u8BD5"
+  skillID: A104
+  skillName: "\u5C0F\u5200\u62C9\u8089"
   isOneTime: 0
   isActive: 0
   isRepeatable: 0
   isUsedReturn: 0
   canUse: 0
-  remark: "\u88AB\u52A8\u6280\u80FD\uFF0C\u6BCF\u83B7\u5F97\u4E00\u5F20\u7EA2\u6843\u724C\uFF0C\u5C31\u6062\u590D\u5176\u70B9\u6570\u7684\u751F\u547D\u503C "
+  remark: "\u88AB\u52A8\n\u4F60\u6BCF\u7ED9\u4E88\u5BF9\u9762\u4E00\u6B21\u4F24\u5BB3\uFF0C\u4F60\u7684\u653B\u51FB\u529B\u6C38\u4E45\u52A02\r\n"
   skillEffect:
-  - {fileID: 11400000, guid: 76844fb5cf4d31244bb05cd5062c32e5, type: 2}
+  - {fileID: 11400000, guid: c0fa0fe7a52298a4aab3c451a67b42a9, type: 2}

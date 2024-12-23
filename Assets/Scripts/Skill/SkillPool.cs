@@ -42,9 +42,11 @@ public class SkillPool : MonoBehaviour
     //当局游戏技能池
     public List<BaseSkill> skillPool;
     //技能组池
-    public List<List<BaseSkill>> skillGroup;
+    public List<SkillGroup> skillGroup;
     //玩家所拥有技能
     public List<BaseSkill> playerSkill;
+
+    public List<BaseSkill> skillTestPool;
     
     //备注： 开始时应初始化 skillpool当局技能池为本轮游戏可获得技能
     //游戏开局时应在技能组池中选择一组技能加入到当局游戏技能池中 通用技能池中技能也应加入到当局游戏技能池中
@@ -62,7 +64,7 @@ public class SkillPool : MonoBehaviour
         skill.skillEffect.ForEach(x =>
         {
             x.subscribeEvent();
-            x.PropertyChange();
+            x.ImmediateTrigger();
         });
     }
     
@@ -77,25 +79,42 @@ public class SkillPool : MonoBehaviour
     public void ExecuteSkill(BaseSkill skill)
     {
         skill.skillEffect.ForEach(x => x.Execute());
-        playerSkill.Remove(skill);
         //技能使用后返回技能组池中判定
         if (skill.isUsedReturn)
         {
             skillPool.Add(skill);
         }
+        if(skill.isOneTime)
+        {
+            playerSkill.Remove(skill);
+        }
+
     }
     
-    //将技能放回进技能组池中
+    //将技能放回进技能池中
     public void ReturnSkill(BaseSkill skill)
     {
-        skillGroup.Add(skillPool);
+        skillPool.Add(skill);
+    }
+    //根据ID将技能返回技能池
+    public void ReturnSkillFromPlayerSkill(string skillID)
+    {
+        skillPool.Add(playerSkill.Find(x => x.skillID == skillID));
     }
     
+    //根据技能ID从玩家技能列表中移除技能
+    public void RemovePlayerSkillByID(string skillID)
+    {
+        //从玩家技能列表中找到id为skillID的技能
+        BaseSkill skill = playerSkill.Find(x => x.skillID == skillID);
+        skill.skillEffect.ForEach(x => x.unsubscribeEvent());
+        playerSkill.Remove(skill);
+    }
     
-    //以下为测试代码 此代码将normalskill中技能默认设置为激活
+    //以下为测试代码 此代码将skillTestPool中技能默认设置为激活
     public void OnEnable()
     {
-        foreach (var skill in normalSkill)
+        foreach (var skill in skillTestPool)
         {
             foreach (var skilleff in skill.skillEffect)
             {
@@ -108,7 +127,7 @@ public class SkillPool : MonoBehaviour
 
     public void OnDisable()
     {
-        foreach (var skill in normalSkill)
+        foreach (var skill in skillTestPool)
         {
             foreach (var skilleff in skill.skillEffect)
             {
@@ -116,5 +135,7 @@ public class SkillPool : MonoBehaviour
             }
         }
     }
+    
+
 
 }
