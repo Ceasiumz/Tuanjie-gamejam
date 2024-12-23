@@ -29,6 +29,7 @@ public class TurnManager : MonoBehaviour
     public UnityEvent PlayerTurn_End;
     public UnityEvent EnemyTurn_Start;
     public UnityEvent EnemyTurn_Draw;
+    public UnityEvent EnemyTurn_Suspend;
     public UnityEvent EnemyTurn_End;
     [SerializeField] public Turn turn;
     [System.Serializable] public struct Turn
@@ -62,6 +63,9 @@ public class TurnManager : MonoBehaviour
         {
             turn.playerTurn_Start = true;
             PlayerTurn_Start.Invoke();
+        }
+        if(GamePointBoard.Instance.isPlayerSuspension){
+            turn.playerTurn_Draw = true;
         }
     }
     public void PlayerTurn_draw()
@@ -97,6 +101,9 @@ public class TurnManager : MonoBehaviour
             turn.enemyTurn_Start = true;
             EnemyTurn_Start.Invoke();
         }
+        if (GamePointBoard.Instance.isEnemySuspension){
+            turn.enemyTurn_Draw = true;
+        }
     }
     public void EnemyTurn_draw()
     {
@@ -108,6 +115,14 @@ public class TurnManager : MonoBehaviour
         {
             turn.enemyTurn_Draw = true;
             EnemyTurn_Draw.Invoke();
+        }
+    }
+    public void EnemyTurn_suspend()
+    {
+        if (turn.enemyTurn_Draw == false && turn.enemyTurn_Start == true)
+        {
+            turn.enemyTurn_Draw = true;
+            EnemyTurn_Suspend.Invoke();
         }
     }
     public void EnemyTurn_end()

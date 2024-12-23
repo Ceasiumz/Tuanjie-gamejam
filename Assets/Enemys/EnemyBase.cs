@@ -25,10 +25,13 @@ public class EnemyBase : MonoBehaviour
     public virtual void OnPlayerDraw(){
         Debug.Log("Player Turn Draw");
     }
+    public virtual void OnTurnSuspend(){
+        Debug.Log("Enemy Turn Suspend");
+    }
     public virtual void OnPlayerSuspend(){
         Debug.Log("Player Turn Suspend");
     }
-    public virtual void OnTurnEnd(){
+        public virtual void OnTurnEnd(){
         Debug.Log("Enemy Turn End");
     }
     public virtual void OnPlayerEnd(){

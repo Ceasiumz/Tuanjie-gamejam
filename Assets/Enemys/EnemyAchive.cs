@@ -27,6 +27,7 @@ public class EnemyAchive : MonoBehaviour
         }
         TurnManager.Instance.EnemyTurn_Start.AddListener(enemy.OnTurnStart);
         TurnManager.Instance.EnemyTurn_Draw.AddListener(enemy.OnTurnDraw);
+        TurnManager.Instance.EnemyTurn_Suspend.AddListener(enemy.OnTurnSuspend);
         TurnManager.Instance.EnemyTurn_End.AddListener(enemy.OnTurnEnd);
         TurnManager.Instance.PlayerTurn_Start.AddListener(enemy.OnPlayerStart);
         TurnManager.Instance.PlayerTurn_Draw.AddListener(enemy.OnPlayerDraw);

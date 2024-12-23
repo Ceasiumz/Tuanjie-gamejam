@@ -24,10 +24,10 @@ public class E0 : EnemyBase
             eA.enemyHolder.DrawCard();
             TurnManager.Instance.EnemyTurn_end();
         }else{
-            GamePointBoard.Instance.RecordSuspension(true);
+            GamePointBoard.Instance.RecordSuspensionE();
         }
     }
     public override void OnPlayerDraw(){
-        Debug.Log("Nowa");
+        //Debug.Log("Nowa");
     }
 }
