@@ -51,6 +51,14 @@ public class SkillPool : MonoBehaviour
     //备注： 开始时应初始化 skillpool当局技能池为本轮游戏可获得技能
     //游戏开局时应在技能组池中选择一组技能加入到当局游戏技能池中 通用技能池中技能也应加入到当局游戏技能池中
 
+    
+    //初始化本局游戏技能池
+    public void InitSkillPool(String skillGroupID)
+    {
+        skillPool = new List<BaseSkill>();
+        skillPool.AddRange(normalSkill);
+        skillPool.AddRange(skillGroup.Find(x => x.skillGroupId == skillGroupID).skills);
+    }
     //玩家技能组添加技能
     public void AddPlayerSkill(BaseSkill skill)
     {

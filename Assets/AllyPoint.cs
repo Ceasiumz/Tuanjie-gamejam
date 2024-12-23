@@ -152,6 +152,7 @@ public class AllyPoint : MonoBehaviour
     //玩家小局获胜对敌人造成伤害
     public void PlayerAttack()
     {
+        DynamicEventBus.Publish("BeforePlayerAttackEvent");
         GamePointBoard.Instance.enemyCurrentHealth -= Mathf.RoundToInt((GamePointBoard.Instance.attack+GamePointBoard.Instance.attackAddition)*GamePointBoard.Instance.attackMultiple); 
         DynamicEventBus.Publish("AfterPlayerAttackEvent");
         GamePointBoard.Instance.ResetDamageMultipl();
@@ -159,6 +160,7 @@ public class AllyPoint : MonoBehaviour
     //玩家小局失败受到伤害
     public void EnemyAttack()
     {
+        DynamicEventBus.Publish("BeforeEnemyAttackEvent");
         GamePointBoard.Instance.currentHealth -= Mathf.RoundToInt((GamePointBoard.Instance.enemyAttack-GamePointBoard.Instance.injuryReduction)*GamePointBoard.Instance.injuryMultiple) ;
         DynamicEventBus.Publish("AfterEnemyAttackEvent");
         GamePointBoard.Instance.ResetDamageMultipl();

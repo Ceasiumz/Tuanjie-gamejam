@@ -20,6 +20,7 @@ public class GamePointBoard : MonoBehaviour
     //玩家是否停牌
     public bool isPlayerSuspension;
     public  int cardPoints=0;
+    public int skillChouseNum = 1;
     [Header("Enemy")]
     //敌人相关属性
     public int enemyMaxHealth;
