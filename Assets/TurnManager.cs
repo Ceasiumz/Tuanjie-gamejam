@@ -7,6 +7,9 @@ public class TurnManager : MonoBehaviour
 {
     // Start is called before the first frame update
     private static TurnManager _instance;
+    public GameObject PlayersuspendButton;
+    public GameObject EnemysuspendButton;
+    public HorizontalCardHolder playerHolder;
     public static TurnManager Instance
     {
         get
@@ -59,8 +62,10 @@ public class TurnManager : MonoBehaviour
     public void PlayerTurn_start()
     {
         turn = new Turn(false, false, false, false, false, false);
+        Debug.Log("new turn");
         if (turn.playerTurn_Start == false)
         {
+            PlayersuspendButton.SetActive(true);
             turn.playerTurn_Start = true;
             PlayerTurn_Start.Invoke();
         }
@@ -70,9 +75,13 @@ public class TurnManager : MonoBehaviour
     }
     public void PlayerTurn_draw()
     {
+        if(playerHolder.cards.Count == 0){
+            turn.playerTurn_Draw = false;
+        }
         if (turn.playerTurn_Draw == false && turn.playerTurn_Start == true)
         {
             turn.playerTurn_Draw = true;
+            PlayersuspendButton.SetActive(false);
             PlayerTurn_Draw.Invoke();
         }
     }

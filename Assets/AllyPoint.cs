@@ -10,6 +10,7 @@ public class AllyPoint : MonoBehaviour
     // Start is called before the first frame update
 
     public int allyPoints;
+    protected EnemyAchive eA;
 
     public static AllyPoint Instance;
     // public CharacterBase Player;
@@ -20,7 +21,10 @@ public class AllyPoint : MonoBehaviour
     public UnityEvent DrawOutEvent;
     Text text;
 
-
+    private void Awake()
+    {
+        eA = FindObjectOfType<EnemyAchive>();
+    }
     void Start()
     {
         if (Instance == null)
@@ -38,27 +42,17 @@ public class AllyPoint : MonoBehaviour
     // Update is called once per frame
     void Update()// revise ally points
     {
-        int tempAllyPoints = 0;
-        foreach (Card card in holder.cards)
-        {
-            tempAllyPoints += card.points;
-        }
-        if (tempAllyPoints != allyPoints)
-        {
-            allyPoints = tempAllyPoints;
-            // DrawOutTest();
-        }
-        text.text = "Ally Points: " + allyPoints;
+        text.text = "Ally Points: " + GamePointBoard.Instance.playerCardPoints;
     }
-    
-    
+
+
     //爆牌结算
     public void BurstSettlement(bool isEnemy)
     {
         //敌人爆牌结算
         if (isEnemy)
         {
-                PlayerAttack();
+            PlayerAttack();
         }
         else
         {
@@ -76,13 +70,15 @@ public class AllyPoint : MonoBehaviour
     public void NormalSettlement()
     {
         //玩家获胜
-        if (GamePointBoard.Instance.cardPoints > GamePointBoard.Instance.enemyCardPoints)
+        if (GamePointBoard.Instance.playerCardPoints > GamePointBoard.Instance.enemyCardPoints)
         {
             PlayerAttack();
-        }else if(GamePointBoard.Instance.cardPoints < GamePointBoard.Instance.enemyCardPoints)//玩家失败
+        }
+        else if (GamePointBoard.Instance.playerCardPoints < GamePointBoard.Instance.enemyCardPoints)//玩家失败
         {
             EnemyAttack();
-        }else//平局
+        }
+        else//平局
         {
 
         }
@@ -93,7 +89,7 @@ public class AllyPoint : MonoBehaviour
         DeadCheck();
         EnemyDeadCheck();
     }
-    
+
     //21点胜利结算
     public void WinSettlement(bool isEnemy)
     {
@@ -112,7 +108,7 @@ public class AllyPoint : MonoBehaviour
         DeadCheck();
         EnemyDeadCheck();
     }
-    
+
     //玩家死亡判断 玩家死亡重新加载场景
     public void DeadCheck()
     {
@@ -132,8 +128,9 @@ public class AllyPoint : MonoBehaviour
     {
         if (GamePointBoard.Instance.enemyCurrentHealth <= 0)
         {
-            // TODO:对手死亡处理 暂定处理重新加满生命值
-            GamePointBoard.Instance.enemyCurrentHealth = GamePointBoard.Instance.enemyMaxHealth;
+            // 敌人死亡时选择下一个敌人
+            Debug.Log("Enemy Dead");
+            eA.NextEnemy();
             DrawOutEvent.Invoke();
             holder.DiscoverCardDeck();
         }
@@ -143,7 +140,8 @@ public class AllyPoint : MonoBehaviour
         if (allyPoints > lim)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }else
+        }
+        else
         {
             holder.DrawButton.SetActive(true);
         }

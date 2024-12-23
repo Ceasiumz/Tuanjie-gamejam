@@ -5,7 +5,7 @@ using UnityEngine;
 public class E0 : EnemyBase
 {
     // Start is called before the first frame update
-    public int maxPointsInHand = 15;
+    
     void Start()
     {
         eA = GetComponentInParent<EnemyAchive>();

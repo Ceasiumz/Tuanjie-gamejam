@@ -25,7 +25,7 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     public float selectionOffset = 50;
     private float pointerDownTime;
     private float pointerUpTime;
-    
+
     public int points = 0;
     public CardSuit suit;
 
@@ -66,7 +66,7 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         // if (points == 0)
         //     points = Random.Range(startran, 14);
         // CardRename(this);
-    //Debug.Log("Card points: " + points);
+        //Debug.Log("Card points: " + points);
         postPoints();
     }
 
@@ -74,15 +74,15 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     {
         switch (card.points)
         {
-            case 1: card.name = "A"; break;
+            case 1: card.name = "A"; card.points = 11; break;
             case 11: card.name = "J"; card.points = 10; break;
             case 12: card.name = "Q"; card.points = 10; break;
             case 13: card.name = "K"; card.points = 10; break;
             default: card.name = card.points.ToString(); break;
         }
     }
-    
-    
+
+
     void postPoints()//special points effects
     {
         switch (points)
@@ -169,7 +169,8 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     {
         PointerEnterEvent.Invoke(this);
         isHovering = true;
-        if(isHiden){
+        if (isHiden)
+        {
             cardVisual.sprite.color = Color.white;
         }
     }
@@ -178,7 +179,8 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     {
         PointerExitEvent.Invoke(this);
         isHovering = false;
-        if(isHiden){
+        if (isHiden)
+        {
             cardVisual.sprite.color = Color.black;
         }
     }

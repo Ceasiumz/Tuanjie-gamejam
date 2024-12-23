@@ -13,18 +13,7 @@ public class EnemyAchive : MonoBehaviour
     void Start()
     {   
         enemyList = new List<GameObject>();
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            Transform child = transform.GetChild(i);
-            enemyList.Add(child.gameObject);
-            // 在这里可以对获取到的子游戏对象进行各种操作
-            if(i != enemyIndex)
-            {
-                child.gameObject.SetActive(false);
-            }else{
-                enemy = child.gameObject.GetComponent<EnemyBase>();
-            }   
-        }
+        EnemyInit();
         TurnManager.Instance.EnemyTurn_Start.AddListener(enemy.OnTurnStart);
         TurnManager.Instance.EnemyTurn_Draw.AddListener(enemy.OnTurnDraw);
         TurnManager.Instance.EnemyTurn_Suspend.AddListener(enemy.OnTurnSuspend);
@@ -40,5 +29,33 @@ public class EnemyAchive : MonoBehaviour
     void Update()
     {
         
+    }
+    public void NextEnemy(){
+        enemyIndex++;
+        if(enemyIndex >= enemyList.Count){
+            enemyIndex = 0;
+        }
+        SelectEnemy(enemyIndex);
+    }
+    public void SelectEnemy(int IndexOfEnemyToSelect){
+        enemy.gameObject.SetActive(false);
+        enemy = enemyList[IndexOfEnemyToSelect].GetComponent<EnemyBase>();
+        enemy.gameObject.SetActive(true);
+        GamePointBoard.Instance.enemyMaxHealth = enemy.health;
+        GamePointBoard.Instance.enemyCurrentHealth = GamePointBoard.Instance.enemyMaxHealth;
+    }
+    public void EnemyInit(){
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Transform child = transform.GetChild(i);
+            enemyList.Add(child.gameObject);
+            // 在这里可以对获取到的子游戏对象进行各种操作
+            if(i != enemyIndex)
+            {
+                child.gameObject.SetActive(false);
+            }else{
+                enemy = child.gameObject.GetComponent<EnemyBase>();
+            }   
+        }
     }
 }

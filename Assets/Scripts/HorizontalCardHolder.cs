@@ -162,7 +162,7 @@ public class HorizontalCardHolder : MonoBehaviour
         //技能触发 抽卡后触发技能 传入参数为抽取到的卡牌
         DynamicEventBus.Publish("AfterDrawCardSettle", card);
         
-        GamePointBoard.Instance.UpdatePlayerCardPoints(isEnemy, cards);
+        GamePointBoard.Instance.UpdateCardPoints(isEnemy, cards);
 
         // 可以考虑在这里统一判断抽牌堆是否为空，而不是每次抽牌都判断，减少重复操作
         // 示例如下（具体逻辑可能需根据实际情况微调）：
@@ -339,8 +339,8 @@ public class HorizontalCardHolder : MonoBehaviour
 
     public void DiscardHandCard()
     {
-        StartCoroutine(WaitToDiscardHandCard());
         TurnManager.Instance.PlayerTurn_start();
+        StartCoroutine(WaitToDiscardHandCard());
     }
 
     private IEnumerator WaitToDiscardHandCard()
@@ -359,9 +359,13 @@ public class HorizontalCardHolder : MonoBehaviour
         {
             Debug.Log("DrawButton已隐藏");
         }
+        for (int i = cards.Count - 1; i >= 0; i--)
+            {
+                DestroyCard(cards[i]);
+            }
     }
 
-    public void DiscoverCardDeck()
+    public void DiscoverCardDeck()//重置牌组并洗牌
     {
         cardDack.RecoverDiscard();
         cardDack.ShuffleCards(cardDack.cardsPoint);

@@ -67,7 +67,7 @@ public class GamePointBoard : MonoBehaviour
 
     }
     //在抽卡后更新卡牌点数
-    public  void UpdatePlayerCardPoints(bool isEnemy,List<Card> cards)
+    public void UpdateCardPoints(bool isEnemy,List<Card> cards)
     {
         int tempoint = 0;
         foreach (var card in cards)
@@ -77,7 +77,7 @@ public class GamePointBoard : MonoBehaviour
             
         }
         //计算超过21点后检查卡牌是否有A 如果有把卡牌改成1
-        if (tempoint>21)
+        if (tempoint > 21)
         {
             int tempoint2 = 0;
             foreach (var card in cards)
@@ -96,7 +96,7 @@ public class GamePointBoard : MonoBehaviour
         
         if(!isEnemy)
         {
-            cardPoints = tempoint;
+            playerCardPoints = tempoint;
         }
         else
         {
@@ -132,6 +132,8 @@ public class GamePointBoard : MonoBehaviour
         if (isPlayerSuspension == true && isEnemySuspension == true)
         {
             AllyPoint.Instance.NormalSettlement();
+            isPlayerSuspension = false;
+            isEnemySuspension = false;
         }
     }
     public void RecordSuspensionP()
@@ -150,12 +152,14 @@ public class GamePointBoard : MonoBehaviour
         if (isPlayerSuspension == true && isEnemySuspension == true)
         {
             AllyPoint.Instance.NormalSettlement();
+            isPlayerSuspension = false;
+            isEnemySuspension = false;
         }
     }
     //清空卡牌点数计算
     public void ClearCardPoints()
     {
-        cardPoints = 0;
+        playerCardPoints = 0;
         enemyCardPoints = 0;
     }
 
