@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using DG.Tweening;
 using System.Linq;
+using CardDeck;
 using UnityEngine.Events;
 
 public class HorizontalCardHolder : MonoBehaviour
@@ -27,7 +28,42 @@ public class HorizontalCardHolder : MonoBehaviour
 
     public float discardWaitTime = 0.5f;
     public bool isEnemy;
+    
 
+    // private static HorizontalCardHolder _instance;
+    // private static HorizontalCardHolder _instance2;
+    // public static HorizontalCardHolder PlayerInstance
+    // {
+    //     get
+    //     {
+    //         if (_instance == null)
+    //         {
+    //             _instance = FindObjectOfType<HorizontalCardHolder>();
+    //             if (_instance == null)
+    //             {
+    //                 GameObject obj = new GameObject("HorizontalCardHolder");
+    //                 _instance = obj.AddComponent<HorizontalCardHolder>();
+    //             }
+    //         }
+    //         return _instance;
+    //     }
+    // }
+    //
+    // private void Awake()
+    // {
+    //     if (_instance == null)
+    //     {
+    //         _instance = this;
+    //         DontDestroyOnLoad(gameObject);
+    //     }
+    //     else if (_instance != this)
+    //     {
+    //         Destroy(gameObject);
+    //     }
+    // }
+    
+    
+    
     private void LateUpdate()
     {
     }
@@ -49,7 +85,8 @@ public class HorizontalCardHolder : MonoBehaviour
             Card card = cardObject.GetComponentInChildren<Card>();
             cards.Add(card);
             //
-            if(hidenFlag == 1){
+            if (hidenFlag == 1)
+            {
                 card.cardVisual.sprite.color = Color.black;
                 card.isHiden = true;
             }
@@ -80,12 +117,15 @@ public class HorizontalCardHolder : MonoBehaviour
     private void ProcessDrawnCard(Card card)
     {
         //从牌库抽取卡牌
-        String cardPoint = cardDack.DrawCard();
-        Debug.Log("抽取点数" + cardPoint);
-        if(cards.Count ==1){
-            if(card.cardVisual != null)
-                Debug.Log("1121");
+        //判断抽排堆是否为空
+        if (cardDack.cardsPoint.Count == 0)
+        {
+            cardDack.RecoverDiscard();
+            cardDack.ShuffleCards(cardDack.cardsPoint);
         }
+        CardString cardStruct = cardDack.DrawCard();
+        string cardPoint = cardStruct.point;
+        Debug.Log("抽取点数" + cardPoint);
 
         // 根据抽取的牌面设置点数
         switch (cardPoint)
@@ -115,8 +155,13 @@ public class HorizontalCardHolder : MonoBehaviour
                 break;
         }
 
+        card.suit = cardStruct.suit;
         card.CardRename(card);
 
+        //测试代码
+        //技能触发 抽卡后触发技能 传入参数为抽取到的卡牌
+        DynamicEventBus.Publish("AfterDrawCardSettle", card);
+        
         GamePointBoard.Instance.UpdatePlayerCardPoints(isEnemy, cards);
 
         // 可以考虑在这里统一判断抽牌堆是否为空，而不是每次抽牌都判断，减少重复操作
@@ -142,7 +187,16 @@ public class HorizontalCardHolder : MonoBehaviour
                 cards[i].cardVisual.UpdateIndex(transform.childCount);
         }
     }
-
+    private void Awake()
+    {
+        //TurnManager.Instance.PlayerTurn_Start.AddListener();
+        if (gameObject.tag != "Enemy")
+        {
+            TurnManager.Instance.PlayerTurn_Draw.AddListener(DrawCard);
+        }else{
+            //TurnManager.Instance.EnemyTurn_Draw.AddListener(DrawCard);
+        }
+    }
     void Start()
     {
         //DrawEvent.AddListener(DrawOutTest);
@@ -156,7 +210,7 @@ public class HorizontalCardHolder : MonoBehaviour
 
         StartCoroutine(UpdateCardVisual());
 
-    
+
     }
 
     private void AddCardEventListeners(Card card)
@@ -243,7 +297,7 @@ public class HorizontalCardHolder : MonoBehaviour
     {
         if (card != null)
         {
-            cardDack.discardDeck.Add(card.name);
+            cardDack.discardDeck.Add( new CardString(card.name, card.suit));
             // 更安全地从集合中移除卡牌，可考虑倒序遍历避免索引问题
             for (int i = cards.Count - 1; i >= 0; i--)
             {
@@ -286,6 +340,7 @@ public class HorizontalCardHolder : MonoBehaviour
     public void DiscardHandCard()
     {
         StartCoroutine(WaitToDiscardHandCard());
+        TurnManager.Instance.PlayerTurn_start();
     }
 
     private IEnumerator WaitToDiscardHandCard()

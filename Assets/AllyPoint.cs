@@ -16,9 +16,10 @@ public class AllyPoint : MonoBehaviour
     // public CharacterBase Enemy;
     public int lim = 21;
     public HorizontalCardHolder holder;
+    public HorizontalCardHolder ememyHolder;
     public UnityEvent DrawOutEvent;
     Text text;
-    private bool isDead = false;
+
 
     void Start()
     {
@@ -49,42 +50,7 @@ public class AllyPoint : MonoBehaviour
         }
         text.text = "Ally Points: " + allyPoints;
     }
-
-    public void DrawOutTest()// check if the ally points are over lim
-    {
-        //角色未死亡
-        if (isDead == false)
-        {
-            //TODO:清除场景中卡牌
-            //角色局数获胜
-            if (allyPoints == lim)
-            {
-                // Enemy.currentHealth -= Player.attack;
-                DrawOutEvent.Invoke();
-            }
-            //角色局数失败
-            else if (allyPoints > lim)
-            {
-                //受伤 刷新牌桌上卡牌
-                // Player.currentHealth -= Enemy.attack;
-                DrawOutEvent.Invoke();
-            }
-            
-        }
-        
-        // if(Player.currentHealth<=0)
-        // {
-        //     isDead = true;
-        // }
-        
-        //角色死亡 重置场景
-        if (isDead == true)
-        {
-            DrawOutEvent.Invoke();
-            holder.DrawButton.SetActive(false);
-            Invoke("Restart", 1f);
-        }
-    }
+    
     
     //爆牌结算
     public void BurstSettlement(bool isEnemy)
@@ -92,15 +58,12 @@ public class AllyPoint : MonoBehaviour
         //敌人爆牌结算
         if (isEnemy)
         {
-            //TODO:清除场景中卡牌
-                //受伤 刷新牌桌上卡牌
-                GamePointBoard.Instance.enemyCurrentHealth -= GamePointBoard.Instance.attack;
-
+                PlayerAttack();
         }
         else
         {
             //玩家爆牌结算
-            GamePointBoard.Instance.currentHealth -= GamePointBoard.Instance.enemyAttack;
+            EnemyAttack();
         }
         DrawOutEvent.Invoke();
         GamePointBoard.Instance.ClearCardPoints();
@@ -115,10 +78,10 @@ public class AllyPoint : MonoBehaviour
         //玩家获胜
         if (GamePointBoard.Instance.cardPoints > GamePointBoard.Instance.enemyCardPoints)
         {
-            GamePointBoard.Instance.enemyCurrentHealth -= GamePointBoard.Instance.attack;
+            PlayerAttack();
         }else if(GamePointBoard.Instance.cardPoints < GamePointBoard.Instance.enemyCardPoints)//玩家失败
         {
-            GamePointBoard.Instance.currentHealth -= GamePointBoard.Instance.enemyAttack;
+            EnemyAttack();
         }else//平局
         {
 
@@ -137,11 +100,11 @@ public class AllyPoint : MonoBehaviour
         //敌人获胜
         if (isEnemy)
         {
-            GamePointBoard.Instance.currentHealth -= GamePointBoard.Instance.enemyAttack;
+            EnemyAttack();
         }
         else//玩家获胜
         {
-            GamePointBoard.Instance.enemyCurrentHealth -= GamePointBoard.Instance.attack;
+            PlayerAttack();
         }
         DrawOutEvent.Invoke();
         GamePointBoard.Instance.ClearCardPoints();
@@ -153,6 +116,12 @@ public class AllyPoint : MonoBehaviour
     //玩家死亡判断 玩家死亡重新加载场景
     public void DeadCheck()
     {
+        //玩家死亡时技能判定
+        if (GamePointBoard.Instance.currentHealth <= 0)
+        {
+            DynamicEventBus.Publish("PlayerDeadEvent");
+        }
+        //技能判定后重新判断血量
         if (GamePointBoard.Instance.currentHealth <= 0)
         {
             Restart();
@@ -180,6 +149,20 @@ public class AllyPoint : MonoBehaviour
         }
     }
 
+    //玩家小局获胜对敌人造成伤害
+    public void PlayerAttack()
+    {
+        GamePointBoard.Instance.enemyCurrentHealth -= Mathf.RoundToInt((GamePointBoard.Instance.attack+GamePointBoard.Instance.attackAddition)*GamePointBoard.Instance.attackMultiple); 
+        DynamicEventBus.Publish("AfterPlayerAttackEvent");
+        GamePointBoard.Instance.ResetDamageMultipl();
+    }
+    //玩家小局失败受到伤害
+    public void EnemyAttack()
+    {
+        GamePointBoard.Instance.currentHealth -= Mathf.RoundToInt((GamePointBoard.Instance.enemyAttack-GamePointBoard.Instance.injuryReduction)*GamePointBoard.Instance.injuryMultiple) ;
+        DynamicEventBus.Publish("AfterEnemyAttackEvent");
+        GamePointBoard.Instance.ResetDamageMultipl();
+    }
 
     public void AddPoints(Card card)
     {

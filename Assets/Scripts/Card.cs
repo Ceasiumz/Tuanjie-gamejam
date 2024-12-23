@@ -27,6 +27,7 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     private float pointerUpTime;
     
     public int points = 0;
+    public CardSuit suit;
 
     [Header("Visual")]
     [SerializeField] private GameObject cardVisualPrefab;

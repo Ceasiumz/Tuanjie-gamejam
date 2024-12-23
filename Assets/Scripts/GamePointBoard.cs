@@ -9,6 +9,14 @@ public class GamePointBoard : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public int attack;
+    //攻击附加值
+    public int attackAddition=0;
+    //受伤减免值
+    public int injuryReduction=0;
+    //攻击伤害倍率
+    public float attackMultiple=1f;
+    //受伤伤害倍率
+    public float injuryMultiple=1f;
     //玩家是否停牌
     public bool isPlayerSuspension;
     public  int cardPoints=0;
@@ -20,7 +28,6 @@ public class GamePointBoard : MonoBehaviour
     //敌人是否停牌
     public bool isEnemySuspension;
     public int enemyCardPoints;
-    
     
     private static GamePointBoard _instance;
     public static GamePointBoard Instance
@@ -53,7 +60,11 @@ public class GamePointBoard : MonoBehaviour
         }
     }
     //重新生成下一个敌人 方法 
-    
+    private void Start() {
+        TurnManager.Instance.EnemyTurn_Suspend.AddListener(RecordSuspensionE);
+        TurnManager.Instance.PlayerTurn_Suspend.AddListener(RecordSuspensionP);
+
+    }
     //在抽卡后更新卡牌点数
     public  void UpdatePlayerCardPoints(bool isEnemy,List<Card> cards)
     {
@@ -104,14 +115,33 @@ public class GamePointBoard : MonoBehaviour
     }
     
     //记录停牌操作
-    public void RecordSuspension(bool isEnemy)
+    public void RecordSuspensionE()
     {
+        bool isEnemy = true;
         //停牌后应禁用抽牌 停牌 和加注
-        if(!isEnemy)
+        if(!isEnemy)//玩家停牌
         {
             isPlayerSuspension = true;
         }
-        else
+        else//敌人停牌
+        {
+            isEnemySuspension = true;
+        }
+        //双方都停牌时 触发结算比较牌面大小
+        if (isPlayerSuspension == true && isEnemySuspension == true)
+        {
+            AllyPoint.Instance.NormalSettlement();
+        }
+    }
+    public void RecordSuspensionP()
+    {
+        bool isEnemy = false;
+        //停牌后应禁用抽牌 停牌 和加注
+        if(!isEnemy)//玩家停牌
+        {
+            isPlayerSuspension = true;
+        }
+        else//敌人停牌
         {
             isEnemySuspension = true;
         }
@@ -132,6 +162,14 @@ public class GamePointBoard : MonoBehaviour
     {
         isPlayerSuspension = false;
         isEnemySuspension = false;
+    }
+    //重置伤害增值和倍率
+    public void ResetDamageMultipl()
+    {
+        attackAddition = 0;
+        attackMultiple = 1f;
+        injuryReduction = 0;
+        injuryMultiple = 1f;
     }
     
 }
