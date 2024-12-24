@@ -298,7 +298,7 @@ public class HorizontalCardHolder : MonoBehaviour
         }
     }
 
-    private void DestroyCard(Card card)
+    public void DestroyCard(Card card)
     {
         if (card != null)
         {
@@ -314,6 +314,8 @@ public class HorizontalCardHolder : MonoBehaviour
                 }
             }
         }
+        GamePointBoard.Instance.UpdateCardPoints(true, cards);
+        GamePointBoard.Instance.UpdateCardPoints(false, cards);
     }
 
     void Swap(int index)

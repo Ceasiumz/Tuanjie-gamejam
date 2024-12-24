@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using CardDeck;
 using UnityEngine;
-public class E1 : EnemyBase
+
+public class E4 : EnemyBase
 {
     // Start is called before the first frame update
     [SerializeField] int Ehealth;
     [SerializeField] int EmaxPointsInHand;
+    [SerializeField] BaseSkill markedSkill;
     private void Awake()
     {
         health = Ehealth;
@@ -20,6 +23,13 @@ public class E1 : EnemyBase
     {
         //Debug.Log("E0 Draw");
         TurnManager.Instance.EnemyTurn_draw();
+        //每2个回合，玩家发动的第一个主动技能总是无效
+        if (TurnManager.Instance.turnCount % 2 == 0)
+        {
+            Debug.Log("E4 skilled");
+            //使得玩家发动的第一个主动技能总是无效
+            //markedskill = true;
+        }
     }
 
     public override void OnTurnDraw()
@@ -35,24 +45,6 @@ public class E1 : EnemyBase
         }
         TurnManager.Instance.EnemyTurn_end();
     }
-    public override void OnPlayerDraw()
-    {
-        StartCoroutine(DrawCardIdentify());
-        GamePointBoard.Instance.UpdateCardPoints(false, eA.playerHolder.cards);
-    }
+  
 
-    IEnumerator DrawCardIdentify()
-    {
-        yield return new WaitForEndOfFrame();
-        List<Card> playerCards = eA.playerHolder.cards;
-        //Debug.Log(playerCards[playerCards.Count - 1].suit);
-        // 实现“闪电”技能，玩家抽到黑桃2-9就要多抽一张牌
-        if (playerCards[playerCards.Count - 1].points < 10 &&
-        playerCards[playerCards.Count - 1].points > 1 &&
-        playerCards[playerCards.Count - 1].suit == CardSuit.黑桃)
-        {
-            Debug.Log("E1_skilled");
-            eA.playerHolder.DrawCard();
-        }
-    }
 }

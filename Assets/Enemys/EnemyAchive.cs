@@ -14,6 +14,9 @@ public class EnemyAchive : MonoBehaviour
     {   
         enemyList = new List<GameObject>();
         EnemyInit();
+        AddListeners(enemy);
+    }
+    void AddListeners(EnemyBase enemy){// addlisteners to enemy right now
         TurnManager.Instance.EnemyTurn_Start.AddListener(enemy.OnTurnStart);
         TurnManager.Instance.EnemyTurn_Draw.AddListener(enemy.OnTurnDraw);
         TurnManager.Instance.EnemyTurn_Suspend.AddListener(enemy.OnTurnSuspend);
@@ -22,6 +25,16 @@ public class EnemyAchive : MonoBehaviour
         TurnManager.Instance.PlayerTurn_Draw.AddListener(enemy.OnPlayerDraw);
         TurnManager.Instance.PlayerTurn_Suspend.AddListener(enemy.OnPlayerSuspend);
         TurnManager.Instance.PlayerTurn_End.AddListener(enemy.OnPlayerEnd);
+    }
+    void RemoveListeners(EnemyBase enemy){// remove listeners to enemy right now
+        TurnManager.Instance.EnemyTurn_Start.RemoveListener(enemy.OnTurnStart);
+        TurnManager.Instance.EnemyTurn_Draw.RemoveListener(enemy.OnTurnDraw);
+        TurnManager.Instance.EnemyTurn_Suspend.RemoveListener(enemy.OnTurnSuspend);
+        TurnManager.Instance.EnemyTurn_End.RemoveListener(enemy.OnTurnEnd);
+        TurnManager.Instance.PlayerTurn_Start.RemoveListener(enemy.OnPlayerStart);
+        TurnManager.Instance.PlayerTurn_Draw.RemoveListener(enemy.OnPlayerDraw);
+        TurnManager.Instance.PlayerTurn_Suspend.RemoveListener(enemy.OnPlayerSuspend);
+        TurnManager.Instance.PlayerTurn_End.RemoveListener(enemy.OnPlayerEnd);
 
     }
 
@@ -31,12 +44,13 @@ public class EnemyAchive : MonoBehaviour
         
     }
     public void NextEnemy(){
+        RemoveListeners(enemy);
         enemyIndex++;
         if(enemyIndex >= enemyList.Count){
             enemyIndex = 0;
         }
         SelectEnemy(enemyIndex);
-        
+        AddListeners(enemy);
     }
     public void SelectEnemy(int IndexOfEnemyToSelect){
         enemy.gameObject.SetActive(false);

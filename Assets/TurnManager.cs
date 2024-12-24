@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class TurnManager : MonoBehaviour
 {
     // Start is called before the first frame update
+    public int turnCount;
     private static TurnManager _instance;
     public GameObject PlayersuspendButton;
     public GameObject EnemysuspendButton;
@@ -62,6 +63,7 @@ public class TurnManager : MonoBehaviour
     public void PlayerTurn_start()
     {
         turn = new Turn(false, false, false, false, false, false);
+        turnCount++;
         Debug.Log("new turn");
         if (turn.playerTurn_Start == false)
         {

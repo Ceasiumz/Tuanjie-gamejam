@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler, IPointerDownHandler
 {
     public bool isEnemy;
+    public int rageCount = 0;
     public UnityEvent<Card> isEnemyEvent;
     public bool isHiden;
     private Canvas canvas;
