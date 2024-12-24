@@ -10,10 +10,13 @@ public class EnemyAchive : MonoBehaviour
     List<GameObject> enemyList;
     [SerializeField] EnemyBase enemy;
     [SerializeField] int enemyIndex;
-    void Start()
+    void Awake()
     {   
         enemyList = new List<GameObject>();
         EnemyInit();
+    }
+    private void Start() {
+        TurnManager.Instance.PlayerTurn_Start.AddListener(EnemySuspendToEndCheck);
         AddListeners(enemy);
     }
     void AddListeners(EnemyBase enemy){// addlisteners to enemy right now
@@ -42,6 +45,18 @@ public class EnemyAchive : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void EnemySuspendToEndCheck(){
+        
+    }
+
+    IEnumerator WaitingEnemySuspendToEndCheck(){
+        yield return new WaitForSeconds(0.5f);
+        if(GamePointBoard.Instance.isEnemySuspension){
+            TurnManager.Instance.EnemyTurn_Start
+        .RemoveListener(TurnManager.Instance.EnemyTurn_end);
+        }
     }
     public void NextEnemy(){
         RemoveListeners(enemy);

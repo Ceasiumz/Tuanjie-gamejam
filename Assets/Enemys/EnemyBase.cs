@@ -29,6 +29,8 @@ public abstract class EnemyBase : MonoBehaviour
         Debug.Log("Player Turn Draw");
     }
     public virtual void OnTurnSuspend(){
+        TurnManager.Instance.EnemyTurn_Start
+        .AddListener(TurnManager.Instance.EnemyTurn_end);
         Debug.Log("Enemy Turn Suspend");
     }
     public virtual void OnPlayerSuspend(){
@@ -44,5 +46,16 @@ public abstract class EnemyBase : MonoBehaviour
     void Update()
     {
         
+    }
+    
+    protected virtual void CowardDraw(){
+        if (GamePointBoard.Instance.enemyCardPoints < maxPointsInHand)
+        {
+            //Debug.Log("E0 Drawed");
+            eA.enemyHolder.DrawCard();
+        }else{
+            TurnManager.Instance.EnemyTurn_suspend();
+        }
+        TurnManager.Instance.EnemyTurn_end();
     }
 }

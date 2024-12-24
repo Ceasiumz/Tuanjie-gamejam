@@ -36,7 +36,8 @@ public class TurnManager : MonoBehaviour
     public UnityEvent EnemyTurn_Suspend;
     public UnityEvent EnemyTurn_End;
     [SerializeField] public Turn turn;
-    [System.Serializable] public struct Turn
+    [System.Serializable]
+    public struct Turn
     {
         public bool playerTurn_Start;
         public bool playerTurn_Draw;
@@ -73,16 +74,19 @@ public class TurnManager : MonoBehaviour
         }
         StartCoroutine(SuspendWait());
     }
-    
-    IEnumerator SuspendWait(){
+
+    IEnumerator SuspendWait()
+    {
         yield return new WaitForSeconds(0.4f);
-        if(GamePointBoard.Instance.isPlayerSuspension){
+        if (GamePointBoard.Instance.isPlayerSuspension)
+        {
             turn.playerTurn_Draw = true;
         }
     }
     public void PlayerTurn_draw()
     {
-        if(playerHolder.cards.Count == 0){
+        if (playerHolder.cards.Count == 0)
+        {
             turn.playerTurn_Draw = false;
         }
         if (turn.playerTurn_Draw == false && turn.playerTurn_Start == true)
@@ -117,7 +121,8 @@ public class TurnManager : MonoBehaviour
             turn.enemyTurn_Start = true;
             EnemyTurn_Start.Invoke();
         }
-        if (GamePointBoard.Instance.isEnemySuspension){
+        if (GamePointBoard.Instance.isEnemySuspension)
+        {
             turn.enemyTurn_Draw = true;
         }
     }
@@ -135,11 +140,9 @@ public class TurnManager : MonoBehaviour
     }
     public void EnemyTurn_suspend()
     {
-        if (turn.enemyTurn_Draw == false && turn.enemyTurn_Start == true)
-        {
-            turn.enemyTurn_Draw = true;
-            EnemyTurn_Suspend.Invoke();
-        }
+        turn.enemyTurn_Draw = true;
+        EnemyTurn_Suspend.Invoke();
+
     }
     public void EnemyTurn_end()
     {
@@ -151,7 +154,7 @@ public class TurnManager : MonoBehaviour
         }
     }
 
-    
+
     // Update is called once per frame
     void Update()
     {

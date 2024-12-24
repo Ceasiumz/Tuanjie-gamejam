@@ -18,14 +18,7 @@ public class E5 : EnemyBase
 
     public override void OnTurnDraw()
     {
-        if (GamePointBoard.Instance.enemyCardPoints < maxPointsInHand)
-        {
-            //Debug.Log("E0 Drawed");
-            eA.enemyHolder.DrawCard();
-            TurnManager.Instance.EnemyTurn_end();
-        }else{
-            GamePointBoard.Instance.RecordSuspensionE();
-        }
+        CowardDraw();
     }
     public override void OnPlayerDraw(){
         //Debug.Log("Nowa");

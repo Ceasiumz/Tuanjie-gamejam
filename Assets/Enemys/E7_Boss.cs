@@ -21,16 +21,7 @@ public class E7 : EnemyBase
 
     public override void OnTurnDraw()
     {
-        if (GamePointBoard.Instance.enemyCardPoints < maxPointsInHand)
-        {
-            //Debug.Log("E0 Drawed");
-            eA.enemyHolder.DrawCard();
-            TurnManager.Instance.EnemyTurn_end();
-        }
-        else
-        {
-            GamePointBoard.Instance.RecordSuspensionE();
-        }
+        CowardDraw();
         //只要玩家手牌中存在至少一张不会使自己爆牌的牌，则从玩家手中获得那些牌中点数最大的牌
         List<Card> playerCards = eA.playerHolder.cards;
         List<Card> enemyCards = eA.enemyHolder.cards;

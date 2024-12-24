@@ -69,7 +69,6 @@ public class GamePointBoard : MonoBehaviour
     private void Start() {
         TurnManager.Instance.EnemyTurn_Suspend.AddListener(RecordSuspensionE);
         TurnManager.Instance.PlayerTurn_Suspend.AddListener(RecordSuspensionP);
-
     }
     //在抽卡后更新卡牌点数
     public void UpdateCardPoints(bool isEnemy,List<Card> cards)
@@ -130,10 +129,12 @@ public class GamePointBoard : MonoBehaviour
         if(!isEnemy)//玩家停牌
         {
             isPlayerSuspension = true;
+            //TurnManager.Instance.PlayerTurn_suspend();
         }
         else//敌人停牌
         {
             isEnemySuspension = true;
+            //TurnManager.Instance.EnemyTurn_suspend();
         }
         //双方都停牌时 触发结算比较牌面大小
         if (isPlayerSuspension == true && isEnemySuspension == true)
