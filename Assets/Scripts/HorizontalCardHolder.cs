@@ -189,6 +189,7 @@ public class HorizontalCardHolder : MonoBehaviour
     }
     private void Awake()
     {
+        DisCardCompeletedEvent.AddListener(StartDraw);
         //TurnManager.Instance.PlayerTurn_Start.AddListener();
         if (gameObject.tag != "Enemy")
         {
@@ -206,7 +207,7 @@ public class HorizontalCardHolder : MonoBehaviour
 
         StartCoroutine(UpdateCardVisual());
 
-
+        StartDraw();
     }
 
     public void StartDraw()
@@ -369,8 +370,6 @@ public class HorizontalCardHolder : MonoBehaviour
             }
         DisCardCompeletedEvent?.Invoke();
     }
-    
-
     public void DiscoverCardDeck()//重置牌组并洗牌
     {
         cardDack.RecoverDiscard();
