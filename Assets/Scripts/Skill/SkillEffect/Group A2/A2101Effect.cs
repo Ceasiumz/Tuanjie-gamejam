@@ -26,9 +26,14 @@ public class A2101Effect : BaseEffect
     }
     public void EventSkill()
     {
-        if (GamePointBoard.Instance.cardPoints == 21 && AllyPoint.Instance.holder.cards.Count == 5)
+        if (GamePointBoard.Instance.playerCardPoints == 21 && AllyPoint.Instance.holder.cards.Count == 5)
         {
             GamePointBoard.Instance.attackAddition += GamePointBoard.Instance.enemyCurrentHealth;
         }
+    }
+
+    public override void Interrupt()
+    {
+        
     }
 }

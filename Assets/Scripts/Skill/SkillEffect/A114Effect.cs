@@ -24,4 +24,9 @@ public class A114Effect : BaseEffect
     {
         GamePointBoard.Instance.currentHealth += Mathf.RoundToInt(GamePointBoard.Instance.maxHealth * 0.2f);
     }
+
+    public override void Interrupt()
+    {
+        
+    }
 }

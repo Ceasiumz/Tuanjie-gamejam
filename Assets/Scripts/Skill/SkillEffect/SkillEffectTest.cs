@@ -28,4 +28,10 @@ public  class SkillEffectTest:BaseEffect
     {
         
     }
+    
+
+    public override void Interrupt()
+    {
+        
+    }
 }

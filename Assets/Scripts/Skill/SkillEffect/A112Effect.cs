@@ -30,4 +30,9 @@ public class A112Effect : BaseEffect
             (GamePointBoard.Instance.attack + GamePointBoard.Instance.attackAddition) *
             GamePointBoard.Instance.attackMultiple * 0.2f);
     }
+
+    public override void Interrupt()
+    {
+        
+    }
 }

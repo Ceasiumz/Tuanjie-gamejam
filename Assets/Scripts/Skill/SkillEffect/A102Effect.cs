@@ -51,4 +51,10 @@ public class A102Effect : BaseEffect
             Debug.Log("A102Effect:最大点数" + max + "最小点数" + min);
         }
     }
+    
+
+    public override void Interrupt()
+    {
+        
+    }
 }

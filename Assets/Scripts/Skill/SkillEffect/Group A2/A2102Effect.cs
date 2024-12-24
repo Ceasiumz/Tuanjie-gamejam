@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SkillEffect", menuName = "Data/SkillEffect/Normal/A111Effect")]
-public class A111Effect : BaseEffect
+[CreateAssetMenu(fileName = "SkillEffect", menuName = "Data/SkillEffect/G2/A2102Effect")]
+public class A2102Effect : BaseEffect
 {
     public override void subscribeEvent()
     {
@@ -17,23 +17,17 @@ public class A111Effect : BaseEffect
 
     public override void Execute()
     {
-
+        
     }
 
     public override void ImmediateTrigger()
     {
-
+        
     }
     public void EventSkill()
     {
-        foreach (var card in AllyPoint.Instance.holder.cards)
-        {
-            if (card.name=="7")
-            {
-                GamePointBoard.Instance.attackAddition += 7;
-            }
-        }
-        
+        GamePointBoard.Instance.attack +=
+            Mathf.Max(0, AllyPoint.Instance.holder.cards.Count - AllyPoint.Instance.ememyHolder.cards.Count) * 3;
     }
 
     public override void Interrupt()

@@ -25,4 +25,9 @@ public class A109Effect : BaseEffect
     {
         
     }
+
+    public override void Interrupt()
+    {
+        
+    }
 }

@@ -18,6 +18,9 @@ public  class BaseSkill : ScriptableObject
     public bool isUsedReturn;
 
     public bool canUse;
+
+    //是否禁止玩家主动获得
+    public bool isHidden;
     //备注
     [TextArea(3, 10)]
     public string remark;

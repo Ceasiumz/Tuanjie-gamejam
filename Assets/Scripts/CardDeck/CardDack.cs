@@ -97,7 +97,7 @@ public class CardDack : MonoBehaviour
         //将弃牌堆的卡放入到抽牌堆
         public void RecoverDiscard()
     {
-        cardsDeck.AddRange(discardDeck);
+        InitializeCardPoints();
         discardDeck.Clear();
     }
 }

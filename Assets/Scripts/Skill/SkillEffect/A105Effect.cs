@@ -28,4 +28,9 @@ public class A105Effect : BaseEffect
     {
         GamePointBoard.Instance.attack += 3;
     }
+
+    public override void Interrupt()
+    {
+        
+    }
 }

@@ -12,6 +12,8 @@ public abstract class BaseEffect:ScriptableObject
     //主动技能执行
     public abstract void Execute();
     
+    //中断主动技能执行
+    public abstract void Interrupt();
     //立刻触发效果 
     public abstract void ImmediateTrigger();
     

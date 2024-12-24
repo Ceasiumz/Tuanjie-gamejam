@@ -32,4 +32,9 @@ public  class A101Effect:BaseEffect
     {
         
     }
+
+    public override void Interrupt()
+    {
+        
+    }
 }

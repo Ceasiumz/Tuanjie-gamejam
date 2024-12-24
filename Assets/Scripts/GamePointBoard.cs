@@ -19,7 +19,8 @@ public class GamePointBoard : MonoBehaviour
     public float injuryMultiple=1f;
     //玩家是否停牌
     public bool isPlayerSuspension;
-    public  int cardPoints=0;
+    public  int playerCardPoints=0;
+    //每轮结束后可以获得的技能数
     public int skillChouseNum = 1;
     [Header("Enemy")]
     //敌人相关属性
@@ -29,6 +30,8 @@ public class GamePointBoard : MonoBehaviour
     //敌人是否停牌
     public bool isEnemySuspension;
     public int enemyCardPoints;
+
+
     
     private static GamePointBoard _instance;
     public static GamePointBoard Instance
@@ -97,6 +100,8 @@ public class GamePointBoard : MonoBehaviour
         if(!isEnemy)
         {
             playerCardPoints = tempoint;
+            //玩家卡牌点数结算前
+            DynamicEventBus.Publish("BeforePlayerCardPointSettle");
         }
         else
         {
@@ -175,6 +180,26 @@ public class GamePointBoard : MonoBehaviour
         attackMultiple = 1f;
         injuryReduction = 0;
         injuryMultiple = 1f;
+    }
+    
+    
+    //特殊 技能A107技能 卡牌存放点
+    private List<Card> skillHiddenCard=new List<Card>();
+
+    public List<Card> GetHiddenCard()
+    {
+        return skillHiddenCard;
+    }
+
+    public void HideCard(Card card)
+    {
+        skillHiddenCard.Add(card);
+        AllyPoint.Instance.holder.cards.Remove(card);
+    }
+
+    public void destroyEvidence()
+    {
+        skillHiddenCard.Clear();
     }
     
 }

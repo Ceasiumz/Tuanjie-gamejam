@@ -120,6 +120,7 @@ public class AllyPoint : MonoBehaviour
         //技能判定后重新判断血量
         if (GamePointBoard.Instance.currentHealth <= 0)
         {
+            DynamicEventBus.Publish("RoundEndEvent");
             Restart();
         }
     }
@@ -130,6 +131,8 @@ public class AllyPoint : MonoBehaviour
         {
             // 敌人死亡时选择下一个敌人
             Debug.Log("Enemy Dead");
+            DynamicEventBus.Publish("RoundEndEvent");
+            GamePointBoard.Instance.skillChouseNum = 1;
             eA.NextEnemy();
             DrawOutEvent.Invoke();
             holder.DiscoverCardDeck();
@@ -159,7 +162,7 @@ public class AllyPoint : MonoBehaviour
     public void EnemyAttack()
     {
         DynamicEventBus.Publish("BeforeEnemyAttackEvent");
-        GamePointBoard.Instance.currentHealth -= Mathf.RoundToInt((GamePointBoard.Instance.enemyAttack-GamePointBoard.Instance.injuryReduction)*GamePointBoard.Instance.injuryMultiple) ;
+        GamePointBoard.Instance.currentHealth -= Mathf.Max(1,Mathf.RoundToInt((GamePointBoard.Instance.enemyAttack-GamePointBoard.Instance.injuryReduction)*GamePointBoard.Instance.injuryMultiple))  ;
         DynamicEventBus.Publish("AfterEnemyAttackEvent");
         GamePointBoard.Instance.ResetDamageMultipl();
     }

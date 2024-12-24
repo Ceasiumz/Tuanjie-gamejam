@@ -122,7 +122,6 @@ public class HorizontalCardHolder : MonoBehaviour
         if (cardDack.cardsDeck.Count == 0)
         {
             cardDack.RecoverDiscard();
-            cardDack.ShuffleCards(cardDack.cardsDeck);
         }
         CardString cardStruct = cardDack.DrawCard();
         string cardPoint = cardStruct.point;
@@ -170,7 +169,6 @@ public class HorizontalCardHolder : MonoBehaviour
         if (cardDack.cardsDeck.Count == 0)
         {
             cardDack.RecoverDiscard();
-            cardDack.ShuffleCards(cardDack.cardsDeck);
         }
     }
 
@@ -375,6 +373,5 @@ public class HorizontalCardHolder : MonoBehaviour
     public void DiscoverCardDeck()//重置牌组并洗牌
     {
         cardDack.RecoverDiscard();
-        cardDack.ShuffleCards(cardDack.cardsDeck);
     }
 }

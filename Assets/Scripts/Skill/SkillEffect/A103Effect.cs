@@ -29,4 +29,9 @@ public class A103Effect : BaseEffect
         GamePointBoard.Instance.currentHealth = 1;
         SkillPool.Instance.RemovePlayerSkillByID("A103");
     }
+
+    public override void Interrupt()
+    {
+        
+    }
 }

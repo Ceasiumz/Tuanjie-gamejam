@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using CardDeck;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SkillEffect", menuName = "Data/SkillEffect/Normal/A113Effect")]
-public class A113Effect : BaseEffect
+[CreateAssetMenu(fileName = "SkillEffect", menuName = "Data/SkillEffect/G2/A2105Effect")]
+public class A2105Effect : BaseEffect
 {
     public override void subscribeEvent()
     {
@@ -17,12 +18,18 @@ public class A113Effect : BaseEffect
 
     public override void Execute()
     {
+        //TODO:跳过抽牌阶段
+        //生成随机数1-6
+        int dice = Random.Range(1, 7);
+        //TODO:印牌
+        
+        
         
     }
 
     public override void ImmediateTrigger()
     {
-        GamePointBoard.Instance.attack += (2 + Mathf.RoundToInt(GamePointBoard.Instance.attack * 0.2f));
+        
     }
 
     public override void Interrupt()

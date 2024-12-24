@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:yousandi.cn,2023:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f3ed9c03abd48b38caab3dcfe156b28, type: 3}
+  m_Name: A107
+  m_EditorClassIdentifier: 
+  skillID: A107
+  skillName: "\u8896\u53E3\u85CF\u724C"
+  isOneTime: 1
+  isActive: 1
+  isRepeatable: 0
+  isUsedReturn: 1
+  canUse: 0
+  isHidden: 0
+  remark: "\u4F60\u53EF\u4EE5\u85CF\u8D77\u4F60\u624B\u724C\u4E2D\u7684\u4E00\u5F20\u724C\uFF08\u7C7B\u4F3C\u5F03\u724C\uFF09\uFF0C"
+  skillEffect:
+  - {fileID: 11400000, guid: f396c5fab3de73047a1de8e28939a315, type: 2}
