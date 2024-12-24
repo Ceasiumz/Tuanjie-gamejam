@@ -215,10 +215,33 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         selected = !selected;
         SelectEvent.Invoke(this, selected);
 
-        if (selected)
-            transform.localPosition += (cardVisual.transform.up * selectionOffset);
-        else
-            transform.localPosition = Vector3.zero;
+        if (MouseManager.Instance.isReleaseSkill)
+        {
+            if (isEnemy)
+            {
+                if (!MouseManager.Instance.CanSelectEnemyCard)
+                {
+                    return;
+                }
+            }
+            if (selected)
+            {// 如果选中了卡牌，就把卡牌加入mouseManager里的selectedCards列表
+             //如果是释放技能就把卡牌加入mouseManager里的selectedCards列表
+                if (MouseManager.Instance.selectedCards.Count < MouseManager.Instance.selectCardNum)
+                {
+                    transform.localPosition += cardVisual.transform.up * selectionOffset;
+                    if (true)
+                    {
+                        MouseManager.Instance.selectedCards.Add(this);
+                    }
+                }
+            }
+            else// 如果取消选中卡牌，就把卡牌从mouseManager里的selectedCards列表移除
+            {
+                transform.localPosition = Vector3.zero;
+                MouseManager.Instance.selectedCards.Remove(this);
+            }
+        }
     }
 
     public void Deselect()

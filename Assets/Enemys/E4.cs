@@ -45,6 +45,4 @@ public class E4 : EnemyBase
         }
         TurnManager.Instance.EnemyTurn_end();
     }
-  
-
 }

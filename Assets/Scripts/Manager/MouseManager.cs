@@ -8,7 +8,7 @@ public class MouseManager : MonoBehaviour
     //是否在释放技能
     public bool isReleaseSkill=false;
     //是否可以选择敌人卡牌
-    public bool isSelectEnemyCard=false;
+    public bool CanSelectEnemyCard=false;
     //被选择的卡牌
     public List<Card> selectedCards;
     
