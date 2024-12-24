@@ -101,13 +101,24 @@ public class SkillPool : MonoBehaviour
             x.subscribeEvent();
             x.ImmediateTrigger();
         });
+
+        if (skill.skillType == SkillType.Active)
+        {
+            skill.subscribeTurnEvent();
+        }
     }
     
     //玩家技能组移除技能
     public void RemovePlayerSkill(BaseSkill skill)
     {
-        playerSkill.Remove(skill);
         skill.skillEffect.ForEach(x => x.unsubscribeEvent());
+        if (skill.skillType == SkillType.Active)
+        {
+            skill.unsubscribeTurnEvent();
+        }
+        playerSkill.Remove(skill);
+
+        
     }
     
     //执行技能
@@ -152,6 +163,10 @@ public class SkillPool : MonoBehaviour
         //从玩家技能列表中找到id为skillID的技能
         BaseSkill skill = playerSkill.Find(x => x.skillID == skillID);
         skill.skillEffect.ForEach(x => x.unsubscribeEvent());
+        if (skill.skillType == SkillType.Active)
+        {
+            skill.unsubscribeTurnEvent();
+        }
         playerSkill.Remove(skill);
     }
     
@@ -164,26 +179,28 @@ public class SkillPool : MonoBehaviour
     //以下为测试代码 此代码将skillTestPool中技能默认设置为激活
     public void OnEnable()
     {
-        foreach (var skill in skillTestPool)
-        {
-            foreach (var skilleff in skill.skillEffect)
-            {
-                skilleff.subscribeEvent();
-            }
-        }
+        // foreach (var skill in skillTestPool)
+        // {
+        //     foreach (var skilleff in skill.skillEffect)
+        //     {
+        //         skilleff.subscribeEvent();
+        //     }
+        // }
+        AddPlayerSkill(skillTestPool[0]);
         
     }
     
 
     public void OnDisable()
     {
-        foreach (var skill in skillTestPool)
-        {
-            foreach (var skilleff in skill.skillEffect)
-            {
-                skilleff.unsubscribeEvent();
-            }
-        }
+        // foreach (var skill in skillTestPool)
+        // {
+        //     foreach (var skilleff in skill.skillEffect)
+        //     {
+        //         skilleff.unsubscribeEvent();
+        //     }
+        // }
+        RemovePlayerSkill(skillTestPool[0]);
     }
     
 

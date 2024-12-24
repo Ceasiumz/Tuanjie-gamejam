@@ -20,7 +20,7 @@ public  class BaseSkill : ScriptableObject
     //技能使用后是否回到技能池
     public bool isUsedReturn;
 
-    public bool canUse;
+    public bool canUse=false;
 
     //是否禁止玩家主动获得
     public bool isHidden;
@@ -33,15 +33,51 @@ public  class BaseSkill : ScriptableObject
     {
         if (skillType == SkillType.Active)
         {
+            //抽卡前释放技能 
             if (skillActivePhase == SkillActivePhase.BeforeDrawCard)
             {
-                TurnManager.Instance.PlayerTurn_Start.AddListener(canUseSwitch);
+                //在回合开始阶段 切换技能可释放
+                TurnManager.Instance.PlayerTurn_Start.AddListener(canUseSwitchToTrue);
+                TurnManager.Instance.PlayerTurn_Draw.AddListener(canUseSwitchToFalse);
+                TurnManager.Instance.PlayerTurn_Suspend.AddListener(canUseSwitchToFalse);
+            }
+
+            if (skillActivePhase == SkillActivePhase.AfterDrawCard)
+            {
+                TurnManager.Instance.PlayerTurn_Draw.AddListener(canUseSwitchToTrue);
+                TurnManager.Instance.PlayerTurn_Suspend.AddListener(canUseSwitchToTrue);
+                TurnManager.Instance.PlayerTurn_End.AddListener(canUseSwitchToFalse);
             }
         }
 
     }
-    public void canUseSwitch()
+    public void canUseSwitchToTrue()
     {
-        canUse = !canUse;
+        canUse = true;
+    }
+
+    public void canUseSwitchToFalse()
+    {
+        canUse = false;
+    }
+    public void unsubscribeTurnEvent()
+    {
+        if (skillType == SkillType.Active)
+        {
+            //抽卡前释放技能 
+            if (skillActivePhase == SkillActivePhase.BeforeDrawCard)
+            {
+                TurnManager.Instance.PlayerTurn_Start.RemoveListener(canUseSwitchToTrue);
+                TurnManager.Instance.PlayerTurn_Draw.RemoveListener(canUseSwitchToFalse);
+                TurnManager.Instance.PlayerTurn_Suspend.RemoveListener(canUseSwitchToFalse);
+            }
+
+            if (skillActivePhase == SkillActivePhase.AfterDrawCard)
+            {
+                TurnManager.Instance.PlayerTurn_Draw.RemoveListener(canUseSwitchToTrue);
+                TurnManager.Instance.PlayerTurn_Suspend.RemoveListener(canUseSwitchToTrue);
+                TurnManager.Instance.PlayerTurn_End.RemoveListener(canUseSwitchToFalse);
+            }
+        }
     }
 }

@@ -7,12 +7,12 @@ public class A3105Effect : BaseEffect
 {
     public override void subscribeEvent()
     {
-        DynamicEventBus.Subscribe("PlayerTurnStartEvent", EventSkill);
+        TurnManager.Instance.PlayerTurn_Start.AddListener(EventSkill);
     }
 
     public override void unsubscribeEvent()
     {
-        DynamicEventBus.Unsubscribe("PlayerTurnStartEvent", EventSkill);
+        TurnManager.Instance.PlayerTurn_Start.RemoveListener(EventSkill);
     }
 
     public override void Execute()

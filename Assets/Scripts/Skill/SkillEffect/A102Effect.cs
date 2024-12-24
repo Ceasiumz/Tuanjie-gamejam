@@ -7,12 +7,12 @@ public class A102Effect : BaseEffect
 {
     public override void subscribeEvent()
     {
-        DynamicEventBus.Subscribe<List<Card>>("PlayerTurnStartEvent", EventSkill);
+        TurnManager.Instance.PlayerTurn_Start.AddListener(EventSkill);
     }
 
     public override void unsubscribeEvent()
     {
-        DynamicEventBus.Subscribe<List<Card>>("PlayerTurnStartEvent", EventSkill);
+        TurnManager.Instance.PlayerTurn_Start.RemoveListener(EventSkill);
     }
 
     public override void Execute()
@@ -25,31 +25,57 @@ public class A102Effect : BaseEffect
         
     }
 
-    public void EventSkill(List<Card> cards)
+    public void EventSkill()
     {
-        //检查列表中前三项 获取三张牌中最大点数和最小点数
-        if (cards.Count < 3)
-        {
-            Debug.Log("A102Effect:牌数量不足3张");
-        }
-        else
-        {
-            //获取cards中前三张牌里最大点数和最小点数
-            int max = cards[0].points;
-            int min = cards[0].points;
-            for (int i = 1; i < 3; i++)
+        int max=0;
+        int min=15;
+        
+            if(CardDack.Instance.cardsDeck.Count>3)
             {
-                if (cards[i].points > max)
+                //查找下三张牌中最大的点数和最小的点数
+                int i = 0;
+                while (i<3)
                 {
-                    max = cards[i].points;
+                    int temPoint;
+                    switch (CardDack.Instance.cardsDeck[i].point)
+                    {
+                        case "A":
+                            temPoint = 1;
+                            break;
+                        case "J":
+                            temPoint = 11;
+                            break;
+                        case "Q":
+                            temPoint = 12;
+                            break;
+                        case "K":
+                            temPoint = 13;
+                            break;
+                        default:
+                            if (int.TryParse(CardDack.Instance.cardsDeck[i].point, out int parsedPoint))
+                            {
+                                temPoint = parsedPoint;
+                            }
+                            else
+                            {
+                                Debug.LogError($"无法解析牌面点数 {CardDack.Instance.cardsDeck[i].point}，设置默认点数为0" + "技能A102错误");
+                                temPoint = 0;
+                            }
+                            break;
+                    }
+
+                    if (temPoint > max)
+                    {
+                        max=temPoint;
+                    }else if(temPoint<min)
+                    {
+                        min=temPoint;
+                    }
+                    i++;
                 }
-                if (cards[i].points < min)
-                {
-                    min = cards[i].points;
-                }
+                Debug.Log("A102Effect:最大点数" + max + "最小点数" + min);
             }
-            Debug.Log("A102Effect:最大点数" + max + "最小点数" + min);
-        }
+
     }
     
 
