@@ -374,12 +374,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8436a7e3d3df42d7a7058aec5e41a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point: 0
   selectedCard: {fileID: 0}
   hoveredCard: {fileID: 0}
   slotPrefab: {fileID: 3655645598659960977, guid: e99c361e7acdd41f0b904fef6be48fea, type: 3}
   cardsToSpawn: 4
   cards: []
   tweenCardReturn: 1
+  DrawEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  DisCardCompeletedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  DrawButton: {fileID: 0}
+  cardDack: {fileID: 0}
+  discardWaitTime: 0.5
+  isEnemy: 0
 --- !u!114 &176730505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1250,12 +1261,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8436a7e3d3df42d7a7058aec5e41a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point: 0
   selectedCard: {fileID: 0}
   hoveredCard: {fileID: 0}
   slotPrefab: {fileID: 3655645598659960977, guid: e99c361e7acdd41f0b904fef6be48fea, type: 3}
   cardsToSpawn: 8
   cards: []
   tweenCardReturn: 1
+  DrawEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  DisCardCompeletedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  DrawButton: {fileID: 0}
+  cardDack: {fileID: 0}
+  discardWaitTime: 0.5
+  isEnemy: 0
 --- !u!114 &667881469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1354,12 +1376,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8436a7e3d3df42d7a7058aec5e41a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point: 0
   selectedCard: {fileID: 0}
   hoveredCard: {fileID: 0}
   slotPrefab: {fileID: 3655645598659960977, guid: e99c361e7acdd41f0b904fef6be48fea, type: 3}
   cardsToSpawn: 2
   cards: []
   tweenCardReturn: 1
+  DrawEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  DisCardCompeletedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  DrawButton: {fileID: 0}
+  cardDack: {fileID: 0}
+  discardWaitTime: 0.5
+  isEnemy: 0
 --- !u!114 &732881785
 MonoBehaviour:
   m_ObjectHideFlags: 0
