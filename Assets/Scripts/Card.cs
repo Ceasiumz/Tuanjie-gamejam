@@ -63,7 +63,9 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 
         visualHandler = FindObjectOfType<VisualCardsHandler>();
 
-        cardVisual = Instantiate(cardVisualPrefab, visualHandler ? visualHandler.transform : canvas.transform).GetComponent<CardVisual>();
+        cardVisual = Instantiate(cardVisualPrefab, visualHandler ? 
+        visualHandler.transform : CardDack.Instance.transform)
+        .GetComponent<CardVisual>();
         cardVisual.Initialize(this);
         // if (points == 0)
         //     points = Random.Range(startran, 14);
