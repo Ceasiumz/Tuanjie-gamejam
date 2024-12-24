@@ -156,6 +156,7 @@ public class HorizontalCardHolder : MonoBehaviour
         }
 
         card.suit = cardStruct.suit;
+        card.isTreasure= cardStruct.isTreasure;
         card.CardRename(card);
 
         //测试代码

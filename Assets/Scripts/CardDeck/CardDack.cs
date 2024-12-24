@@ -74,6 +74,23 @@ public class CardDack : MonoBehaviour
             cardsPoint[i] = cardsPoint[randomIndex];
             cardsPoint[randomIndex] = temp;
         }
+        //随机选择其中不重复16张将其isTreasure为true
+        int i1 = 0;
+        while ( i1 < 16)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, cardsPoint.Count);
+            CardString temp = cardsPoint[randomIndex];
+            if (temp.isTreasure == false)
+            {
+                temp.isTreasure = true;
+                cardsPoint[randomIndex] = temp;
+                i1++;
+            }
+            else
+            {
+                continue;
+            }
+        }
     }
     
         public CardString DrawCard()

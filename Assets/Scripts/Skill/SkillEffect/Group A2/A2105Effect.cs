@@ -21,9 +21,9 @@ public class A2105Effect : BaseEffect
         //TODO:跳过抽牌阶段
         //生成随机数1-6
         int dice = Random.Range(1, 7);
-        //TODO:印牌
         
-        
+        CardDack.Instance.cardsDeck.Insert(0, new CardString("2", CardSuit.方块));
+        AllyPoint.Instance.holder.DrawCard();
         
     }
 

@@ -20,6 +20,8 @@ public class GamePointBoard : MonoBehaviour
     //玩家是否停牌
     public bool isPlayerSuspension;
     public  int playerCardPoints=0;
+    //玩家是否能发现宝牌
+    public bool canFindTreasure=false;
     //每轮结束后可以获得的技能数
     public int skillChouseNum = 1;
     [Header("Enemy")]

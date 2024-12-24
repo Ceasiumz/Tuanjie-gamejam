@@ -18,6 +18,7 @@ public class A107_1Effect : BaseEffect
     public override void Execute()
     {
         AllyPoint.Instance.holder.cards.Add(GamePointBoard.Instance.GetHiddenCard()[0]);
+        GamePointBoard.Instance.UpdateCardPoints(false, AllyPoint.Instance.holder.cards);
         SkillPool.Instance.RemovePlayerSkillByID("A107-1");
         DynamicEventBus.Unsubscribe("RoundEndEvent",SkillEnd);
     }

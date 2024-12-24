@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f3ed9c03abd48b38caab3dcfe156b28, type: 3}
-  m_Name: A2107
+  m_Name: A3105
   m_EditorClassIdentifier: 
-  skillID: A2107
-  skillName: "\u5C0F\u5B66\u4E8C\u5E74\u7EA7\u6570\u5B66"
+  skillID: A3105
+  skillName: "\u9F99\u5934\u51E4\u5C3E"
   isOneTime: 0
-  isActive: 1
+  isActive: 0
   isRepeatable: 0
   isUsedReturn: 0
   canUse: 0
   isHidden: 0
-  remark: "\u62BD\u724C\u9636\u6BB5\u540E\t\u4E3B\u52A8\t\u4F60\u53EF\u4EE5\u9009\u62E9\u4F60\u7684\u4E24\u5F20\u624B\u724C\uFF0C\u70B9\u6570\u5927\u7684\u624B\u724C\u7684\u70B9\u6570\u53D8\u4E3A
-    \u5176\u70B9\u6570\u51CF\u53BB\u53E6\u4E00\u5F20\u724C\uFF08\u53EF\u4EE5\u4E3A0\uFF09\r\n"
+  remark: "\u62BD\u724C\u9636\u6BB5\u540E\t\n\u4E3B\u52A8/\u88AB\u52A8\t\n\u6E38\u620F\u5F00\u59CB\u65F6\uFF0C\u5C55\u793A\u724C\u5806\u4E2D\u6700\u4E0B\u9762\u7684\u724C\u3002\u53D1\u52A8\u8BE5\u6280\u80FD\u65F6,\u4F60\u53EF\u4EE5\u7528\u4E00\u5F20\u624B\u724C\u4E0E\u4E4B\u4EA4\u6362\r\n"
   skillEffect:
-  - {fileID: 11400000, guid: 1018175282ad01d4b9540d428e6323ac, type: 2}
+  - {fileID: 11400000, guid: 70666a4a4174ac749afef8c064ce9c99, type: 2}

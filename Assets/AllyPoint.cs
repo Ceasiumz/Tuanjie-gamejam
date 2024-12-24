@@ -135,6 +135,7 @@ public class AllyPoint : MonoBehaviour
             GamePointBoard.Instance.skillChouseNum = 1;
             eA.NextEnemy();
             DrawOutEvent.Invoke();
+            //洗牌 拼写错误
             holder.DiscoverCardDeck();
         }
     }

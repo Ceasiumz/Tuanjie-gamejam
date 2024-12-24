@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SkillPool : MonoBehaviour
@@ -52,17 +54,26 @@ public class SkillPool : MonoBehaviour
     //游戏开局时应在技能组池中选择一组技能加入到当局游戏技能池中 通用技能池中技能也应加入到当局游戏技能池中
 
     
-    //从技能池中随机获取三个技能
+    //从技能池中随机获取三个不重复技能
     public List<BaseSkill> GetThreeSkill()
     {
         List<BaseSkill> result = new List<BaseSkill>();
-        if (result.Count < 3)
+        List<BaseSkill> availableSkills = skillPool.Where(skill => !skill.isHidden).ToList();
+
+        if (availableSkills.Count < 3)
         {
-                int index = UnityEngine.Random.Range(0, skillPool.Count);
-                if (!result.Contains(skillPool[index])&&skillPool[index].isHidden==false)
-                {
-                    result.Add(skillPool[index]);
-                }
+            // 如果可用技能少于3个，直接返回所有可用技能
+            return availableSkills;
+        }
+
+        while (result.Count < 3)
+        {
+            int index = UnityEngine.Random.Range(0, availableSkills.Count);
+            BaseSkill skill = availableSkills[index];
+            if (!result.Contains(skill))
+            {
+                result.Add(skill);
+            }
         }
         return result;
     }

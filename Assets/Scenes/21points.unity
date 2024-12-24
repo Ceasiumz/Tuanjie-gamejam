@@ -162,7 +162,8 @@ MonoBehaviour:
   attackMultiple: 0
   injuryMultiple: 1
   isPlayerSuspension: 0
-  cardPoints: 0
+  playerCardPoints: 0
+  canFindTreasure: 0
   skillChouseNum: 1
   enemyMaxHealth: 100
   enemyCurrentHealth: 100
@@ -1487,6 +1488,9 @@ MonoBehaviour:
   cards: []
   tweenCardReturn: 1
   DrawEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  DisCardCompeletedEvent:
     m_PersistentCalls:
       m_Calls: []
   DrawButton: {fileID: 627900029}
@@ -3263,6 +3267,7 @@ MonoBehaviour:
   skillPool: []
   skillGroup:
   - {fileID: 11400000, guid: 9af350d3b60943f46877ae62eb587ee4, type: 2}
+  - {fileID: 11400000, guid: 2461fe21bc7126c49b5c684af2ebd4eb, type: 2}
   playerSkill: []
   skillTestPool:
   - {fileID: 11400000, guid: 4edc1a4b8e2484d4ba9bb3280c1f9f1a, type: 2}
@@ -3837,6 +3842,9 @@ MonoBehaviour:
   cards: []
   tweenCardReturn: 1
   DrawEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  DisCardCompeletedEvent:
     m_PersistentCalls:
       m_Calls: []
   DrawButton: {fileID: 1687660128}

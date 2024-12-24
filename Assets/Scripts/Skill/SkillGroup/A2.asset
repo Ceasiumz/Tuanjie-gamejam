@@ -16,3 +16,9 @@ MonoBehaviour:
   skillGroupName: "\u96C6\u7FA4\u6218\u672F"
   skills:
   - {fileID: 11400000, guid: 8758ca229ab442347a55a365eb112b15, type: 2}
+  - {fileID: 11400000, guid: 96842e93ef2d93d438d4221e2ef7cf0b, type: 2}
+  - {fileID: 11400000, guid: 609c1fa065198db419a4ac9e21d3e0dc, type: 2}
+  - {fileID: 11400000, guid: d9b22e21f707ada48b88955755418e5b, type: 2}
+  - {fileID: 11400000, guid: 9eeb278eb9a00fc478815f6e68f14dc1, type: 2}
+  - {fileID: 11400000, guid: ba554ef7e9c3be746a043a7cbe19a874, type: 2}
+  - {fileID: 11400000, guid: 14fb2c8d7229fa6478553973fe8376d2, type: 2}

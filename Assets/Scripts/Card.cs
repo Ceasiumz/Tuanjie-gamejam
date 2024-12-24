@@ -28,6 +28,7 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 
     public int points = 0;
     public CardSuit suit;
+    public bool isTreasure;
 
     [Header("Visual")]
     [SerializeField] private GameObject cardVisualPrefab;

@@ -20,5 +20,7 @@ MonoBehaviour:
   isUsedReturn: 1
   canUse: 0
   isHidden: 0
-  remark: 
-  skillEffect: []
+  remark: "\u62BD\u724C\u9636\u6BB5\u524D\t\u62BD\u724C\u7C7B\u6548\u679C\uFF0C\u4E00\u6B21\u6027\u6280\u80FD\t\u4F60\u53EF\u4EE5\u9009\u62E9\u653E\u5F03\u62BD\u724C
+    \n\u800C\u662F\u6295\u63B7\u4E00\u679A\u9AB0\u5B50\u4F5C\u4E3A\u4EE3\u66FF\uFF0C\u83B7\u53D6\u4E00\u5F20\u548C\u9AB0\u5B50\u6570\u503C\u76F8\u7B49\u7684\u8349\u82B1\u724C\r\n"
+  skillEffect:
+  - {fileID: 11400000, guid: b2a0916538626944c8300386dd272cc2, type: 2}
