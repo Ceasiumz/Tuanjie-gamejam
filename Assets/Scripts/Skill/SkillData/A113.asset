@@ -23,4 +23,4 @@ MonoBehaviour:
   isHidden: 0
   remark: "\u9009\u62E9\u540E\u7ACB\u523B\u751F\u6548\t\t\n\u589E\u52A02+\u5F53\u524D\u653B\u51FB\u529B10%\u7684\u653B\u51FB\u529B\r\n"
   skillEffect:
-  - {fileID: 11400000, guid: ea2705c016a2cba4dac350a4e4dd7825, type: 2}
+  - {fileID: 11400000, guid: 4b15acc3996a0e44face8bdf18073a46, type: 2}

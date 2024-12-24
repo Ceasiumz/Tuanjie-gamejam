@@ -159,7 +159,7 @@ MonoBehaviour:
   attack: 10
   attackAddition: 0
   injuryReduction: 0
-  attackMultiple: 0
+  attackMultiple: 1
   injuryMultiple: 1
   isPlayerSuspension: 0
   playerCardPoints: 0
@@ -4018,7 +4018,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2461fe21bc7126c49b5c684af2ebd4eb, type: 2}
   playerSkill: []
   skillTestPool:
-  - {fileID: 11400000, guid: 4edc1a4b8e2484d4ba9bb3280c1f9f1a, type: 2}
+  - {fileID: 11400000, guid: 609c1fa065198db419a4ac9e21d3e0dc, type: 2}
 --- !u!4 &1500802446
 Transform:
   m_ObjectHideFlags: 0

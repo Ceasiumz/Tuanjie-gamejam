@@ -8,11 +8,12 @@ public class A102Effect : BaseEffect
     public override void subscribeEvent()
     {
         TurnManager.Instance.PlayerTurn_Start.AddListener(EventSkill);
+        Debug.Log("技能事件订阅");
     }
 
     public override void unsubscribeEvent()
     {
-        TurnManager.Instance.PlayerTurn_Start.RemoveListener(EventSkill);
+        // TurnManager.Instance.PlayerTurn_Start.RemoveListener(EventSkill);
     }
 
     public override void Execute()
@@ -43,13 +44,13 @@ public class A102Effect : BaseEffect
                             temPoint = 1;
                             break;
                         case "J":
-                            temPoint = 11;
+                            temPoint = 10;
                             break;
                         case "Q":
-                            temPoint = 12;
+                            temPoint = 10;
                             break;
                         case "K":
-                            temPoint = 13;
+                            temPoint = 10;
                             break;
                         default:
                             if (int.TryParse(CardDack.Instance.cardsDeck[i].point, out int parsedPoint))
@@ -63,11 +64,12 @@ public class A102Effect : BaseEffect
                             }
                             break;
                     }
-
+                    Debug.Log("A102本次点数"+temPoint);
                     if (temPoint > max)
                     {
                         max=temPoint;
-                    }else if(temPoint<min)
+                    }
+                    if(temPoint<min)
                     {
                         min=temPoint;
                     }

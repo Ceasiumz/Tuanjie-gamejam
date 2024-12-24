@@ -161,7 +161,10 @@ public class HorizontalCardHolder : MonoBehaviour
 
         //测试代码
         //技能触发 抽卡后触发技能 传入参数为抽取到的卡牌
-        DynamicEventBus.Publish("AfterDrawCardSettle", card);
+        if (!isEnemy)
+        {
+            DynamicEventBus.Publish("AfterDrawCardSettle", card);
+        }
         
         GamePointBoard.Instance.UpdateCardPoints(isEnemy, cards);
 

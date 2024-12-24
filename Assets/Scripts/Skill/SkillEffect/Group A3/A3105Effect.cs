@@ -12,7 +12,7 @@ public class A3105Effect : BaseEffect
 
     public override void unsubscribeEvent()
     {
-        TurnManager.Instance.PlayerTurn_Start.RemoveListener(EventSkill);
+        // TurnManager.Instance.PlayerTurn_Start.RemoveListener(EventSkill);
     }
 
     public override void Execute()

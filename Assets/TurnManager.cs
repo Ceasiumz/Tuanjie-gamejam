@@ -27,6 +27,7 @@ public class TurnManager : MonoBehaviour
             return _instance;
         }
     }
+
     public UnityEvent PlayerTurn_Start;
     public UnityEvent PlayerTurn_Draw;
     public UnityEvent PlayerTurn_Suspend;
@@ -159,5 +160,18 @@ public class TurnManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void OnDestroy()
+    {
+        Debug.Log("TurnManager OnDestroy");
+        PlayerTurn_Start.RemoveAllListeners();
+        PlayerTurn_Draw.RemoveAllListeners();
+        PlayerTurn_Suspend.RemoveAllListeners();
+        PlayerTurn_End.RemoveAllListeners();
+        EnemyTurn_Start.RemoveAllListeners();
+        EnemyTurn_Draw.RemoveAllListeners();
+        EnemyTurn_Suspend.RemoveAllListeners();
+        EnemyTurn_End.RemoveAllListeners();
     }
 }

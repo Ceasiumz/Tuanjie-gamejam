@@ -121,6 +121,8 @@ public class AllyPoint : MonoBehaviour
         if (GamePointBoard.Instance.currentHealth <= 0)
         {
             DynamicEventBus.Publish("RoundEndEvent");
+            Debug.Log("玩家死亡");
+            SkillPool.Instance.RoundStart();
             Restart();
         }
     }
@@ -141,20 +143,17 @@ public class AllyPoint : MonoBehaviour
     }
     public void Restart()// latecheck if the ally points are over lim
     {
-        if (allyPoints > lim)
-        {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-        else
-        {
-            holder.DrawButton.SetActive(true);
-        }
     }
 
     //玩家小局获胜对敌人造成伤害
     public void PlayerAttack()
     {
         DynamicEventBus.Publish("BeforePlayerAttackEvent");
+        Debug.Log("本次攻击力"+GamePointBoard.Instance.attack);
+        Debug.Log("本次攻击力加成"+GamePointBoard.Instance.attackAddition);
+        Debug.Log("本次攻击力加成倍率"+GamePointBoard.Instance.attackMultiple);
+        Debug.Log("本次造成伤害"+Mathf.RoundToInt((GamePointBoard.Instance.attack+GamePointBoard.Instance.attackAddition)*GamePointBoard.Instance.attackMultiple));
         GamePointBoard.Instance.enemyCurrentHealth -= Mathf.RoundToInt((GamePointBoard.Instance.attack+GamePointBoard.Instance.attackAddition)*GamePointBoard.Instance.attackMultiple); 
         DynamicEventBus.Publish("AfterPlayerAttackEvent");
         GamePointBoard.Instance.ResetDamageMultipl();
@@ -163,6 +162,7 @@ public class AllyPoint : MonoBehaviour
     public void EnemyAttack()
     {
         DynamicEventBus.Publish("BeforeEnemyAttackEvent");
+        Debug.Log("本次伤害减免"+GamePointBoard.Instance.injuryReduction);
         GamePointBoard.Instance.currentHealth -= Mathf.Max(1,Mathf.RoundToInt((GamePointBoard.Instance.enemyAttack-GamePointBoard.Instance.injuryReduction)*GamePointBoard.Instance.injuryMultiple))  ;
         DynamicEventBus.Publish("AfterEnemyAttackEvent");
         GamePointBoard.Instance.ResetDamageMultipl();

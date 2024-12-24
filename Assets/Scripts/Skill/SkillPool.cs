@@ -117,7 +117,6 @@ public class SkillPool : MonoBehaviour
             skill.unsubscribeTurnEvent();
         }
         playerSkill.Remove(skill);
-
         
     }
     
@@ -179,6 +178,7 @@ public class SkillPool : MonoBehaviour
     //以下为测试代码 此代码将skillTestPool中技能默认设置为激活
     public void OnEnable()
     {
+        InitSkillPool("A2");
         // foreach (var skill in skillTestPool)
         // {
         //     foreach (var skilleff in skill.skillEffect)
@@ -202,7 +202,16 @@ public class SkillPool : MonoBehaviour
         // }
         RemovePlayerSkill(skillTestPool[0]);
     }
-    
 
+    public void RoundStart()
+    {
+        
+        for (int i = playerSkill.Count - 1; i >= 0; i--)
+        {
+            RemovePlayerSkill(playerSkill[i]);
+        }
+
+        InitSkillPool("A2");
+    }
 
 }

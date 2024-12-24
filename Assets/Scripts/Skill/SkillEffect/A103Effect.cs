@@ -28,6 +28,7 @@ public class A103Effect : BaseEffect
     {
         GamePointBoard.Instance.currentHealth = 1;
         SkillPool.Instance.RemovePlayerSkillByID("A103");
+        Debug.Log("技能触发回复生命值A103");
     }
 
     public override void Interrupt()

@@ -21,5 +21,6 @@ MonoBehaviour:
   isUsedReturn: 0
   canUse: 0
   isHidden: 0
-  remark: 
-  skillEffect: []
+  remark: "\u4E0B\u6B21\u4E00\u6B21\u80DC\u5229\u65F6\uFF0C\u53EF\u4EE5\u9009\u62E9\u4E24\u6B21\u6280\u80FD"
+  skillEffect:
+  - {fileID: 11400000, guid: 88ed3396e4ace9f4bb00ba7d528eb282, type: 2}
