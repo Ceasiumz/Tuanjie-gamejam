@@ -49,10 +49,14 @@ public abstract class EnemyBase : MonoBehaviour
     }
     
     protected virtual void CowardDraw(){
+        StartCoroutine(WaitingCowardDraw());
+    }
+    IEnumerator WaitingCowardDraw(){
         if (GamePointBoard.Instance.enemyCardPoints < maxPointsInHand)
         {
             //Debug.Log("E0 Drawed");
-            eA.enemyHolder.DrawCard();
+            //eA.enemyHolder.DrawCard();
+            yield return StartCoroutine(eA.enemyHolder.WaitForInstantiationAndProcessCard(0));
         }else{
             TurnManager.Instance.EnemyTurn_suspend();
         }

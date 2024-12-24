@@ -75,7 +75,7 @@ public class HorizontalCardHolder : MonoBehaviour
         StartCoroutine(WaitForInstantiationAndProcessCard(0));
     }
 
-    private IEnumerator WaitForInstantiationAndProcessCard(int hidenFlag)
+    public IEnumerator WaitForInstantiationAndProcessCard(int hidenFlag)
     {
         var op = InstantiateAsync(slotPrefab, transform);
         yield return op;
@@ -236,7 +236,10 @@ public class HorizontalCardHolder : MonoBehaviour
         if (selectedCard == null)
             return;
 
-        selectedCard.transform.DOLocalMove(selectedCard.selected ? new Vector3(0, selectedCard.selectionOffset, 0) : Vector3.zero, tweenCardReturn ? .15f : 0).SetEase(Ease.OutBack);
+        selectedCard.transform.DOLocalMove(selectedCard.selected ? 
+        new Vector3(0, selectedCard.selectionOffset, 0) 
+        : Vector3.zero, tweenCardReturn ? .15f : 0)
+        .SetEase(Ease.OutBack);
 
         rect.sizeDelta += Vector2.right;
         rect.sizeDelta -= Vector2.right;
