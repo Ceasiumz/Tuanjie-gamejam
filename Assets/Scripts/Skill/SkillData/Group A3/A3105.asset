@@ -15,7 +15,8 @@ MonoBehaviour:
   skillID: A3105
   skillName: "\u9F99\u5934\u51E4\u5C3E"
   isOneTime: 0
-  isActive: 0
+  skillType: 0
+  skillActivePhase: 0
   isRepeatable: 0
   isUsedReturn: 0
   canUse: 0

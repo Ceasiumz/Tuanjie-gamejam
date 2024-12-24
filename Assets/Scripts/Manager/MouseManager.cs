@@ -52,6 +52,7 @@ public class MouseManager : MonoBehaviour
         
         DynamicEventBus.Publish("SkillExecute", cards);
         isReleaseSkill = false;
+        selectedCards.Clear();
     }
     // Update is called once per frame
     void Update()

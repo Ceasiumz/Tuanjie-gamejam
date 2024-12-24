@@ -18,7 +18,3 @@ namespace CardDeck
         }
 }
 
-    public enum CardSuit
-    {
-        黑桃,红桃,梅花,方块
-    }

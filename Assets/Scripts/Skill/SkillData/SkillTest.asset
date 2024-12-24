@@ -12,8 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f3ed9c03abd48b38caab3dcfe156b28, type: 3}
   m_Name: SkillTest
   m_EditorClassIdentifier: 
+  skillID: 
   skillName: "\u6D4B\u8BD5\u6280\u80FD"
   isOneTime: 0
-  isActive: 0
+  skillType: 1
+  skillActivePhase: 0
+  isRepeatable: 0
+  isUsedReturn: 0
+  canUse: 0
+  isHidden: 0
+  remark: 
   skillEffect:
   - {fileID: 11400000, guid: 270b871ea79b75d4699c668f277a0e8f, type: 2}

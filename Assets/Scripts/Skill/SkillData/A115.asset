@@ -15,7 +15,8 @@ MonoBehaviour:
   skillID: A115
   skillName: "\u5927\u80C6\u65E0\u654C\uFF01"
   isOneTime: 0
-  isActive: 0
+  skillType: 1
+  skillActivePhase: 0
   isRepeatable: 1
   isUsedReturn: 0
   canUse: 0

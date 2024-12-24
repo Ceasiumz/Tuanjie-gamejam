@@ -15,9 +15,11 @@ MonoBehaviour:
   skillID: A114
   skillName: "\u533B\u7597\u4FDD\u9669"
   isOneTime: 0
-  isActive: 0
+  skillType: 1
+  skillActivePhase: 0
   isRepeatable: 1
   isUsedReturn: 0
   canUse: 0
+  isHidden: 0
   remark: "\u9009\u62E9\u540E\u7ACB\u523B\u751F\u6548\t\n\u4F60\u7684\u751F\u547D\u503C\u6062\u590D\u4F60\u6700\u5927\u62E5\u6709\u8FC7\u7684\u751F\u547D\u503C\u768420%\r\n"
   skillEffect: []

@@ -15,10 +15,12 @@ MonoBehaviour:
   skillID: A103
   skillName: "\u5F71\u901D\u4E8C\u5EA6"
   isOneTime: 1
-  isActive: 0
+  skillType: 1
+  skillActivePhase: 0
   isRepeatable: 0
   isUsedReturn: 0
   canUse: 0
+  isHidden: 0
   remark: "\u5931\u53BB\u6240\u6709\u751F\u547D\u65F6\n\u4E00\u6B21\u6027\u6280\u80FD\uFF0C\u7528\u5B8C\u6C38\u4E45\u4E22\u5931\n\u5C06\u751F\u547D\u6062\u590D\u81F31\u70B9\r"
   skillEffect:
   - {fileID: 11400000, guid: ea2705c016a2cba4dac350a4e4dd7825, type: 2}

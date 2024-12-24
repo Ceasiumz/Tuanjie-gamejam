@@ -38,4 +38,5 @@ public class A106Effect : BaseEffect
     {
         DynamicEventBus.Unsubscribe<List<Card>>("SkillExecute", SkillExecute);
     }
+    
 }
