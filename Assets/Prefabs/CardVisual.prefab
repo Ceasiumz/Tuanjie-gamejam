@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b32341ba419e92418c64e3df3c73ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteObject: {fileID: 0}
 --- !u!1 &2017949772597159594
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +321,7 @@ GameObject:
   - component: {fileID: 7994647478966201829}
   - component: {fileID: 4132845374223140069}
   - component: {fileID: 404130344431792101}
+  - component: {fileID: 7324312840354882230}
   m_Layer: 5
   m_HasEditorInfo: 1
   m_Name: CardVisual
@@ -396,6 +398,7 @@ MonoBehaviour:
   spriteObject: {fileID: 1145312962996155630}
   sprite: {fileID: 7697484841366769644}
   deck: {fileID: 0}
+  cardFace: {fileID: 0}
   isFree: 1
 --- !u!223 &4132845374223140069
 Canvas:
@@ -432,6 +435,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &7324312840354882230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7310339964073049012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b32341ba419e92418c64e3df3c73ad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteObject: {fileID: 1145312962996155630}
 --- !u!1 &7776906384507536122
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +458,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3743081675295471022}
   - component: {fileID: 3915193809771448804}
-  - component: {fileID: 7037688952977212046}
   - component: {fileID: 4260703687906574779}
   m_Layer: 5
   m_HasEditorInfo: 1
@@ -479,40 +494,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7776906384507536122}
   m_CullTransparentMesh: 1
---- !u!114 &7037688952977212046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7776906384507536122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 0
 --- !u!114 &4260703687906574779
 MonoBehaviour:
   m_ObjectHideFlags: 0

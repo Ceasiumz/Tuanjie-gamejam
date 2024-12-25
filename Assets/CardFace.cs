@@ -3,11 +3,13 @@ using UnityEngine.UI;
 
 public class CardFace : MonoBehaviour
 {
-    private Image cardImage;
-
-    private void Awake()
+    public GameObject spriteObject;
+    private Image sprite;
+    private void Start()
     {
-        cardImage = GetComponent<Image>();
+        if(spriteObject != null){
+            sprite = spriteObject.GetComponent<Image>();
+        }
     }
 
     public void SetCardFace(int points, CardSuit suit)
@@ -25,7 +27,7 @@ public class CardFace : MonoBehaviour
         if (cardSprite!= null)
         {
             // 将CardFace的Image组件的SourceImage属性替换为加载到的图片
-            cardImage.sprite = cardSprite;
+            sprite.sprite = cardSprite;
         }
         else
         {

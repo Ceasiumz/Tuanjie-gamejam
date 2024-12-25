@@ -89,10 +89,10 @@ public class CardVisual : MonoBehaviour
         }else{
             isFree = true;
         }
-        //StartCoroutine(CardFaceLoad());
+        StartCoroutine(CardFaceLoad());
     }
     IEnumerator CardFaceLoad(){
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         cardFace.SetCardFace(parentCard.points, parentCard.suit);
     }
 
