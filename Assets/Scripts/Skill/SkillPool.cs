@@ -79,11 +79,14 @@ public class SkillPool : MonoBehaviour
     }
     
     //初始化本局游戏技能池
-    public void InitSkillPool(String skillGroupID)
+    public void InitSkillPool()
     {
+        string skillGroupID = "A2";
+        string skillGroupID2= "A3";
         skillPool = new List<BaseSkill>();
         skillPool.AddRange(normalSkill);
         skillPool.AddRange(skillGroup.Find(x => x.skillGroupId == skillGroupID).skills);
+        skillPool.AddRange(skillGroup.Find(x => x.skillGroupId == skillGroupID2).skills);
     }
     
     //玩家技能组添加技能
@@ -178,7 +181,7 @@ public class SkillPool : MonoBehaviour
     //以下为测试代码 此代码将skillTestPool中技能默认设置为激活
     public void OnEnable()
     {
-        InitSkillPool("A2");
+        InitSkillPool();
         // foreach (var skill in skillTestPool)
         // {
         //     foreach (var skilleff in skill.skillEffect)
@@ -211,7 +214,7 @@ public class SkillPool : MonoBehaviour
             RemovePlayerSkill(playerSkill[i]);
         }
 
-        InitSkillPool("A2");
+        InitSkillPool();
     }
 
 }

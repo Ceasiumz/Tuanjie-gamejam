@@ -4253,20 +4253,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ccb1e941fd423a349aa9802d23fdd448, type: 2}
   - {fileID: 11400000, guid: 3eefa4ca29fc84147be009e0fd8558f1, type: 2}
   - {fileID: 11400000, guid: c276b11d711ffbd468e1869d1616d1b3, type: 2}
-  - {fileID: 11400000, guid: abc819e9e473f5549a2034f885223626, type: 2}
-  - {fileID: 11400000, guid: 3716f2c0f96651f488992aafe6b3811b, type: 2}
   - {fileID: 11400000, guid: 1869498ef11f6ca418f12f51ea96a90b, type: 2}
   - {fileID: 11400000, guid: 859ac242d54c99b46ab0152c55ed8a6d, type: 2}
   - {fileID: 11400000, guid: c9944c6d607b86647ba101d2dea75c72, type: 2}
   - {fileID: 11400000, guid: 2042616e4caffad47a91a390bef867cd, type: 2}
-  - {fileID: 11400000, guid: e3f4346e8b6cdad4587c5047d4a79a6f, type: 2}
   skillPool: []
   skillGroup:
   - {fileID: 11400000, guid: 9af350d3b60943f46877ae62eb587ee4, type: 2}
   - {fileID: 11400000, guid: 2461fe21bc7126c49b5c684af2ebd4eb, type: 2}
   playerSkill: []
-  skillTestPool:
-  - {fileID: 11400000, guid: f9ec4f479898d214cab2f4a5f59f67a3, type: 2}
+  skillTestPool: []
 --- !u!4 &1500802446
 Transform:
   m_ObjectHideFlags: 0
