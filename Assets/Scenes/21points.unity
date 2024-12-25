@@ -2491,7 +2491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnCount: 0
-  PlayersuspendButton: {fileID: 305481363}
+  PlayersuspendButton: {fileID: 815142840}
   EnemysuspendButton: {fileID: 1279589882}
   playerHolder: {fileID: 667881467}
   PlayerTurn_Start:
