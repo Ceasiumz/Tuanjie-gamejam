@@ -626,7 +626,7 @@ GameObject:
   - component: {fileID: 305481365}
   m_Layer: 5
   m_HasEditorInfo: 1
-  m_Name: Player End Button
+  m_Name: 'PlayerSuspendButton '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1450,9 +1450,9 @@ RectTransform:
   - {fileID: 1946650275}
   m_Father: {fileID: 2074635280}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -770.41, y: -331.64}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 200.59003, y: 208.35999}
   m_SizeDelta: {x: 254, y: 254}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &650068902
@@ -1817,8 +1817,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -437.04, y: -18}
-  m_SizeDelta: {x: 189.3, y: 200}
+  m_AnchoredPosition: {x: -437.04004, y: -18}
+  m_SizeDelta: {x: 191.30005, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &751793786
 GameObject:
@@ -2452,7 +2452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnCount: 0
-  PlayersuspendButton: {fileID: 815142840}
+  PlayersuspendButton: {fileID: 305481363}
   EnemysuspendButton: {fileID: 1279589882}
   playerHolder: {fileID: 667881467}
   PlayerTurn_Start:
@@ -2935,10 +2935,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 751470574}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 118.300026, y: -95}
-  m_SizeDelta: {x: 142, y: 190}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 23.800049, y: 5}
+  m_SizeDelta: {x: -47, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1120175098
 MonoBehaviour:
@@ -3111,7 +3111,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -524.91, y: 259.05}
-  m_SizeDelta: {x: 158.51, y: 179.75}
+  m_SizeDelta: {x: 158.51001, y: 179.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1231140356
 MonoBehaviour:
@@ -4137,9 +4137,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -47.704834, y: -18}
-  m_SizeDelta: {x: 70.390015, y: 710.22}
-  m_Pivot: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -96.400024, y: -18}
+  m_SizeDelta: {x: 69.390015, y: 710.22}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1470956517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5576,9 +5576,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 650068901}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 126.99994, y: 126.99997}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 126.99994, y: -0.000030517578}
   m_SizeDelta: {x: 254, y: 254}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1990458040
@@ -5722,7 +5722,7 @@ Transform:
   m_GameObject: {fileID: 2004274446}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.32, y: -0.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
