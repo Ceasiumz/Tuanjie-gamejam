@@ -20,7 +20,8 @@ public class AllyPoint : MonoBehaviour
     public HorizontalCardHolder ememyHolder;
     public UnityEvent DrawOutEvent;
     Text text;
-
+    public Text ScoreText;
+    public Text Kills;
     private void Awake()
     {
         eA = FindObjectOfType<EnemyAchive>();
@@ -53,6 +54,7 @@ public class AllyPoint : MonoBehaviour
         if (isEnemy)
         {
             PlayerAttack();
+            ScoreAdd();
         }
         else
         {
@@ -73,6 +75,7 @@ public class AllyPoint : MonoBehaviour
         if (GamePointBoard.Instance.playerCardPoints > GamePointBoard.Instance.enemyCardPoints)
         {
             PlayerAttack();
+            ScoreAdd();
         }
         else if (GamePointBoard.Instance.playerCardPoints < GamePointBoard.Instance.enemyCardPoints)//玩家失败
         {
@@ -101,6 +104,7 @@ public class AllyPoint : MonoBehaviour
         else//玩家获胜
         {
             PlayerAttack();
+            ScoreAdd();
         }
         DrawOutEvent.Invoke();
         GamePointBoard.Instance.ClearCardPoints();
@@ -133,6 +137,7 @@ public class AllyPoint : MonoBehaviour
         {
             // 敌人死亡时选择下一个敌人
             Debug.Log("Enemy Dead");
+            KillsAdd();
             DynamicEventBus.Publish("RoundEndEvent");
             GamePointBoard.Instance.skillChouseNum = 1;
             eA.NextEnemy();
@@ -171,5 +176,15 @@ public class AllyPoint : MonoBehaviour
     public void AddPoints(Card card)
     {
 
+    }
+    void ScoreAdd()
+    {
+        ScoreText.text += 10;
+        Debug.Log("1");
+    }
+    void KillsAdd()
+    {
+        Kills.text += 1;
+        Debug.Log("2");
     }
 }
