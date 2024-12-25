@@ -119,7 +119,14 @@ public class SkillPool : MonoBehaviour
         if (GamePointBoard.Instance.skillChouseNum <= 0)
         {
             skillSelectDialog.hideDialog();
-            GamePointBoard.Instance.skillChouseNum = 1;
+            if (GamePointBoard.Instance.skillChouseNum == 2)
+            {
+                GamePointBoard.Instance.skillChouseNum = 2;
+            }
+            else
+            {
+                GamePointBoard.Instance.skillChouseNum = 1;
+            }
         }
         DynamicEventBus.Publish("AddPlayerSkill");
     }
