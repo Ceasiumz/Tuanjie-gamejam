@@ -30,7 +30,9 @@ public class A2104Effect : BaseEffect
         int recountCardPoint = 0;
         foreach (var card in AllyPoint.Instance.holder.cards)
         {
-            card.points = Mathf.Max(0, card.points - playerCardCount);
+            
+            
+            card.points = Mathf.Max(0, card.points - 1);
             recountCardPoint += card.points;
         }
         GamePointBoard.Instance.playerCardPoints=recountCardPoint;
