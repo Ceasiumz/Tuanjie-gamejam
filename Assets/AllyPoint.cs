@@ -191,12 +191,18 @@ public class AllyPoint : MonoBehaviour
     }
     void ScoreAdd()
     {
-        ScoreText.text += 10;
-        Debug.Log("1");
+        int currentScore = string.IsNullOrEmpty(ScoreText.text) ? 0 : int.Parse(ScoreText.text);
+        // 进行分数增加运算
+        currentScore += 10;
+        // 将更新后的数字转换回字符串并赋值给Text组件的text属性，用于显示
+        ScoreText.text = currentScore.ToString();
     }
     void KillsAdd()
     {
-        Kills.text += 1;
-        Debug.Log("2");
+        int currentKills = string.IsNullOrEmpty(Kills.text) ? 0 : int.Parse(Kills.text);
+        // 进行杀敌数增加运算
+        currentKills += 1;
+        // 将更新后的数字转换回字符串赋值给Text组件的text属性以显示
+        Kills.text = currentKills.ToString();
     }
 }
