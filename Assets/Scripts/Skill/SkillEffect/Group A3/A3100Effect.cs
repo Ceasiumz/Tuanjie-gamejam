@@ -7,12 +7,12 @@ public class A3100Effect : BaseEffect
 {
     public override void subscribeEvent()
     {
-        DynamicEventBus.Subscribe("BeforeEnemyAttackEvent", EventSkill);
+        DynamicEventBus.Subscribe("BeforePlayerAttackEvent", EventSkill);
     }
 
     public override void unsubscribeEvent()
     {
-        DynamicEventBus.Unsubscribe("BeforeEnemyAttackEvent", EventSkill);
+        DynamicEventBus.Unsubscribe("BeforePlayerAttackEvent", EventSkill);
     }
 
     public override void Execute()

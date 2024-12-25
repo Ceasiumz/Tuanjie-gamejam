@@ -46,11 +46,12 @@ public class A3107Effect : BaseEffect
         int count = 0;
         foreach (var kvp in cardCount)
         {
-            if (kvp.Value > 2)
+            if (kvp.Value >= 2)
             {
                 count++;
             }
         }
+        Debug.Log("重复卡牌数量：" + count);
         GamePointBoard.Instance.attack+=6*count;
         GamePointBoard.Instance.currentHealth+=8*count;
 

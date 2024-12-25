@@ -127,6 +127,7 @@ public class AllyPoint : MonoBehaviour
             DynamicEventBus.Publish("RoundEndEvent");
             Debug.Log("玩家死亡");
             SkillPool.Instance.RoundStart();
+            GamePointBoard.Instance.resetHealth();
             Restart();
         }
     }

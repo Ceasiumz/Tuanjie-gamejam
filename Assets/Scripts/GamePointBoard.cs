@@ -184,6 +184,12 @@ public class GamePointBoard : MonoBehaviour
         injuryReduction = 0;
         injuryMultiple = 1f;
     }
+
+    public void resetHealth()
+    {
+        currentHealth = maxHealth;
+        attack = 10;
+    }
     
     
     //特殊 技能A107技能 卡牌存放点

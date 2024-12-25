@@ -4266,7 +4266,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2461fe21bc7126c49b5c684af2ebd4eb, type: 2}
   playerSkill: []
   skillTestPool:
-  - {fileID: 11400000, guid: 7a20c0cb8674aba4a861ebb3bea6cc93, type: 2}
+  - {fileID: 11400000, guid: f9ec4f479898d214cab2f4a5f59f67a3, type: 2}
 --- !u!4 &1500802446
 Transform:
   m_ObjectHideFlags: 0
@@ -4342,7 +4342,7 @@ MonoBehaviour:
   enemyHolder: {fileID: 1772936770}
   playerHolder: {fileID: 667881467}
   enemy: {fileID: 0}
-  enemyIndex: 7
+  enemyIndex: 0
 --- !u!1 &1608072349
 GameObject:
   m_ObjectHideFlags: 0
