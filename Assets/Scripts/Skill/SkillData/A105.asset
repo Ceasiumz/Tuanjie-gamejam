@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: A105
   skillName: "\u82E6\u8089"
+  skillImage: {fileID: 0}
   isOneTime: 0
   skillType: 1
   skillActivePhase: 0
@@ -21,6 +22,6 @@ MonoBehaviour:
   isUsedReturn: 0
   canUse: 0
   isHidden: 0
-  remark: "\u88AB\u52A8\t\n\u6BCF\u5F53\u4F60\u5931\u8D25\u800C\u5931\u53BB\u751F\u547D\u503C\u65F6\uFF0C\u4F60\u7684\u653B\u51FB\u529B\u6C38\u4E45\u52A03\r\n"
+  remark: "\u6BCF\u5F53\u4F60\u5931\u8D25\u800C\u5931\u53BB\u751F\u547D\u503C\u65F6\uFF0C\u4F60\u7684\u653B\u51FB\u529B\u6C38\u4E45\u52A03\r\n"
   skillEffect:
   - {fileID: 11400000, guid: a79d197c508386044be608e4db76c30a, type: 2}

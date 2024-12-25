@@ -110,7 +110,17 @@ public class SkillPool : MonoBehaviour
         {
             skill.subscribeTurnEvent();
         }
-        skillSelectDialog.hideDialog();
+
+        if (GamePointBoard.Instance.skillChouseNum > 0)
+        {
+            GamePointBoard.Instance.skillChouseNum--;
+        }
+
+        if (GamePointBoard.Instance.skillChouseNum <= 0)
+        {
+            skillSelectDialog.hideDialog();
+            GamePointBoard.Instance.skillChouseNum = 1;
+        }
     }
     
     //玩家技能组移除技能
@@ -215,8 +225,13 @@ public class SkillPool : MonoBehaviour
         {
             RemovePlayerSkill(playerSkill[i]);
         }
-
         InitSkillPool("A2");
     }
+
+    public void OpenSkillSelectDialog()
+    {
+        skillSelectDialog.showDialog();
+    }
+    
 
 }

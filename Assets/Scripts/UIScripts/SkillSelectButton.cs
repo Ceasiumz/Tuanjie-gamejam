@@ -25,5 +25,6 @@ public class SkillSelectButton : MonoBehaviour
     public void AddSkill()
     {
         SkillPool.Instance.AddPlayerSkill(skill);
+        Transform.Destroy(gameObject);
     }
 }
