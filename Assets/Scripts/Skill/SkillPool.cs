@@ -121,6 +121,7 @@ public class SkillPool : MonoBehaviour
             skillSelectDialog.hideDialog();
             GamePointBoard.Instance.skillChouseNum = 1;
         }
+        DynamicEventBus.Publish("AddPlayerSkill");
     }
     
     //玩家技能组移除技能
