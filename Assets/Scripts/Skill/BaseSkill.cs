@@ -7,7 +7,7 @@ public  class BaseSkill : ScriptableObject
 {
     public string skillID;
     public string skillName;
-    
+    public Sprite skillImage;
     //是否一次性
     public bool isOneTime;
     //是否为主动技能

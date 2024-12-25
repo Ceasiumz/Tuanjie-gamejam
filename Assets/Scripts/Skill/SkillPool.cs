@@ -25,6 +25,8 @@ public class SkillPool : MonoBehaviour
             return _instance;
         }
     }
+
+
     
     private void Awake()
     {
@@ -49,6 +51,8 @@ public class SkillPool : MonoBehaviour
     public List<BaseSkill> playerSkill;
 
     public List<BaseSkill> skillTestPool;
+    
+    public SkillSelect skillSelectDialog;
     
     //备注： 开始时应初始化 skillpool当局技能池为本轮游戏可获得技能
     //游戏开局时应在技能组池中选择一组技能加入到当局游戏技能池中 通用技能池中技能也应加入到当局游戏技能池中
@@ -79,14 +83,11 @@ public class SkillPool : MonoBehaviour
     }
     
     //初始化本局游戏技能池
-    public void InitSkillPool()
+    public void InitSkillPool(string skillGroupID)
     {
-        string skillGroupID = "A2";
-        string skillGroupID2= "A3";
         skillPool = new List<BaseSkill>();
         skillPool.AddRange(normalSkill);
         skillPool.AddRange(skillGroup.Find(x => x.skillGroupId == skillGroupID).skills);
-        skillPool.AddRange(skillGroup.Find(x => x.skillGroupId == skillGroupID2).skills);
     }
     
     //玩家技能组添加技能
@@ -109,6 +110,7 @@ public class SkillPool : MonoBehaviour
         {
             skill.subscribeTurnEvent();
         }
+        skillSelectDialog.hideDialog();
     }
     
     //玩家技能组移除技能
@@ -181,7 +183,7 @@ public class SkillPool : MonoBehaviour
     //以下为测试代码 此代码将skillTestPool中技能默认设置为激活
     public void OnEnable()
     {
-        InitSkillPool();
+        InitSkillPool("A2");
         // foreach (var skill in skillTestPool)
         // {
         //     foreach (var skilleff in skill.skillEffect)
@@ -189,7 +191,7 @@ public class SkillPool : MonoBehaviour
         //         skilleff.subscribeEvent();
         //     }
         // }
-        AddPlayerSkill(skillTestPool[0]);
+        // AddPlayerSkill(skillTestPool[0]);
         
     }
     
@@ -203,7 +205,7 @@ public class SkillPool : MonoBehaviour
         //         skilleff.unsubscribeEvent();
         //     }
         // }
-        RemovePlayerSkill(skillTestPool[0]);
+        // RemovePlayerSkill(skillTestPool[0]);
     }
 
     public void RoundStart()
@@ -214,7 +216,7 @@ public class SkillPool : MonoBehaviour
             RemovePlayerSkill(playerSkill[i]);
         }
 
-        InitSkillPool();
+        InitSkillPool("A2");
     }
 
 }
