@@ -626,7 +626,7 @@ GameObject:
   - component: {fileID: 305481365}
   m_Layer: 5
   m_HasEditorInfo: 1
-  m_Name: 'PlayerEndButton '
+  m_Name: Player End Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -649,8 +649,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 374.18, y: -20.46}
-  m_SizeDelta: {x: 111.64, y: 56.71}
+  m_AnchoredPosition: {x: 164, y: -20.46}
+  m_SizeDelta: {x: 65, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &305481365
 MonoBehaviour:
@@ -698,7 +698,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1026788825}
         m_TargetAssemblyTypeName: TurnManager, Assembly-CSharp
-        m_MethodName: EnemyTurn_suspend
+        m_MethodName: PlayerTurn_end
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -728,7 +728,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 43857cd5092b7834180a8c9566d96347, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9e10ba3ed8774cc479645f922d0e6939, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -858,7 +858,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.39245605, y: 0.90997314}
+  m_AnchoredPosition: {x: 0.39233398, y: 0.9100342}
   m_SizeDelta: {x: 24.784962, y: 15.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &422772365
@@ -1990,7 +1990,7 @@ GameObject:
   - component: {fileID: 815142842}
   m_Layer: 5
   m_HasEditorInfo: 1
-  m_Name: Player End Button
+  m_Name: 'Player Suspension '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2013,8 +2013,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 164, y: -21.9}
-  m_SizeDelta: {x: 57.815, y: 53.83}
+  m_AnchoredPosition: {x: 395, y: -21.9}
+  m_SizeDelta: {x: 111.64, y: 58.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &815142842
 MonoBehaviour:
@@ -2062,7 +2062,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1026788825}
         m_TargetAssemblyTypeName: TurnManager, Assembly-CSharp
-        m_MethodName: EnemyTurn_end
+        m_MethodName: PlayerTurn_suspend
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2092,7 +2092,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9e10ba3ed8774cc479645f922d0e6939, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 43857cd5092b7834180a8c9566d96347, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4135,11 +4135,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2074635280}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 877.6, y: -18}
-  m_SizeDelta: {x: 69.39, y: 710.22}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -47.704834, y: -18}
+  m_SizeDelta: {x: 70.390015, y: 710.22}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1470956517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5968,7 +5968,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 201.59003, y: -285.36}
+  m_AnchoredPosition: {x: 201.59009, y: -285.36}
   m_SizeDelta: {x: 254, y: 254}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2095641814
