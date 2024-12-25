@@ -32,15 +32,18 @@ public class E7 : EnemyBase
             {
                 SatisfiedCard = card;
             }
-            if(SatisfiedCard != null)
+            if (SatisfiedCard != null)
             {
                 break;
             }
         }
-        if(SatisfiedCard != null){
+        if (SatisfiedCard != null)
+        {
             Debug.Log("E7 Skilled");
         }
-        else{
+        else
+        {
+            TurnManager.Instance.EnemyTurn_end();
             return;
         }
         eA.playerHolder.DestroyCard(SatisfiedCard);
@@ -50,11 +53,28 @@ public class E7 : EnemyBase
     {
         //往牌库里塞一张SatisfiedCard
         CardDack.Instance.cardsDeck.Insert(0, new CardString(SatisfiedCard.name, SatisfiedCard.suit));
-        yield return new WaitForSeconds(0.5f);
-        eA.enemyHolder.DrawCard();
+        yield return StartCoroutine(eA.enemyHolder.WaitForInstantiationAndProcessCard(0));
+        //eA.enemyHolder.DrawCard();
+        TurnManager.Instance.EnemyTurn_end();
     }
     public override void OnPlayerDraw()
     {
         //Debug.Log("Nowa");
+    }
+
+    protected override void CowardDraw()
+    {
+        StartCoroutine(WaitingCowardDraw());
+    }
+    IEnumerator WaitingCowardDraw()
+    {
+        if (GamePointBoard.Instance.enemyCardPoints < maxPointsInHand)
+        {
+            yield return StartCoroutine(eA.enemyHolder.WaitForInstantiationAndProcessCard(0));
+        }
+        else
+        {
+            TurnManager.Instance.EnemyTurn_suspend();
+        }
     }
 }
