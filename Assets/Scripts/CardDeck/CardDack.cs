@@ -10,6 +10,7 @@ public class CardDack : MonoBehaviour
     [SerializeField] public List<CardString> cardsDeck=new List<CardString>();
      //弃牌堆
      [SerializeField] public List<CardString> discardDeck=new List<CardString>();
+     [SerializeField] public bool hasStartAnim = true;
      private static CardDack _instance;
      
      public static CardDack Instance

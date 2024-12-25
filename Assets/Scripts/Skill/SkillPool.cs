@@ -50,7 +50,7 @@ public class SkillPool : MonoBehaviour
     //玩家所拥有技能
     public List<BaseSkill> playerSkill;
 
-    public List<BaseSkill> skillTestPool;
+    public List<BaseSkill> DefaultskillPool;
     
     public SkillSelect skillSelectDialog;
     
@@ -83,11 +83,13 @@ public class SkillPool : MonoBehaviour
     }
     
     //初始化本局游戏技能池
-    public void InitSkillPool(string skillGroupID)
+    public void InitSkillPool()
     {
-        skillPool = new List<BaseSkill>();
+        string skillGroupID = "A2";
+        string skillGroupID2= "A3";
         skillPool.AddRange(normalSkill);
         skillPool.AddRange(skillGroup.Find(x => x.skillGroupId == skillGroupID).skills);
+        skillPool.AddRange(skillGroup.Find(x => x.skillGroupId == skillGroupID2).skills);
     }
     
     //玩家技能组添加技能
@@ -110,7 +112,25 @@ public class SkillPool : MonoBehaviour
         {
             skill.subscribeTurnEvent();
         }
-        skillSelectDialog.hideDialog();
+
+        if (GamePointBoard.Instance.skillChouseNum > 0)
+        {
+            GamePointBoard.Instance.skillChouseNum--;
+        }
+
+        if (GamePointBoard.Instance.skillChouseNum <= 0)
+        {
+            skillSelectDialog.hideDialog();
+            if (GamePointBoard.Instance.skillChouseNum == 2)
+            {
+                GamePointBoard.Instance.skillChouseNum = 2;
+            }
+            else
+            {
+                GamePointBoard.Instance.skillChouseNum = 1;
+            }
+        }
+        DynamicEventBus.Publish("AddPlayerSkill");
     }
     
     //玩家技能组移除技能
@@ -183,14 +203,14 @@ public class SkillPool : MonoBehaviour
     //以下为测试代码 此代码将skillTestPool中技能默认设置为激活
     public void OnEnable()
     {
-        InitSkillPool("A2");
-        // foreach (var skill in skillTestPool)
-        // {
-        //     foreach (var skilleff in skill.skillEffect)
-        //     {
-        //         skilleff.subscribeEvent();
-        //     }
-        // }
+        InitSkillPool();
+        foreach (var skill in DefaultskillPool)
+        {
+            foreach (var skilleff in skill.skillEffect)
+            {
+                AddPlayerSkill(skill);
+            }
+        }
         // AddPlayerSkill(skillTestPool[0]);
         
     }
@@ -215,8 +235,20 @@ public class SkillPool : MonoBehaviour
         {
             RemovePlayerSkill(playerSkill[i]);
         }
-
-        InitSkillPool("A2");
+        InitSkillPool();
+        foreach (var skill in DefaultskillPool)
+        {
+            foreach (var skilleff in skill.skillEffect)
+            {
+                AddPlayerSkill(skill);
+            }
+        }
     }
+
+    public void OpenSkillSelectDialog()
+    {
+        skillSelectDialog.showDialog();
+    }
+    
 
 }

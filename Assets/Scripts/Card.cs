@@ -62,16 +62,18 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
             return;
 
         visualHandler = FindObjectOfType<VisualCardsHandler>();
-
-        cardVisual = Instantiate(cardVisualPrefab, visualHandler ? 
-        visualHandler.transform : CardDack.Instance.transform)
+        cardVisual = Instantiate(
+        cardVisualPrefab,
+        visualHandler ? visualHandler.transform : CardDack.Instance.transform)
         .GetComponent<CardVisual>();
+        //cardVisual.transform.localPosition =  CardDack.Instance.transform.localPosition;
         cardVisual.Initialize(this);
         // if (points == 0)
         //     points = Random.Range(startran, 14);
         // CardRename(this);
         //Debug.Log("Card points: " + points);
         postPoints();
+        
     }
 
     public void CardRename(Card card)
@@ -173,7 +175,7 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     {
         PointerEnterEvent.Invoke(this);
         isHovering = true;
-        if (isHiden)
+        if (isHiden && !isEnemy)
         {
             cardVisual.sprite.color = Color.white;
         }

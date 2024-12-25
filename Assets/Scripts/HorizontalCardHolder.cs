@@ -28,6 +28,7 @@ public class HorizontalCardHolder : MonoBehaviour
     [SerializeField] private CardDack cardDack;
 
     public float discardWaitTime = 0.5f;
+    public float showTime = 1.5f;
     public bool isEnemy;
     
 
@@ -209,8 +210,7 @@ public class HorizontalCardHolder : MonoBehaviour
         rect = GetComponent<RectTransform>();
 
         StartCoroutine(UpdateCardVisual());
-
-        StartDraw();
+        DiscardHandCard();
     }
 
     public void StartDraw()
@@ -358,6 +358,10 @@ public class HorizontalCardHolder : MonoBehaviour
 
     private IEnumerator WaitToDiscardHandCard()
     {
+        foreach (Card card in cards){
+            card.cardVisual.sprite.color = Color.white;
+        }
+        yield return new WaitForSeconds(showTime);
         if (DrawButton != null)
         {
             DrawButton.SetActive(false);

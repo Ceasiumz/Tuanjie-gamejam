@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class TurnManager : MonoBehaviour
     private static TurnManager _instance;
     public GameObject PlayersuspendButton;
     public GameObject EnemysuspendButton;
+    public GameObject PlayerEndButton;
+    public GameObject PlayerDrawButton;
     public HorizontalCardHolder playerHolder;
     public static TurnManager Instance
     {
@@ -69,6 +72,8 @@ public class TurnManager : MonoBehaviour
         Debug.Log("new turn");
         if (turn.playerTurn_Start == false)
         {
+            PlayerEndButton.GetComponent<Image>().color = Color.white;
+            PlayerDrawButton.SetActive(true);
             PlayersuspendButton.SetActive(true);
             turn.playerTurn_Start = true;
             PlayerTurn_Start.Invoke();
@@ -93,6 +98,7 @@ public class TurnManager : MonoBehaviour
         if (turn.playerTurn_Draw == false && turn.playerTurn_Start == true)
         {
             turn.playerTurn_Draw = true;
+            PlayerDrawButton.SetActive(false);
             PlayersuspendButton.SetActive(false);
             PlayerTurn_Draw.Invoke();
         }
@@ -112,6 +118,7 @@ public class TurnManager : MonoBehaviour
         {
             turn.playerTurn_End = true;
             PlayerTurn_End.Invoke();
+            PlayerEndButton.GetComponent<Image>().color = new Color(181f, 143f, 143f);
             EnemyTurn_start();
         }
     }

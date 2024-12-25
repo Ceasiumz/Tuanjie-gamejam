@@ -67,15 +67,65 @@ public class CardVisual : MonoBehaviour
     private float curveYOffset;
     private float curveRotationOffset;
     private Coroutine pressCoroutine;
-
+    public GameObject deck;
+    public CardFace cardFace;
+    public bool isFree = true;
     private void Start()
     {
-        if(spriteObject != null){
+        cardFace = GetComponent<CardFace>();
+        deck = GameObject.Find("Deck");
+        if (deck == null)
+        {
+            Debug.LogError("Deck not found");
+        }
+        if (spriteObject != null)
+        {
             sprite = spriteObject.GetComponent<Image>();
         }
         shadowDistance = visualShadow.localPosition;
+        
+        if(CardDack.Instance.hasStartAnim){
+            OriginAnimThenFree();
+        }else{
+            isFree = true;
+        }
+        //StartCoroutine(CardFaceLoad());
+    }
+    IEnumerator CardFaceLoad(){
+        yield return new WaitForSeconds(0.5f);
+        cardFace.SetCardFace(parentCard.points, parentCard.suit);
     }
 
+    public void OriginAnimThenFree()
+    {
+        StartCoroutine(OriginAnim());
+    }
+    IEnumerator OriginAnim()
+    {
+        isFree = false;
+        Debug.Log("OriginAnim");
+        //先移动到牌堆
+        if (deck != null)
+        {
+            transform.DOMove(deck.transform.position, 0.1f).SetEase(Ease.OutBack);
+        }//dotween实现将卡牌从牌堆移动到手牌
+        yield return new WaitForSeconds(0.3f);
+        transform.DOMove(parentCard.transform.position, 0.5f).SetEase(Ease.OutBack);
+        yield return new WaitForSeconds(1.5f);
+        isFree = true;
+    }
+    public void SwapWithEnemy(){
+        StartCoroutine(SwapWithEnemyAnim());
+    }
+    public IEnumerator SwapWithEnemyAnim(){
+        isFree = false;
+        Tween animOp = transform.DOLocalMove(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.OutBack);
+        while(animOp.IsPlaying()){
+            yield return null;
+        }
+        isFree = true;
+    }
+    
     public void Initialize(Card target, int index = 0)
     {
         //Declarations
@@ -114,10 +164,18 @@ public class CardVisual : MonoBehaviour
         if (!initalize || parentCard == null) return;
 
         HandPositioning();
-        SmoothFollow();
+        if (isFree)
+        {
+            SmoothFollow();
+        }
         FollowRotation();
         CardTilt();
-
+        if (spriteObject.transform.eulerAngles.z != 0)
+        {
+            spriteObject.transform.eulerAngles = new Vector3
+            (spriteObject.transform.eulerAngles.x, 
+            spriteObject.transform.eulerAngles.y, 0);
+        }
     }
 
     private void HandPositioning()

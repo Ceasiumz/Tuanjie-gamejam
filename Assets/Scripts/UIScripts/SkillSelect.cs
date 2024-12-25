@@ -34,8 +34,18 @@ public class SkillSelect : MonoBehaviour
        }
     }
 
-    public void Start()
+    public void OnEnable()
     {
         InitDialog();
+    }
+
+    public void OnDisable()
+    {
+        //销毁之前创建的技能选择按钮
+        foreach (Transform child in transform)
+        {
+            if(child.name!="Transform")
+                Destroy(child.gameObject);
+        }
     }
 }

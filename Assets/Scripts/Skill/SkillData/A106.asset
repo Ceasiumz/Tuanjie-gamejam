@@ -14,12 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: A106
   skillName: "\u5C0F\u4E11\u724C"
+  skillImage: {fileID: 0}
   isOneTime: 1
-  isActive: 1
+  skillType: 0
+  skillActivePhase: 0
   isRepeatable: 0
   isUsedReturn: 1
   canUse: 0
-  remark: "\u62BD\u724C\u9636\u6BB5\u524D\u53EF\u4EE5\u53D1\u52A8\t\n\u62BD\u724C\u7C7B\u6280\u80FD-\u4E00\u6B21\u6027\u6280\u80FD
-    \t\n\u4F60\u53EF\u4EE5\u4EE3\u66FF\u62BD\u724C\uFF0C\u83B7\u53D6\u573A\u4E0A\u4EFB\u610F\u4E00\u5F20\u660E\u724C\u7684\u590D\u5236\u3002\r\n"
+  isHidden: 0
+  remark: "\u62BD\u724C\u9636\u6BB5\u524D\u53EF\u4EE5\u53D1\u52A8\n\u62BD\u724C\u7C7B\u6280\u80FD-\u4E00\u6B21\u6027\u6280\u80FD
+    \n\u4F60\u53EF\u4EE5\u4EE3\u66FF\u62BD\u724C\uFF0C\u83B7\u53D6\u573A\u4E0A\u4EFB\u610F\u4E00\u5F20\u660E\u724C\u7684\u590D\u5236\u3002\r\n"
   skillEffect:
   - {fileID: 11400000, guid: d66d9a864589a594c8660f116a56d38a, type: 2}

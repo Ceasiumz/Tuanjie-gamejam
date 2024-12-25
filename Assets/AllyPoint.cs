@@ -140,11 +140,22 @@ public class AllyPoint : MonoBehaviour
             Debug.Log("Enemy Dead");
             KillsAdd();
             DynamicEventBus.Publish("RoundEndEvent");
-            GamePointBoard.Instance.skillChouseNum = 1;
+            
+            //补丁代码
+            if (GamePointBoard.Instance.skillChouseNum == 2)
+            {
+                GamePointBoard.Instance.skillChouseNum = 2;
+            }
+            else
+            {
+                GamePointBoard.Instance.skillChouseNum = 1;
+            }
+
             eA.NextEnemy();
             DrawOutEvent.Invoke();
             //洗牌 拼写错误
             holder.DiscoverCardDeck();
+            SkillPool.Instance.OpenSkillSelectDialog();
         }
     }
     public void Restart()// latecheck if the ally points are over lim

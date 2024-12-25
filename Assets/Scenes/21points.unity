@@ -1752,7 +1752,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 200.59009, y: 208.35999}
+  m_AnchoredPosition: {x: 200.58997, y: 208.35999}
   m_SizeDelta: {x: 254, y: 254}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &650068902
@@ -1887,6 +1887,7 @@ MonoBehaviour:
   DrawButton: {fileID: 627900029}
   cardDack: {fileID: 1296720587}
   discardWaitTime: 0.5
+  showTime: 1.5
   isEnemy: 0
 --- !u!114 &667881469
 MonoBehaviour:
@@ -2235,7 +2236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 59, y: -109.40001}
+  m_AnchoredPosition: {x: 59, y: -109.400024}
   m_SizeDelta: {x: 142, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &770428410
@@ -2767,6 +2768,8 @@ MonoBehaviour:
   turnCount: 0
   PlayersuspendButton: {fileID: 815142840}
   EnemysuspendButton: {fileID: 1279589882}
+  PlayerEndButton: {fileID: 305481363}
+  PlayerDrawButton: {fileID: 627900029}
   playerHolder: {fileID: 667881467}
   PlayerTurn_Start:
     m_PersistentCalls:
@@ -3639,7 +3642,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.93439394, y: 0.16674075}
   m_AnchorMax: {x: 0.93439394, y: 0.7955556}
-  m_AnchoredPosition: {x: -99.29999, y: 5.5}
+  m_AnchoredPosition: {x: -99.29993, y: 5.5}
   m_SizeDelta: {x: 189.29999, y: -479}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1296720587
@@ -3656,6 +3659,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardsDeck: []
   discardDeck: []
+  hasStartAnim: 1
 --- !u!1 &1307597422
 GameObject:
   m_ObjectHideFlags: 0
@@ -4506,7 +4510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1474919473
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4624,7 +4628,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9af350d3b60943f46877ae62eb587ee4, type: 2}
   - {fileID: 11400000, guid: 2461fe21bc7126c49b5c684af2ebd4eb, type: 2}
   playerSkill: []
-  skillTestPool: []
+  DefaultskillPool:
+  - {fileID: 11400000, guid: 8758ca229ab442347a55a365eb112b15, type: 2}
+  - {fileID: 11400000, guid: 8a378ed050b10cb428b9c0c262a6b0a2, type: 2}
+  - {fileID: 11400000, guid: 8583409d797d4154c8ab3c47eed0ec4f, type: 2}
   skillSelectDialog: {fileID: 1474919474}
 --- !u!4 &1500802446
 Transform:
@@ -4701,7 +4708,7 @@ MonoBehaviour:
   enemyHolder: {fileID: 1772936770}
   playerHolder: {fileID: 667881467}
   enemy: {fileID: 0}
-  enemyIndex: 0
+  enemyIndex: 7
 --- !u!1 &1599235499
 GameObject:
   m_ObjectHideFlags: 0
@@ -5637,6 +5644,7 @@ MonoBehaviour:
   DrawButton: {fileID: 1687660128}
   cardDack: {fileID: 1296720587}
   discardWaitTime: 0.5
+  showTime: 1.5
   isEnemy: 1
 --- !u!1 &1803855872
 GameObject:
@@ -6089,7 +6097,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.16983216, y: 0.076000005}
   m_AnchorMax: {x: 0.16983216, y: 0.30566671}
-  m_AnchoredPosition: {x: 104.79999, y: 2.3599854}
+  m_AnchoredPosition: {x: 104.79993, y: 2.3599854}
   m_SizeDelta: {x: 163.1, y: -68.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1990458042
