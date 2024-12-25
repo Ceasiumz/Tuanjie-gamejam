@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8110481357869007721}
   - component: {fileID: 7697484841366769644}
   - component: {fileID: 502704179870035794}
+  - component: {fileID: 4027208465517104096}
   m_Layer: 5
   m_HasEditorInfo: 1
   m_Name: Sprite
@@ -87,6 +88,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c641e54aacd14965bb97c1f098f53cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4027208465517104096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145312962996155630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b32341ba419e92418c64e3df3c73ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2017949772597159594
@@ -382,6 +395,8 @@ MonoBehaviour:
   curve: {fileID: 11400000, guid: d4dd399fb2dab44429d866dc2259bb4b, type: 2}
   spriteObject: {fileID: 1145312962996155630}
   sprite: {fileID: 7697484841366769644}
+  deck: {fileID: 0}
+  isFree: 1
 --- !u!223 &4132845374223140069
 Canvas:
   m_ObjectHideFlags: 0

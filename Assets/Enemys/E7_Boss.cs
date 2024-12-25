@@ -21,7 +21,7 @@ public class E7 : EnemyBase
 
     public override void OnTurnDraw()
     {
-        CowardDraw();
+        //CowardDraw();
         //只要玩家手牌中存在至少一张不会使自己爆牌的牌，则从玩家手中获得那些牌中点数最大的牌
         List<Card> playerCards = eA.playerHolder.cards;
         List<Card> enemyCards = eA.enemyHolder.cards;
@@ -46,15 +46,22 @@ public class E7 : EnemyBase
             TurnManager.Instance.EnemyTurn_end();
             return;
         }
-        eA.playerHolder.DestroyCard(SatisfiedCard);
-        StartCoroutine(DrawCardIdentify());
+        StartCoroutine(SwapAnim());
+        
     }
-    IEnumerator DrawCardIdentify()
+    IEnumerator SwapAnim(){
+        CardDack.Instance.hasStartAnim = false;
+        yield return StartCoroutine(SatisfiedCard.cardVisual.SwapWithEnemyAnim());
+        StartCoroutine(CardIdentifyThenDestroy());
+    }
+    IEnumerator CardIdentifyThenDestroy()
     {
         //往牌库里塞一张SatisfiedCard
         CardDack.Instance.cardsDeck.Insert(0, new CardString(SatisfiedCard.name, SatisfiedCard.suit));
+        eA.playerHolder.DestroyCard(SatisfiedCard);
         yield return StartCoroutine(eA.enemyHolder.WaitForInstantiationAndProcessCard(0));
         //eA.enemyHolder.DrawCard();
+        CardDack.Instance.hasStartAnim = true;
         TurnManager.Instance.EnemyTurn_end();
     }
     public override void OnPlayerDraw()
