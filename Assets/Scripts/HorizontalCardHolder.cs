@@ -63,9 +63,6 @@ public class HorizontalCardHolder : MonoBehaviour
     //         Destroy(gameObject);
     //     }
     // }
-    
-    
-    
     private void LateUpdate()
     {
     }
@@ -75,12 +72,14 @@ public class HorizontalCardHolder : MonoBehaviour
         // 使用协程来等待异步实例化操作完成，避免死循环占用资源
         StartCoroutine(WaitForInstantiationAndProcessCard(0));
     }
-
+    IEnumerator front(Card card){
+        yield return new WaitForSeconds(0.4f);
+        card.cardVisual.sprite.sprite = card.cardVisual.cardFace.face;
+    }
     public IEnumerator WaitForInstantiationAndProcessCard(int hidenFlag)
     {
         var op = InstantiateAsync(slotPrefab, transform);
         yield return op;
-
         if (op.isDone)
         {
             GameObject cardObject = op.Result[0];
@@ -89,8 +88,10 @@ public class HorizontalCardHolder : MonoBehaviour
             //
             if (hidenFlag == 1)
             {
-                card.cardVisual.sprite.color = Color.black;
+                card.cardVisual.sprite.sprite = card.cardVisual.cardFace.back;
                 card.isHiden = true;
+            }else{
+                StartCoroutine(front(card));
             }
             // 抽取卡牌及相关逻辑处理
             ProcessDrawnCard(card);

@@ -177,7 +177,7 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         isHovering = true;
         if (isHiden && !isEnemy)
         {
-            cardVisual.sprite.color = Color.white;
+            cardVisual.sprite.sprite = cardVisual.cardFace.face;
         }
     }
 
@@ -187,7 +187,7 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         isHovering = false;
         if (isHiden)
         {
-            cardVisual.sprite.color = Color.black;
+            cardVisual.sprite.sprite = cardVisual.cardFace.back;
         }
     }
 

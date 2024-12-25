@@ -83,16 +83,22 @@ public class CardVisual : MonoBehaviour
             sprite = spriteObject.GetComponent<Image>();
         }
         shadowDistance = visualShadow.localPosition;
-        
-        if(CardDack.Instance.hasStartAnim){
+
+        if (CardDack.Instance.hasStartAnim)
+        {
             OriginAnimThenFree();
-        }else{
+        }
+        else
+        {
             isFree = true;
         }
+        //cardFace.SetCardFace(parentCard.points, parentCard.suit);
         StartCoroutine(CardFaceLoad());
     }
-    IEnumerator CardFaceLoad(){
-        yield return new WaitForSeconds(1f);
+    IEnumerator CardFaceLoad()
+    {
+        //while (cardFace == null)
+        yield return new WaitForSeconds(0.3f);
         cardFace.SetCardFace(parentCard.points, parentCard.suit);
     }
 
@@ -114,18 +120,21 @@ public class CardVisual : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         isFree = true;
     }
-    public void SwapWithEnemy(){
+    public void SwapWithEnemy()
+    {
         StartCoroutine(SwapWithEnemyAnim());
     }
-    public IEnumerator SwapWithEnemyAnim(){
+    public IEnumerator SwapWithEnemyAnim()
+    {
         isFree = false;
         Tween animOp = transform.DOLocalMove(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.OutBack);
-        while(animOp.IsPlaying()){
+        while (animOp.IsPlaying())
+        {
             yield return null;
         }
         isFree = true;
     }
-    
+
     public void Initialize(Card target, int index = 0)
     {
         //Declarations
@@ -173,7 +182,7 @@ public class CardVisual : MonoBehaviour
         if (spriteObject.transform.eulerAngles.z != 0)
         {
             spriteObject.transform.eulerAngles = new Vector3
-            (spriteObject.transform.eulerAngles.x, 
+            (spriteObject.transform.eulerAngles.x,
             spriteObject.transform.eulerAngles.y, 0);
         }
     }

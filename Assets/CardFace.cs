@@ -4,7 +4,9 @@ using UnityEngine.UI;
 public class CardFace : MonoBehaviour
 {
     public GameObject spriteObject;
-    private Image sprite;
+    public Image sprite;
+    public Sprite back;
+    public Sprite face;
     private void Start()
     {
         if(spriteObject != null){
@@ -23,11 +25,12 @@ public class CardFace : MonoBehaviour
 
         // 从Resources文件夹加载对应的图片资源
         Sprite cardSprite = Resources.Load<Sprite>(resourceName);
+        face = cardSprite;
 
         if (cardSprite!= null)
         {
             // 将CardFace的Image组件的SourceImage属性替换为加载到的图片
-            sprite.sprite = cardSprite;
+            //sprite.sprite = cardSprite;
         }
         else
         {
