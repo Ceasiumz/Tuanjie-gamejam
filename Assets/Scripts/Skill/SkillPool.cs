@@ -96,23 +96,8 @@ public class SkillPool : MonoBehaviour
     public void AddPlayerSkill(BaseSkill skill)
     {
         playerSkill.Add(skill);
-        //当技能可重复获得时不从技能池中移除技能
-        if (!skill.isRepeatable)
-        {
-            skillPool.Remove(skill);
-        }
-        //被动技能应立即触发效果
-        skill.skillEffect.ForEach(x =>
-        {
-            x.subscribeEvent();
-            x.ImmediateTrigger();
-        });
-
-        if (skill.skillType == SkillType.Active)
-        {
-            skill.subscribeTurnEvent();
-        }
-
+        
+        Debug.Log("添加技能时A115判断");
         if (GamePointBoard.Instance.skillChouseNum > 0)
         {
             GamePointBoard.Instance.skillChouseNum--;
@@ -130,6 +115,25 @@ public class SkillPool : MonoBehaviour
                 GamePointBoard.Instance.skillChouseNum = 1;
             }
         }
+        
+        //当技能可重复获得时不从技能池中移除技能
+        if (!skill.isRepeatable)
+        {
+            skillPool.Remove(skill);
+        }
+        //被动技能应立即触发效果
+        skill.skillEffect.ForEach(x =>
+        {
+            x.subscribeEvent();
+            x.ImmediateTrigger();
+        });
+
+        if (skill.skillType == SkillType.Active)
+        {
+            skill.subscribeTurnEvent();
+        }
+        
+
         DynamicEventBus.Publish("AddPlayerSkill");
     }
     

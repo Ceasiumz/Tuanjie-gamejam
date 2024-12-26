@@ -3538,10 +3538,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfCards: 52
-  logDisplayText: {fileID: 0}
-  logDisplayText2: {fileID: 0}
+  logDisplayText: {fileID: 324331822}
+  logDisplayText2: {fileID: 2052258165}
   isShuffled: 0
-  ShowPannel: {fileID: 0}
+  ShowPannel: {fileID: 263736160}
   cardsDeck: []
   discardDeck: []
   hasStartAnim: 1
@@ -4486,6 +4486,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 859ac242d54c99b46ab0152c55ed8a6d, type: 2}
   - {fileID: 11400000, guid: c9944c6d607b86647ba101d2dea75c72, type: 2}
   - {fileID: 11400000, guid: 2042616e4caffad47a91a390bef867cd, type: 2}
+  - {fileID: 11400000, guid: c67382e9e3d32c04ebc77064ed7835ff, type: 2}
   skillPool: []
   skillGroup:
   - {fileID: 11400000, guid: 9af350d3b60943f46877ae62eb587ee4, type: 2}
