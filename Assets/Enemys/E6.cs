@@ -6,6 +6,13 @@ public class E6 : EnemyBase
 {
     // Start is called before the first frame update
     public int rageCountMax = 0;
+    [SerializeField] int Ehealth;
+    [SerializeField] int EmaxPointsInHand;
+    private void Awake()
+    {
+        health = Ehealth;
+        maxPointsInHand = EmaxPointsInHand;
+    }
     void Start()
     {
         eA = GetComponentInParent<EnemyAchive>();

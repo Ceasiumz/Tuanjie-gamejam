@@ -25,6 +25,7 @@ public class HorizontalCardHolder : MonoBehaviour
     public UnityEvent DisCardCompeletedEvent;
 
     public GameObject DrawButton;
+    public GameObject SuspendButton;
     [SerializeField] private CardDack cardDack;
 
     public float discardWaitTime = 0.5f;
@@ -118,7 +119,8 @@ public class HorizontalCardHolder : MonoBehaviour
             // 可以根据实际情况考虑进一步的错误处理逻辑，比如重试等
         }
         TurnManager.Instance.StartDrawing = false;
-        TurnManager.Instance.PlayerDrawButton.SetActive(true);
+        if(hidenFlag == 1)
+            TurnManager.Instance.PlayerDrawButton.SetActive(true);
     }
 
     private void ProcessDrawnCard(Card card)
@@ -370,12 +372,14 @@ public class HorizontalCardHolder : MonoBehaviour
         if (DrawButton != null)
         {
             DrawButton.SetActive(false);
+            SuspendButton.SetActive(false);
             for (int i = cards.Count - 1; i >= 0; i--)
             {
                 yield return new WaitForSeconds(discardWaitTime);
                 DestroyCard(cards[i]);
             }
             DrawButton.SetActive(true);
+            SuspendButton.SetActive(true);
         }
         else
         {

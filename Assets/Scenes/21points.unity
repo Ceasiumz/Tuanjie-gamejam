@@ -2468,8 +2468,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SatisfiedCard: {fileID: 0}
-  Ehealth: 0
-  EmaxPointsInHand: 0
+  Ehealth: 120
+  EmaxPointsInHand: 16
 --- !u!1 &847259874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2864,7 +2864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ehealth: 88
-  EmaxPointsInHand: 10
+  EmaxPointsInHand: 16
   markedCard: {fileID: 0}
 --- !u!1 &1073249336
 GameObject:
@@ -4629,7 +4629,7 @@ MonoBehaviour:
   enemyHolder: {fileID: 1772936770}
   playerHolder: {fileID: 667881467}
   enemy: {fileID: 0}
-  enemyIndex: 7
+  enemyIndex: 0
 --- !u!1001 &1544738851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5674,6 +5674,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rageCountMax: 0
+  Ehealth: 78
+  EmaxPointsInHand: 17
 --- !u!1 &1818824936
 GameObject:
   m_ObjectHideFlags: 0
@@ -5773,8 +5775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddf8378a10ca26249984827ba4e3af10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ehealth: 0
-  EmaxPointsInHand: 0
+  Ehealth: 80
+  EmaxPointsInHand: 16
 --- !u!212 &1862598333
 SpriteRenderer:
   m_ObjectHideFlags: 0

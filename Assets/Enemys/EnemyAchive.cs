@@ -13,9 +13,9 @@ public class EnemyAchive : MonoBehaviour
     void Awake()
     {   
         enemyList = new List<GameObject>();
-        EnemyInit();
     }
     private void Start() {
+        EnemyInit();
         TurnManager.Instance.PlayerTurn_Start.AddListener(EnemySuspendToEndCheck);
         AddListeners(enemy);
     }

@@ -100,7 +100,7 @@ public class TurnManager : MonoBehaviour
     public void PlayerTurn_draw()
     {
         if(!drawLock)
-        StartCoroutine( DrawWaiting());
+            StartCoroutine(DrawWaiting());
     }
     IEnumerator DrawWaiting(){
         drawLock = true;
