@@ -1824,7 +1824,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   DrawButton: {fileID: 627900029}
-  SuspendButton: {fileID: 815142840}
+  SuspendButton: {fileID: 0}
   cardDack: {fileID: 1296720587}
   discardWaitTime: 0.5
   showTime: 1.5
@@ -2553,6 +2553,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  attack: {fileID: 0}
+  injured: {fileID: 0}
   ScoreText: {fileID: 859957834}
   Kills: {fileID: 1738425150}
 --- !u!114 &847259877
@@ -5566,7 +5568,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   DrawButton: {fileID: 1687660128}
-  SuspendButton: {fileID: 815142840}
+  SuspendButton: {fileID: 0}
   cardDack: {fileID: 1296720587}
   discardWaitTime: 0.5
   showTime: 1.5
@@ -5676,8 +5678,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rageCountMax: 0
-  Ehealth: 78
-  EmaxPointsInHand: 17
+  Ehealth: 0
+  EmaxPointsInHand: 0
 --- !u!1 &1818824936
 GameObject:
   m_ObjectHideFlags: 0
@@ -6019,7 +6021,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b225a0dbdfd68c4198ba81538fb23f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Selectbutton: {fileID: 3103815545513507954, guid: ed3105cb42c12aa4ea89eeb2bddc7ff5, type: 3}
+  clickbutton: {fileID: 0}
+  clickbutton2: {fileID: 0}
+  clickbutton3: {fileID: 0}
   audioSource: {fileID: 642415977}
 --- !u!4 &1948907668
 Transform:
@@ -6261,7 +6265,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.011520834, y: 0.031555556}
   m_AnchorMax: {x: 0.97843754, y: 0.9042223}
-  m_AnchoredPosition: {x: 2.5899658, y: 1.1799927}
+  m_AnchoredPosition: {x: 2.5898438, y: 1.1800537}
   m_SizeDelta: {x: -1.1699982, y: -3.7200012}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2052258163
