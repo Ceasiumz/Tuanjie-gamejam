@@ -7,6 +7,7 @@ public class A3101Effect : BaseEffect
 {
     public override void subscribeEvent()
     {
+        Debug.Log("技能事件订阅 A3101");
         DynamicEventBus.Subscribe("BeforePlayerAttackEvent", EventSkill);
     }
 
@@ -28,6 +29,7 @@ public class A3101Effect : BaseEffect
     {
         if (GamePointBoard.Instance.playerCardPoints == 21)
         {
+            Debug.Log("触发技能A3101 伤害倍率翻倍");
             GamePointBoard.Instance.attackMultiple *= 2;
         }
     }

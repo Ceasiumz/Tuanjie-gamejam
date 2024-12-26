@@ -189,6 +189,7 @@ public class GamePointBoard : MonoBehaviour
     {
         currentHealth = maxHealth;
         attack = 10;
+        canFindTreasure = false;
     }
     
     

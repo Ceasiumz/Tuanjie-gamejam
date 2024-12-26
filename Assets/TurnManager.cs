@@ -69,7 +69,7 @@ public class TurnManager : MonoBehaviour
     {
         turn = new Turn(false, false, false, false, false, false);
         turnCount++;
-        Debug.Log("new turn");
+        // Debug.Log("new turn");
         if (turn.playerTurn_Start == false)
         {
             PlayerEndButton.GetComponent<Image>().color = Color.white;

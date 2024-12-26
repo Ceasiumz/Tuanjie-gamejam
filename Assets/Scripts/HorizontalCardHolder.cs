@@ -127,7 +127,7 @@ public class HorizontalCardHolder : MonoBehaviour
         }
         CardString cardStruct = cardDack.DrawCard();
         string cardPoint = cardStruct.point;
-        Debug.Log("抽取点数" + cardPoint);
+        // Debug.Log("抽取点数" + cardPoint);
 
         // 根据抽取的牌面设置点数
         switch (cardPoint)

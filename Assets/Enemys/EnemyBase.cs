@@ -19,14 +19,14 @@ public abstract class EnemyBase : MonoBehaviour
     }
 
     public virtual void OnPlayerStart(){
-        Debug.Log("Player Turn Start");
+        // Debug.Log("Player Turn Start");
     }
     public virtual void OnTurnDraw(){
-        Debug.Log("Enemy Turn Draw");
+        // Debug.Log("Enemy Turn Draw");
         eA.enemyHolder.DrawCard();
     }
     public virtual void OnPlayerDraw(){
-        Debug.Log("Player Turn Draw");
+        // Debug.Log("Player Turn Draw");
     }
     public virtual void OnTurnSuspend(){
         TurnManager.Instance.EnemyTurn_Start
@@ -34,13 +34,13 @@ public abstract class EnemyBase : MonoBehaviour
         Debug.Log("Enemy Turn Suspend");
     }
     public virtual void OnPlayerSuspend(){
-        Debug.Log("Player Turn Suspend");
+        // Debug.Log("Player Turn Suspend");
     }
         public virtual void OnTurnEnd(){
-        Debug.Log("Enemy Turn End");
+        // Debug.Log("Enemy Turn End");
     }
     public virtual void OnPlayerEnd(){
-        Debug.Log("Player Turn End");
+        // Debug.Log("Player Turn End");
     }
     // Update is called once per frame
     void Update()

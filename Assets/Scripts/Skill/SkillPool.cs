@@ -249,6 +249,15 @@ public class SkillPool : MonoBehaviour
     {
         skillSelectDialog.showDialog();
     }
-    
 
+    public void OnDestroy()
+    {
+        foreach (var skill in playerSkill)
+        {
+            foreach (var skillEffect in skill.skillEffect)
+            {
+                skillEffect.unsubscribeEvent();
+            }
+        }
+    }
 }

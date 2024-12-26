@@ -109,7 +109,7 @@ public class CardVisual : MonoBehaviour
     IEnumerator OriginAnim()
     {
         isFree = false;
-        Debug.Log("OriginAnim");
+        // Debug.Log("OriginAnim");
         //先移动到牌堆
         if (deck != null)
         {
