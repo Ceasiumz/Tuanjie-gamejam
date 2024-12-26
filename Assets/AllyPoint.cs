@@ -126,9 +126,9 @@ public class AllyPoint : MonoBehaviour
         {
             DynamicEventBus.Publish("RoundEndEvent");
             Debug.Log("玩家死亡");
-            SkillPool.Instance.RoundStart();
-            GamePointBoard.Instance.resetHealth();
             Restart();
+            GamePointBoard.Instance.resetHealth();
+            SkillPool.Instance.RoundStart();
         }
     }
     //敌人死亡判断
@@ -161,7 +161,7 @@ public class AllyPoint : MonoBehaviour
     }
     public void Restart()// latecheck if the ally points are over lim
     {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     //玩家小局获胜对敌人造成伤害

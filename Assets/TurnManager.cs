@@ -172,17 +172,4 @@ public class TurnManager : MonoBehaviour
     {
 
     }
-
-    public void OnDestroy()
-    {
-        Debug.Log("TurnManager OnDestroy");
-        PlayerTurn_Start.RemoveAllListeners();
-        PlayerTurn_Draw.RemoveAllListeners();
-        PlayerTurn_Suspend.RemoveAllListeners();
-        PlayerTurn_End.RemoveAllListeners();
-        EnemyTurn_Start.RemoveAllListeners();
-        EnemyTurn_Draw.RemoveAllListeners();
-        EnemyTurn_Suspend.RemoveAllListeners();
-        EnemyTurn_End.RemoveAllListeners();
-    }
 }

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: A3100
   skillName: "\u5B9D\u724C"
+  skillImage: {fileID: 21300000, guid: 17a25d8f212f0aa4bb10dac347b9ec28, type: 3}
   isOneTime: 0
   skillType: 1
   skillActivePhase: 0

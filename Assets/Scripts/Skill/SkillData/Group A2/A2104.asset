@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: A2104
   skillName: "DNA\u6539\u9020"
+  skillImage: {fileID: 21300000, guid: 212b8af1f4960c34982508c9d7b0770e, type: 3}
   isOneTime: 0
   skillType: 1
   skillActivePhase: 0
