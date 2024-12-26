@@ -19,6 +19,8 @@ public class AllyPoint : MonoBehaviour
     public HorizontalCardHolder holder;
     public HorizontalCardHolder ememyHolder;
     public UnityEvent DrawOutEvent;
+    public AudioSource attack;
+    public AudioSource injured;
     Text text;
     public Text ScoreText;
     public Text Kills;
@@ -111,6 +113,7 @@ public class AllyPoint : MonoBehaviour
         //死亡判断
         DeadCheck();
         EnemyDeadCheck();
+        
     }
 
     //玩家死亡判断 玩家死亡重新加载场景
@@ -167,6 +170,7 @@ public class AllyPoint : MonoBehaviour
     //玩家小局获胜对敌人造成伤害
     public void PlayerAttack()
     {
+        attack.Play();
         DynamicEventBus.Publish("BeforePlayerAttackEvent");
         Debug.Log("本次攻击力"+GamePointBoard.Instance.attack);
         Debug.Log("本次攻击力加成"+GamePointBoard.Instance.attackAddition);
@@ -179,6 +183,7 @@ public class AllyPoint : MonoBehaviour
     //玩家小局失败受到伤害
     public void EnemyAttack()
     {
+        injured.Play();
         DynamicEventBus.Publish("BeforeEnemyAttackEvent");
         Debug.Log("本次伤害减免"+GamePointBoard.Instance.injuryReduction);
         GamePointBoard.Instance.currentHealth -= Mathf.Max(1,Mathf.RoundToInt((GamePointBoard.Instance.enemyAttack-GamePointBoard.Instance.injuryReduction)*GamePointBoard.Instance.injuryMultiple))  ;
