@@ -5,7 +5,14 @@ using UnityEngine;
 public class E0 : EnemyBase
 {
     // Start is called before the first frame update
-    
+    [SerializeField] int Ehealth;
+    [SerializeField] int EmaxPointsInHand;
+    private void Awake()
+    {
+        health = Ehealth;
+        maxPointsInHand = EmaxPointsInHand;
+    }
+
     void Start()
     {
         eA = GetComponentInParent<EnemyAchive>();

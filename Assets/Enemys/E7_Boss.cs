@@ -8,6 +8,13 @@ public class E7 : EnemyBase
 {
     // Start is called before the first frame update
     public Card SatisfiedCard;
+    [SerializeField] int Ehealth;
+    [SerializeField] int EmaxPointsInHand;
+    private void Awake()
+    {
+        health = Ehealth;
+        maxPointsInHand = EmaxPointsInHand;
+    }
     void Start()
     {
         eA = GetComponentInParent<EnemyAchive>();
@@ -28,7 +35,7 @@ public class E7 : EnemyBase
         SatisfiedCard = null;
         foreach (Card card in playerCards)
         {
-            if (card.points + GamePointBoard.Instance.enemyCardPoints <= maxPointsInHand)
+            if (card.points + GamePointBoard.Instance.enemyCardPoints <= 21)
             {
                 SatisfiedCard = card;
             }
@@ -43,11 +50,11 @@ public class E7 : EnemyBase
         }
         else
         {
+            TurnManager.Instance.EnemyTurn_suspend();
             TurnManager.Instance.EnemyTurn_end();
             return;
         }
         StartCoroutine(SwapAnim());
-        
     }
     IEnumerator SwapAnim(){
         CardDack.Instance.hasStartAnim = false;
@@ -69,19 +76,5 @@ public class E7 : EnemyBase
         //Debug.Log("Nowa");
     }
 
-    protected override void CowardDraw()
-    {
-        StartCoroutine(WaitingCowardDraw());
-    }
-    IEnumerator WaitingCowardDraw()
-    {
-        if (GamePointBoard.Instance.enemyCardPoints < maxPointsInHand)
-        {
-            yield return StartCoroutine(eA.enemyHolder.WaitForInstantiationAndProcessCard(0));
-        }
-        else
-        {
-            TurnManager.Instance.EnemyTurn_suspend();
-        }
-    }
+    
 }

@@ -88,5 +88,7 @@ public class EnemyAchive : MonoBehaviour
                 enemy = child.gameObject.GetComponent<EnemyBase>();
             }   
         }
+        GamePointBoard.Instance.enemyMaxHealth = enemy.health;
+        GamePointBoard.Instance.enemyCurrentHealth = GamePointBoard.Instance.enemyMaxHealth;
     }
 }

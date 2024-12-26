@@ -34,7 +34,7 @@ public class E1 : EnemyBase
 
     IEnumerator DrawCardIdentify()
     {
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.5f);
         List<Card> playerCards = eA.playerHolder.cards;
         //Debug.Log(playerCards[playerCards.Count - 1].suit);
         // 实现“闪电”技能，玩家抽到黑桃2-9就要多抽一张牌
