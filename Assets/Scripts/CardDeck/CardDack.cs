@@ -148,11 +148,11 @@ public class CardDack : MonoBehaviour
         {
             if (card.isTreasure)
             {
-                string logMessage = $"卡堆中第{countPrinted + 1}张宝牌: {card.point + card.suit}在牌堆中的位置是: {cardsDeck.IndexOf(card) + 1}";
+                string logMessage = $"卡堆中第{countPrinted + 1}张宝牌: {card.suit + card.point}在牌堆中的位置是: {cardsDeck.IndexOf(card) + 1}";
                 Debug.Log(logMessage);
                 logDisplayText.text += logMessage + "\n"; // 更新UI显示
                 countPrinted++;
-                if (countPrinted >= 16)
+                if (countPrinted >= 1)
                 {
                     break;
                 }
