@@ -4408,7 +4408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillSelectButton: {fileID: 3497268234316575720, guid: ed3105cb42c12aa4ea89eeb2bddc7ff5, type: 3}
   skillListParent: {fileID: 1599235500}
-  buttonSpacing: 100
+  buttonSpacing: 200
 --- !u!114 &1474919475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4487,7 +4487,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 859ac242d54c99b46ab0152c55ed8a6d, type: 2}
   - {fileID: 11400000, guid: c9944c6d607b86647ba101d2dea75c72, type: 2}
   - {fileID: 11400000, guid: 2042616e4caffad47a91a390bef867cd, type: 2}
-  - {fileID: 11400000, guid: c67382e9e3d32c04ebc77064ed7835ff, type: 2}
   skillPool: []
   skillGroup:
   - {fileID: 11400000, guid: 9af350d3b60943f46877ae62eb587ee4, type: 2}
@@ -4733,8 +4732,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 105.5}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -198.15, y: -0.25}
+  m_SizeDelta: {x: 396.3, y: -211.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1599235501
 MonoBehaviour:
