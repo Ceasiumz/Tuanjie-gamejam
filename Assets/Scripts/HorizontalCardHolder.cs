@@ -74,7 +74,7 @@ public class HorizontalCardHolder : MonoBehaviour
     }
     IEnumerator front(Card card){
         yield return new WaitForSeconds(0.4f);
-        card.cardVisual.sprite.sprite = card.cardVisual.cardFace.face;
+        card.cardVisual.sprite.sprite = card.cardVisual.cardFace.front;
     }
     public IEnumerator WaitForInstantiationAndProcessCard(int hidenFlag)
     {
@@ -360,7 +360,7 @@ public class HorizontalCardHolder : MonoBehaviour
     private IEnumerator WaitToDiscardHandCard()
     {
         foreach (Card card in cards){
-            card.cardVisual.sprite.color = Color.white;
+            card.cardVisual.sprite.sprite = card.cardVisual.cardFace.front;
         }
         yield return new WaitForSeconds(showTime);
         if (DrawButton != null)

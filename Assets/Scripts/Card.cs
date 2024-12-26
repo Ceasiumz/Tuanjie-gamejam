@@ -177,7 +177,7 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         isHovering = true;
         if (isHiden && !isEnemy)
         {
-            cardVisual.sprite.sprite = cardVisual.cardFace.face;
+            cardVisual.sprite.sprite = cardVisual.cardFace.front;
         }
     }
 

@@ -87,6 +87,8 @@ public class TurnManager : MonoBehaviour
         if (GamePointBoard.Instance.isPlayerSuspension)
         {
             turn.playerTurn_Draw = true;
+            PlayerDrawButton.SetActive(false);
+            PlayersuspendButton.SetActive(false);
         }
     }
     public void PlayerTurn_draw()
@@ -109,6 +111,8 @@ public class TurnManager : MonoBehaviour
         if (turn.playerTurn_Draw == false && turn.playerTurn_Start == true)
         {
             turn.playerTurn_Draw = true;
+            PlayerDrawButton.SetActive(false);
+            PlayersuspendButton.SetActive(false);
             PlayerTurn_Suspend.Invoke();
         }
     }

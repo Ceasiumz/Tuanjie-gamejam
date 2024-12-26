@@ -66,6 +66,7 @@ public class EnemyAchive : MonoBehaviour
         }
         SelectEnemy(enemyIndex);
         AddListeners(enemy);
+        GamePointBoard.Instance.ResetSuspension();
     }
     public void SelectEnemy(int IndexOfEnemyToSelect){
         enemy.gameObject.SetActive(false);

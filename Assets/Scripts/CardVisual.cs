@@ -99,7 +99,7 @@ public class CardVisual : MonoBehaviour
     {
         //while (cardFace == null)
         yield return new WaitForSeconds(0.3f);
-        cardFace.SetCardFace(parentCard.points, parentCard.suit);
+        cardFace.SetCardFace(parentCard.name, parentCard.suit);
     }
 
     public void OriginAnimThenFree()
