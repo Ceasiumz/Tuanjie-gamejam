@@ -14,6 +14,7 @@ public class SkillView : MonoBehaviour
     {
         // GetComponentInChildren<Image>().sprite = null;
         this.skill = skill;
+        GetComponentInChildren<Image>().sprite = skill.skillImage;
         GetComponentInChildren<Text>().text = skill.skillName + ":" + skill.remark;
     }
 }
