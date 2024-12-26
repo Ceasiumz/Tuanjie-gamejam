@@ -3538,10 +3538,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfCards: 52
-  logDisplayText: {fileID: 324331822}
-  logDisplayText2: {fileID: 2052258165}
+  logDisplayText: {fileID: 0}
+  logDisplayText2: {fileID: 0}
   isShuffled: 0
-  ShowPannel: {fileID: 263736160}
+  ShowPannel: {fileID: 0}
   cardsDeck: []
   discardDeck: []
   hasStartAnim: 1
@@ -4373,7 +4373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1474919473
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4495,7 +4495,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8758ca229ab442347a55a365eb112b15, type: 2}
   - {fileID: 11400000, guid: 8a378ed050b10cb428b9c0c262a6b0a2, type: 2}
   - {fileID: 11400000, guid: 8583409d797d4154c8ab3c47eed0ec4f, type: 2}
-  - {fileID: 11400000, guid: 7a20c0cb8674aba4a861ebb3bea6cc93, type: 2}
   skillSelectDialog: {fileID: 1474919474}
 --- !u!4 &1500802446
 Transform:
@@ -4748,9 +4747,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
-  skillImage: {fileID: 0}
-  skillName: 
-  skillRemark: 
 --- !u!1 &1608072349
 GameObject:
   m_ObjectHideFlags: 0
