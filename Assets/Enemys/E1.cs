@@ -37,7 +37,7 @@ public class E1 : EnemyBase
         yield return new WaitForEndOfFrame();
         List<Card> playerCards = eA.playerHolder.cards;
         //Debug.Log(playerCards[playerCards.Count - 1].suit);
-        // 实现“闪电”技能，玩家抽到黑桃2-9就要多抽一张牌
+        // 实现“闪电”技能，玩家抽到黑桃2-9就要多抽一张牌///
         if (playerCards[playerCards.Count - 1].points < 10 &&
         playerCards[playerCards.Count - 1].points > 1 &&
         playerCards[playerCards.Count - 1].suit == CardSuit.黑桃)
