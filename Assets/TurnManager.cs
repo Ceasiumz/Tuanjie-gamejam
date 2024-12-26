@@ -183,6 +183,10 @@ public class TurnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(turn.playerTurn_Draw){
+            PlayerDrawButton.SetActive(false);
+        }else{
+            PlayerDrawButton.SetActive(true);
+        }
     }
 }

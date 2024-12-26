@@ -1824,6 +1824,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   DrawButton: {fileID: 627900029}
+  SuspendButton: {fileID: 815142840}
   cardDack: {fileID: 1296720587}
   discardWaitTime: 0.5
   showTime: 1.5
@@ -4629,7 +4630,7 @@ MonoBehaviour:
   enemyHolder: {fileID: 1772936770}
   playerHolder: {fileID: 667881467}
   enemy: {fileID: 0}
-  enemyIndex: 0
+  enemyIndex: 4
 --- !u!1001 &1544738851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5565,6 +5566,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   DrawButton: {fileID: 1687660128}
+  SuspendButton: {fileID: 815142840}
   cardDack: {fileID: 1296720587}
   discardWaitTime: 0.5
   showTime: 1.5
