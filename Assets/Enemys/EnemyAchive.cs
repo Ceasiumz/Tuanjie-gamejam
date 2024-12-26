@@ -5,6 +5,9 @@ using UnityEngine;
 public class EnemyAchive : MonoBehaviour
 {
     // Start is called before the first frame aupdate
+    public int infinityAddAttack;
+    public int infinityAddHealth;
+    public int infinityTurn;
     [SerializeField] public HorizontalCardHolder enemyHolder;
     [SerializeField] public HorizontalCardHolder playerHolder;
     List<GameObject> enemyList;
@@ -12,6 +15,7 @@ public class EnemyAchive : MonoBehaviour
     [SerializeField]public int enemyIndex;
     void Awake()
     {   
+        DontDestroyOnLoad(this);
         enemyList = new List<GameObject>();
     }
     private void Start() {
@@ -63,6 +67,7 @@ public class EnemyAchive : MonoBehaviour
         enemyIndex++;
         if(enemyIndex >= enemyList.Count){
             enemyIndex = 0;
+            infinityTurn++;
         }
         SelectEnemy(enemyIndex);
         AddListeners(enemy);
@@ -73,10 +78,12 @@ public class EnemyAchive : MonoBehaviour
         enemy.gameObject.SetActive(false);
         enemy = enemyList[IndexOfEnemyToSelect].GetComponent<EnemyBase>();
         enemy.gameObject.SetActive(true);
-        GamePointBoard.Instance.enemyMaxHealth = enemy.health;
+        GamePointBoard.Instance.enemyMaxHealth = enemy.health + infinityAddHealth;
+        GamePointBoard.Instance.enemyAttack = enemy.attack + infinityAddAttack;
         GamePointBoard.Instance.enemyCurrentHealth = GamePointBoard.Instance.enemyMaxHealth;
     }
     public void EnemyInit(){
+        infinityTurn = 0;
         for (int i = 0; i < transform.childCount; i++)
         {
             Transform child = transform.GetChild(i);
@@ -89,7 +96,8 @@ public class EnemyAchive : MonoBehaviour
                 enemy = child.gameObject.GetComponent<EnemyBase>();
             }   
         }
-        GamePointBoard.Instance.enemyMaxHealth = enemy.health;
+        GamePointBoard.Instance.enemyMaxHealth = enemy.health + infinityAddHealth;
+        GamePointBoard.Instance.enemyAttack = enemy.attack + infinityAddAttack;
         GamePointBoard.Instance.enemyCurrentHealth = GamePointBoard.Instance.enemyMaxHealth;
     }
 }

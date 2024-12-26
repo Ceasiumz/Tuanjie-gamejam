@@ -8,11 +8,13 @@ public class E4 : EnemyBase
     // Start is called before the first frame update
     [SerializeField] int Ehealth;
     [SerializeField] int EmaxPointsInHand;
+    [SerializeField] int Eattack;
     [SerializeField] BaseSkill markedSkill;
     private void Awake()
     {
         health = Ehealth;
         maxPointsInHand = EmaxPointsInHand;
+        attack = Eattack;
     }
     void Start()
     {

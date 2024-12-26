@@ -7,6 +7,7 @@ public abstract class EnemyBase : MonoBehaviour
 {
     // Start is called before the first frame update
     [NonSerialized]public int health = 100;
+    [NonSerialized]public int attack = 10;
     [NonSerialized]public int maxPointsInHand = 15;
     protected EnemyAchive eA;
     void Start()
