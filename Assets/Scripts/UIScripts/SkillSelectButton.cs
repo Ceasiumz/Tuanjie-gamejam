@@ -13,6 +13,7 @@ public class SkillSelectButton : MonoBehaviour
     public Text skillName;
     public Text skillDescription;
     public Image SkillImage;
+    public AudioSource SkillAudioSource;
 
     public void Init(BaseSkill skill)
     {
@@ -23,7 +24,10 @@ public class SkillSelectButton : MonoBehaviour
         skillName.text = skill.skillName;
         skillDescription.text = skill.remark;
     }
-
+    public void ClickSound()
+    {
+        SkillAudioSource.Play();
+    }
     public void AddSkill()
     {
         SkillPool.Instance.AddPlayerSkill(skill);

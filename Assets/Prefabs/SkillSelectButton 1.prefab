@@ -351,6 +351,7 @@ MonoBehaviour:
   skillName: {fileID: 3135378476590737739}
   skillDescription: {fileID: 1394523798619603402}
   SkillImage: {fileID: 3420228921672867104}
+  SkillAudioSource: {fileID: 0}
 --- !u!222 &4339906457221350260
 CanvasRenderer:
   m_ObjectHideFlags: 0
