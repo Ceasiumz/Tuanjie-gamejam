@@ -8,10 +8,12 @@ public class E6 : EnemyBase
     public int rageCountMax = 0;
     [SerializeField] int Ehealth;
     [SerializeField] int EmaxPointsInHand;
+    [SerializeField] int Eattack;
     private void Awake()
     {
         health = Ehealth;
         maxPointsInHand = EmaxPointsInHand;
+        attack = Eattack;
     }
     void Start()
     {

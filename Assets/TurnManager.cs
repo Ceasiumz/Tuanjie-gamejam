@@ -188,5 +188,9 @@ public class TurnManager : MonoBehaviour
         }else{
             PlayerDrawButton.SetActive(true);
         }
+
+        if(turn.enemyTurn_Draw){
+            
+        }
     }
 }
