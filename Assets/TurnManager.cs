@@ -14,6 +14,8 @@ public class TurnManager : MonoBehaviour
     public GameObject PlayerEndButton;
     public GameObject PlayerDrawButton;
     public HorizontalCardHolder playerHolder;
+    public bool StartDrawing = false;
+    bool drawLock = false;
     public static TurnManager Instance
     {
         get
@@ -73,7 +75,10 @@ public class TurnManager : MonoBehaviour
         if (turn.playerTurn_Start == false)
         {
             PlayerEndButton.GetComponent<Image>().color = Color.white;
-            PlayerDrawButton.SetActive(true);
+            if (!StartDrawing)
+            {
+                PlayerDrawButton.SetActive(true);
+            }
             PlayersuspendButton.SetActive(true);
             turn.playerTurn_Start = true;
             PlayerTurn_Start.Invoke();
@@ -83,6 +88,7 @@ public class TurnManager : MonoBehaviour
 
     IEnumerator SuspendWait()
     {
+        
         yield return new WaitForSeconds(0.4f);
         if (GamePointBoard.Instance.isPlayerSuspension)
         {
@@ -93,17 +99,24 @@ public class TurnManager : MonoBehaviour
     }
     public void PlayerTurn_draw()
     {
+        if(!drawLock)
+        StartCoroutine( DrawWaiting());
+    }
+    IEnumerator DrawWaiting(){
+        drawLock = true;
         if (playerHolder.cards.Count == 0)
         {
             turn.playerTurn_Draw = false;
         }
-        if (turn.playerTurn_Draw == false && turn.playerTurn_Start == true)
+        if (turn.playerTurn_Draw == false && turn.playerTurn_Start == true && !StartDrawing)
         {
             turn.playerTurn_Draw = true;
             PlayerDrawButton.SetActive(false);
             PlayersuspendButton.SetActive(false);
             PlayerTurn_Draw.Invoke();
         }
+        yield return new WaitForSeconds(0.7f);
+        drawLock = false;
     }
 
     public void PlayerTurn_suspend()

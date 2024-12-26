@@ -78,6 +78,8 @@ public class HorizontalCardHolder : MonoBehaviour
     }
     public IEnumerator WaitForInstantiationAndProcessCard(int hidenFlag)
     {
+        TurnManager.Instance.PlayerDrawButton.SetActive(false);
+        TurnManager.Instance.StartDrawing = true;
         var op = InstantiateAsync(slotPrefab, transform);
         yield return op;
         if (op.isDone)
@@ -115,6 +117,8 @@ public class HorizontalCardHolder : MonoBehaviour
             Debug.LogError("实例化卡牌失败！");
             // 可以根据实际情况考虑进一步的错误处理逻辑，比如重试等
         }
+        TurnManager.Instance.StartDrawing = false;
+        TurnManager.Instance.PlayerDrawButton.SetActive(true);
     }
 
     private void ProcessDrawnCard(Card card)

@@ -19,15 +19,19 @@ public class ShaderCode : MonoBehaviour
 
         string[] editions = new string[4];
         editions[0] = "REGULAR";
-        editions[1] = "POLYCHROME";
+        editions[3] = "POLYCHROME";
         editions[2] = "REGULAR";
-        editions[3] = "REGULAR";
+        editions[1] = "REGULAR";
 
         for (int i = 0; i < image.material.enabledKeywords.Length; i++)
         {
             image.material.DisableKeyword(image.material.enabledKeywords[i]);
         }
-        image.material.EnableKeyword("_EDITION_" + editions[Random.Range(0, editions.Length)]);
+        if(visual.parentCard.isTreasure){
+            image.material.EnableKeyword("_EDITION_" + editions[3]);
+        }else{
+            image.material.EnableKeyword("_EDITION_" + editions[0]);
+        }
     }
 
     // Update is called once per frame
