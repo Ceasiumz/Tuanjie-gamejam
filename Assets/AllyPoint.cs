@@ -142,6 +142,7 @@ public class AllyPoint : MonoBehaviour
             DynamicEventBus.Publish("RoundEndEvent");
             
             //补丁代码
+            Debug.Log("敌人死亡A115判断");
             if (GamePointBoard.Instance.skillChouseNum == 2)
             {
                 GamePointBoard.Instance.skillChouseNum = 2;

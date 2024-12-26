@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: A115
   skillName: "\u5927\u80C6\u65E0\u654C\uFF01"
+  skillImage: {fileID: 0}
   isOneTime: 0
   skillType: 1
   skillActivePhase: 0
-  isRepeatable: 1
+  isRepeatable: 0
   isUsedReturn: 0
   canUse: 0
   isHidden: 0
