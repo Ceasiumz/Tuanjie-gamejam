@@ -13,6 +13,7 @@ public class TurnManager : MonoBehaviour
     public GameObject EnemysuspendButton;
     public GameObject PlayerEndButton;
     public GameObject PlayerDrawButton;
+    public GameObject veil;
     public HorizontalCardHolder playerHolder;
     public bool StartDrawing = false;
     bool drawLock = false;
@@ -66,6 +67,15 @@ public class TurnManager : MonoBehaviour
     void Start()
     {
         PlayerTurn_start();
+        Doveil();
+    }
+    public void Doveil(){
+        StartCoroutine(veilWait());
+    }
+    IEnumerator veilWait(){
+        veil.SetActive(true);
+        yield return new WaitForSeconds(1.8f);
+        veil.SetActive(false);
     }
     public void PlayerTurn_start()
     {
