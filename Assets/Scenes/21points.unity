@@ -914,7 +914,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.355, y: -71.17993}
+  m_AnchoredPosition: {x: -4.355, y: -68}
   m_SizeDelta: {x: 873.85, y: 551.87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &416802323
@@ -4373,7 +4373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1474919473
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4406,8 +4406,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a1843117ab1a54f8b4bcde6fd66231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillSelectButton: {fileID: 9075585618958460726, guid: 07908a5496891fe4190a5b207f55ee04, type: 3}
+  SkillSelectButton: {fileID: 3497268234316575720, guid: ed3105cb42c12aa4ea89eeb2bddc7ff5, type: 3}
   skillListParent: {fileID: 1599235500}
+  buttonSpacing: 100
 --- !u!114 &1474919475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4421,14 +4422,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2887f55e51b3e0649a0416a038cac12f, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4748,6 +4749,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
+  skillName: {fileID: 0}
+  skillDescription: {fileID: 0}
+  SkillImage: {fileID: 0}
 --- !u!1 &1608072349
 GameObject:
   m_ObjectHideFlags: 0

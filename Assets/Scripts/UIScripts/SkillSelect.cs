@@ -8,6 +8,7 @@ public class SkillSelect : MonoBehaviour
 {
     public GameObject SkillSelectButton;
     public Transform skillListParent;
+    public float buttonSpacing = 200f;
     // public GameObject obj;
     private List<BaseSkill> skillList;
 
@@ -23,12 +24,11 @@ public class SkillSelect : MonoBehaviour
     public void InitDialog()
     { skillList= SkillPool.Instance.GetThreeSkill();
         int i = 0;
-       foreach (var skill in skillList)
+        foreach (var skill in skillList)
        {
             GameObject obj = Instantiate(SkillSelectButton,this.transform);
             // obj.transform.SetParent(transform);
-            obj.transform.position = new Vector3(skillListParent.position.x, skillListParent.position.y- i * 2 ,
-                skillListParent.position.z);
+            obj.transform.localPosition = new Vector3(skillListParent.localPosition.x + i * buttonSpacing, skillListParent.localPosition.y, skillListParent.localPosition.z);
             i++;
            obj.GetComponent<SkillSelectButton>().Init(skill);
        }
