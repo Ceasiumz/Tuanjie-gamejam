@@ -9,7 +9,7 @@ public class EnemyAchive : MonoBehaviour
     [SerializeField] public HorizontalCardHolder playerHolder;
     List<GameObject> enemyList;
     [SerializeField] EnemyBase enemy;
-    [SerializeField] int enemyIndex;
+    [SerializeField]public int enemyIndex;
     void Awake()
     {   
         enemyList = new List<GameObject>();
@@ -67,6 +67,7 @@ public class EnemyAchive : MonoBehaviour
         SelectEnemy(enemyIndex);
         AddListeners(enemy);
         GamePointBoard.Instance.ResetSuspension();
+        DynamicEventBus.Publish("EnemyChangeEvent");
     }
     public void SelectEnemy(int IndexOfEnemyToSelect){
         enemy.gameObject.SetActive(false);

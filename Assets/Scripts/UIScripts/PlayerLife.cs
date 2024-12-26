@@ -52,6 +52,7 @@ public class PlayerLife : MonoBehaviour
             if (gamePointBoard.currentHealth > gamePointBoard.enemyAttack)
             {
                 PlayerHead_dying.SetActive(false);
+                dyingUI.SetActive(false);
             }
         }
     }   
