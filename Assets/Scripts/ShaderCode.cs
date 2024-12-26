@@ -27,13 +27,17 @@ public class ShaderCode : MonoBehaviour
         {
             image.material.DisableKeyword(image.material.enabledKeywords[i]);
         }
+        StartCoroutine(Materials(editions));
+    }
+
+    IEnumerator Materials(string[] editions){
+        yield return new WaitForSeconds(0.5f);
         if(visual.parentCard.isTreasure){
             image.material.EnableKeyword("_EDITION_" + editions[3]);
         }else{
             image.material.EnableKeyword("_EDITION_" + editions[0]);
         }
     }
-
     // Update is called once per frame
     void Update()
     {
