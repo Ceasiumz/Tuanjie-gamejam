@@ -64,7 +64,7 @@ public class A102Effect : BaseEffect
                             }
                             break;
                     }
-                    Debug.Log("A102本次点数"+temPoint);
+                    //Debug.Log("运筹帷幄：点数为"+temPoint);
                     if (temPoint > max)
                     {
                         max=temPoint;
@@ -75,7 +75,7 @@ public class A102Effect : BaseEffect
                     }
                     i++;
                 }
-                Debug.Log("A102Effect:最大点数" + max + "最小点数" + min);
+                Debug.Log("运筹帷幄：最大点数为" + max + "最小点数为" + min);
             }
 
     }
