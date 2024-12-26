@@ -8,14 +8,16 @@ public class PlayerLife : MonoBehaviour
     public GameObject PlayerHead_healthy;
     public GameObject PlayerHead_dying;
     private Text enemyAttack;
+    public GameObject dyingUI;
     void Start()
     {
         PlayerHead_healthy.SetActive(true);
-        PlayerHead_dying.SetActive(false    );
+        PlayerHead_dying.SetActive(false);
+        dyingUI.SetActive(false);
         gamePointBoard = FindObjectOfType<GamePointBoard>();
         if (gamePointBoard == null)
         {
-            Debug.LogError("ÕÒ²»µ½GamePointBoard½Å±¾ËùÔÚµÄ¶ÔÏó£¬Çë¼ì²é³¡¾°ÉèÖÃ£¡");
+            Debug.LogError("ï¿½Ò²ï¿½ï¿½ï¿½GamePointBoardï¿½Å±ï¿½ï¿½ï¿½ï¿½ÚµÄ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é³¡ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½");
             return;
         }
 
@@ -45,6 +47,7 @@ public class PlayerLife : MonoBehaviour
             if(gamePointBoard.currentHealth <= gamePointBoard.enemyAttack )
             {
                 PlayerHead_dying.SetActive(true);
+                dyingUI.SetActive(true);
             }
             if (gamePointBoard.currentHealth > gamePointBoard.enemyAttack)
             {

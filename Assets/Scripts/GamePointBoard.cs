@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,9 @@ public class GamePointBoard : MonoBehaviour
 {
     [Header("Player")]
     //玩家相关属性
-    public int maxHealth;
-    public int currentHealth;
-    public int attack;
+    public int maxHealth=100;
+    public int currentHealth=100;
+    public int attack=10;
     //攻击附加值
     public int attackAddition=0;
     //受伤减免值
@@ -58,13 +59,19 @@ public class GamePointBoard : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            //DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad(gameObject);
         }
         else if (_instance != this)
         {
             Destroy(gameObject);
         }
     }
+
+    public void OnEnable()
+    {
+
+    }
+
     //重新生成下一个敌人 方法 
     private void Start() {
         TurnManager.Instance.EnemyTurn_Suspend.AddListener(RecordSuspensionE);
