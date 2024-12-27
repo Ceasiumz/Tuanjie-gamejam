@@ -21,7 +21,7 @@ public class A2106Effect : BaseEffect
         int enemyCardCount= AllyPoint.Instance.ememyHolder.cards.Count;
         if (playerCardCount > enemyCardCount)
         {
-            GamePointBoard.Instance.currentHealth+=(playerCardCount-enemyCardCount)*2;
+            GamePointBoard.Instance.currentHealth+=(playerCardCount-enemyCardCount)*4;
         }
     }
     public override void Execute()

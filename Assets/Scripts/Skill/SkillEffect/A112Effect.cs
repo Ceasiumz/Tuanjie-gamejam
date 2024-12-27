@@ -26,7 +26,7 @@ public class A112Effect : BaseEffect
     }
     public void EventSkill()
     {
-        GamePointBoard.Instance.currentHealth += 10+Mathf.RoundToInt(
+        GamePointBoard.Instance.currentHealth += 3+Mathf.RoundToInt(
             (GamePointBoard.Instance.attack + GamePointBoard.Instance.attackAddition) *
             GamePointBoard.Instance.attackMultiple * 0.2f);
     }

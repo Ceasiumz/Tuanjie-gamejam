@@ -30,7 +30,7 @@ public class A2103Effect : BaseEffect
         int enemyCardCount= AllyPoint.Instance.ememyHolder.cards.Count;
         if (playerCardCount > enemyCardCount)
         {
-            GamePointBoard.Instance.injuryReduction += (playerCardCount - enemyCardCount) * 3;
+            GamePointBoard.Instance.injuryReduction += (playerCardCount - enemyCardCount) *4;
         }
     }
 

@@ -26,7 +26,7 @@ public class A105Effect : BaseEffect
     }
     public void EventSkill()
     {
-        GamePointBoard.Instance.attack += 3;
+        GamePointBoard.Instance.attack += 4;
     }
 
     public override void Interrupt()

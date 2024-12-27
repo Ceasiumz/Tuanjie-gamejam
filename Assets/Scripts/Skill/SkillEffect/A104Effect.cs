@@ -24,7 +24,7 @@ public class A104Effect : BaseEffect
     }
     public void EventSkill()
     {
-        GamePointBoard.Instance.attack += 2;
+        GamePointBoard.Instance.attack += 4;
         
     }
 
