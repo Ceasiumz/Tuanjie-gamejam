@@ -34,7 +34,7 @@ public class E2 : EnemyBase
     {
         Debug.Log("E2_normal");
         StartCoroutine(DrawCardIdentify());
-        GamePointBoard.Instance.UpdateCardPoints(false, eA.playerHolder.cards);
+        //GamePointBoard.Instance.UpdateCardPoints(false, eA.playerHolder.cards);
     }
 
     IEnumerator DrawCardIdentify()

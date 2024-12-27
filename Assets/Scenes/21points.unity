@@ -7257,7 +7257,7 @@ MonoBehaviour:
   enemyHolder: {fileID: 1772936770}
   playerHolder: {fileID: 667881467}
   enemy: {fileID: 0}
-  enemyIndex: 5
+  enemyIndex: 1
   E0dieDialogue: {fileID: 1213837239}
   E1dieDialogue: {fileID: 604682422}
   E2dieDialogue: {fileID: 367596132}

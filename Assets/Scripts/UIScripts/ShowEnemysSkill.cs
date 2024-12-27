@@ -50,7 +50,7 @@ public class ShowEnemysSkill : MonoBehaviour
         else if(E6.activeSelf)
         {
             showPannel.GetComponentInChildren<TextMeshProUGUI>().text = "来路不明..." + "\n" +
-                "技能：不可饶恕" + "\n" + "效果：受到伤害后，玩家下一个回合每张手牌的点数+1，这个效果最多叠加两次";
+                "技能：不可饶恕" + "\n" + "效果：受到伤害后，玩家下一个回合每张手牌的点数+1，这个效果最多叠加两次,对暗牌无效。";
         }
         else if(E7.activeSelf)
         {

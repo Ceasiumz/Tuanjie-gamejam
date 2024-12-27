@@ -37,7 +37,7 @@ public class E1 : EnemyBase
     public override void OnPlayerDraw()
     {
         StartCoroutine(DrawCardIdentify());
-        GamePointBoard.Instance.UpdateCardPoints(false, eA.playerHolder.cards);
+        //GamePointBoard.Instance.UpdateCardPoints(false, eA.playerHolder.cards);
     }
 
     IEnumerator DrawCardIdentify()
