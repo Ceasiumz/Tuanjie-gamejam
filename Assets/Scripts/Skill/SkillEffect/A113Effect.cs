@@ -22,7 +22,7 @@ public class A113Effect : BaseEffect
 
     public override void ImmediateTrigger()
     {
-        GamePointBoard.Instance.attack += (2 + Mathf.RoundToInt(GamePointBoard.Instance.attack * 0.1f));
+        GamePointBoard.Instance.attack += (2 + Mathf.RoundToInt(GamePointBoard.Instance.attack * 0.4f));
     }
 
     public override void Interrupt()

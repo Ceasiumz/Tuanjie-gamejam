@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A101
   m_EditorClassIdentifier: 
   skillID: A101
-  skillName: "\u5C4F\u5E55\u9ED1\u4E86\uFF1F\u53CC\u51FB\u8BD5\u8BD5"
+  skillName: "\u53CC\u51FB\u5C0F\u7EA2\u5FC3"
   skillImage: {fileID: 21300000, guid: a6c5fb9cad7e3854c99d083b4a29df3d, type: 3}
   isOneTime: 0
   skillType: 1

@@ -17,6 +17,7 @@ public class TurnManager : MonoBehaviour
     public HorizontalCardHolder playerHolder;
     public bool StartDrawing = false;
     bool drawLock = false;
+    public Text tipText;
     public static TurnManager Instance
     {
         get
@@ -111,6 +112,7 @@ public class TurnManager : MonoBehaviour
     {
         if(!drawLock)
             StartCoroutine(DrawWaiting());
+        
     }
     IEnumerator DrawWaiting(){
         drawLock = true;
@@ -171,18 +173,21 @@ public class TurnManager : MonoBehaviour
         {
             turn.enemyTurn_Draw = true;
             EnemyTurn_Draw.Invoke();
+            tipText.text = "对方抽牌";
         }
+        
     }
     public void EnemyTurn_suspend()
     {
         turn.enemyTurn_Draw = true;
-        EnemyTurn_Suspend.Invoke();
-
+        tipText.text = "对方停牌";
+        EnemyTurn_Suspend.Invoke(); 
     }
     public void EnemyTurn_end()
     {
         if (turn.enemyTurn_End == false && turn.enemyTurn_Draw == true)
         {
+            tipText.text = "对方结束回合";
             turn.enemyTurn_End = true;
             EnemyTurn_End.Invoke();
             PlayerTurn_start();

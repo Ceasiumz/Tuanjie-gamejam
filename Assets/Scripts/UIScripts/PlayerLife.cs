@@ -44,12 +44,12 @@ public class PlayerLife : MonoBehaviour
         {
             //Debug.Log(gamePointBoard.currentHealth+"|||" + gamePointBoard.enemyAttack);
             healthText.text = gamePointBoard.currentHealth.ToString();
-            if(gamePointBoard.currentHealth <= gamePointBoard.enemyAttack )
+            if(gamePointBoard.currentHealth/2 <= gamePointBoard.enemyAttack )
             {
                 PlayerHead_dying.SetActive(true);
                 dyingUI.SetActive(true);
             }
-            if (gamePointBoard.currentHealth > gamePointBoard.enemyAttack)
+            if (gamePointBoard.currentHealth/2 > gamePointBoard.enemyAttack)
             {
                 PlayerHead_dying.SetActive(false);
                 dyingUI.SetActive(false);

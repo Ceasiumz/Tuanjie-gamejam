@@ -37,19 +37,19 @@ public class EnemyHeadChange : MonoBehaviour
         {
             case 0:
                 GetComponent<Image>().sprite = enemyHead_1;
-                EnemyNameBar.GetComponentInChildren<TextMeshProUGUI>().text = "无名之辈";
+                EnemyNameBar.GetComponentInChildren<TextMeshProUGUI>().text = "锟斤铐烫烫烫";
                 break;
             case 1:
                 GetComponent<Image>().sprite = enemyHead_2;
-                EnemyNameBar.GetComponentInChildren<TextMeshProUGUI>().text = "克劳德";
+                EnemyNameBar.GetComponentInChildren<TextMeshProUGUI>().text = "无名之辈";
                 break;
             case 2:
                 GetComponent<Image>().sprite = enemyHead_3;
-                EnemyNameBar.GetComponentInChildren<TextMeshProUGUI>().text = "一无所有";
+                EnemyNameBar.GetComponentInChildren<TextMeshProUGUI>().text = "克劳德";
                 break;
             case 3:
                 GetComponent<Image>().sprite = enemyHead_4;
-                EnemyNameBar.GetComponentInChildren<TextMeshProUGUI>().text = "锟斤铐烫烫烫";
+                EnemyNameBar.GetComponentInChildren<TextMeshProUGUI>().text = "一无所有";
                 break;
             case 4:
                 GetComponent<Image>().sprite = enemyHead_5;
@@ -69,7 +69,7 @@ public class EnemyHeadChange : MonoBehaviour
     public void ChangeDyingHead()
     {
         
-        if (GamePointBoard.Instance.attack >= GamePointBoard.Instance.enemyCurrentHealth)
+        if (GamePointBoard.Instance.attack *2 >= GamePointBoard.Instance.enemyCurrentHealth)
         {
             switch (enemy.enemyIndex)
             {

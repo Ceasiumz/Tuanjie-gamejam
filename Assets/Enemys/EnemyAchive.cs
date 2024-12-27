@@ -13,6 +13,12 @@ public class EnemyAchive : MonoBehaviour
     List<GameObject> enemyList;
     [SerializeField] EnemyBase enemy;
     [SerializeField]public int enemyIndex;
+    public GameObject E0dieDialogue;
+    public GameObject E1dieDialogue;
+    public GameObject E2dieDialogue;
+    public GameObject E3dieDialogue;
+    public GameObject E6dieDialogue;
+    public GameObject E7dieDialogue;
     void Awake()
     {   
         DontDestroyOnLoad(this);
@@ -63,7 +69,31 @@ public class EnemyAchive : MonoBehaviour
         }
     }
     public void NextEnemy(){
-        RemoveListeners(enemy);
+        if (enemyIndex == 0)
+        {
+            E0dieDialogue.SetActive(true); 
+        }
+        if (enemyIndex == 1)
+        {
+            E1dieDialogue.SetActive(true);
+        }
+        if (enemyIndex == 2)
+        {
+            E2dieDialogue.SetActive(true);
+        }
+        if (enemyIndex == 3)
+        {
+            E3dieDialogue.SetActive(true);
+        }
+        if (enemyIndex == 4)
+        {
+            E6dieDialogue.SetActive(true);
+        }
+        if (enemyIndex == 5)
+        {
+            E7dieDialogue.SetActive(true);
+        }
+        RemoveListeners(enemy); 
         enemyIndex++;
         if(enemyIndex >= enemyList.Count){
             enemyIndex = 0;

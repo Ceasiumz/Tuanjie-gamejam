@@ -22,7 +22,7 @@ public class A114Effect : BaseEffect
 
     public override void ImmediateTrigger()
     {
-        GamePointBoard.Instance.currentHealth += Mathf.RoundToInt(GamePointBoard.Instance.maxHealth * 0.2f);
+        GamePointBoard.Instance.currentHealth += Mathf.RoundToInt(GamePointBoard.Instance.maxHealth * 0.6f);
     }
 
     public override void Interrupt()

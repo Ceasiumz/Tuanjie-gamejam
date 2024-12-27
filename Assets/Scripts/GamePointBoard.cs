@@ -53,7 +53,15 @@ public class GamePointBoard : MonoBehaviour
             return _instance;
         }
     }
-    
+    private void Update()
+    {
+        if(maxHealth<= currentHealth)
+        {
+            maxHealth = currentHealth;
+        }
+
+    }
+
     private void Awake()
     {
         if (_instance == null)
@@ -194,8 +202,8 @@ public class GamePointBoard : MonoBehaviour
 
     public void resetHealth()
     {
-        currentHealth = maxHealth;
-        attack = 10;
+        currentHealth = 10;
+        attack = 3;
         canFindTreasure = false;
     }
     

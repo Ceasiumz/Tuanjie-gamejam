@@ -480,7 +480,7 @@ MonoBehaviour:
   playButton: {fileID: 1564402330}
   beginning: {fileID: 32900000, guid: 50db6b0a57a581a49af0e7a050dddbe5, type: 3}
   video: {fileID: 1995318731}
-  nextSceneName: 21points
+  nextSceneName: Guide
 --- !u!1 &1676013159
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,9 +664,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6fd282eabfc4a8a44806c113fdce1299, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.481
+  m_Volume: 0.375
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

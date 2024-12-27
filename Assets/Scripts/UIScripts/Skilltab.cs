@@ -22,4 +22,18 @@ public class Skilltab : MonoBehaviour
             }
         }
     }
+   public void ColickinBuuton()
+    {
+            if (skillTab != null)
+            {
+                skillTab.SetActive(!skillTab.activeSelf);
+            }
+    }
+    public void ColickoutBuuton()
+    {
+        if (skillTab != null)
+        {
+            skillTab.SetActive(!skillTab.activeSelf);
+        }
+    }
 }

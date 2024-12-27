@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using TMPro;
+
 public class AllyPoint : MonoBehaviour
 {
     //TODO:可考虑把此点数计分修改为结算用
@@ -21,15 +23,23 @@ public class AllyPoint : MonoBehaviour
     public UnityEvent DrawOutEvent;
     public AudioSource attack;
     public AudioSource injured;
+    public AudioSource noWinner;
     Text text;
+    public Text tipText;
     public Text ScoreText;
     public Text Kills;
+    public float fadeDuration = 2f; // 渐变持续时间
+    public string nextSceneName; // 要切换到的场景名称
+    public GameObject fadeIMage;
+    Image fadeImage;
     private void Awake()
     {
         eA = FindObjectOfType<EnemyAchive>();
     }
     void Start()
     {
+        fadeImage = fadeIMage.GetComponent<Image>();
+        fadeIMage.SetActive(false);
         if (Instance == null)
         {
             Instance = this;
@@ -45,7 +55,7 @@ public class AllyPoint : MonoBehaviour
     // Update is called once per frame
     void Update()// revise ally points
     {
-        text.text = "Ally Points: " + GamePointBoard.Instance.playerCardPoints;
+        text.text =  GamePointBoard.Instance.playerCardPoints+"/21";
     }
 
 
@@ -57,11 +67,13 @@ public class AllyPoint : MonoBehaviour
         {
             PlayerAttack();
             ScoreAdd();
+            tipText.text = "对方爆牌啦！";
         }
         else
         {
             //玩家爆牌结算
             EnemyAttack();
+            tipText.text = "我方爆牌了！";
         }
         DrawOutEvent.Invoke();
         GamePointBoard.Instance.ClearCardPoints();
@@ -82,10 +94,12 @@ public class AllyPoint : MonoBehaviour
         else if (GamePointBoard.Instance.playerCardPoints < GamePointBoard.Instance.enemyCardPoints)//玩家失败
         {
             EnemyAttack();
+            tipText.text = "对方胜利了！";
         }
         else//平局
         {
-
+            tipText.text = "打平了！";
+            noWinner.Play();
         }
         DrawOutEvent.Invoke();
         GamePointBoard.Instance.ClearCardPoints();
@@ -102,11 +116,13 @@ public class AllyPoint : MonoBehaviour
         if (isEnemy)
         {
             EnemyAttack();
+            tipText.text = "敌方到达了21点！";
         }
         else//玩家获胜
         {
             PlayerAttack();
             ScoreAdd();
+            tipText.text = "我方到达了21点！";
         }
         DrawOutEvent.Invoke();
         GamePointBoard.Instance.ClearCardPoints();
@@ -123,15 +139,17 @@ public class AllyPoint : MonoBehaviour
         if (GamePointBoard.Instance.currentHealth <= 0)
         {
             DynamicEventBus.Publish("PlayerDeadEvent");
+            tipText.text = "我方战败";
         }
         //技能判定后重新判断血量
         if (GamePointBoard.Instance.currentHealth <= 0)
         {
             DynamicEventBus.Publish("RoundEndEvent");
             Debug.Log("玩家死亡");
-            
+            fadeIMage.SetActive(true);
             GamePointBoard.Instance.resetHealth();
             SkillPool.Instance.RoundStart();
+            StartCoroutine(FadeOut());
         }
     }
     //敌人死亡判断
@@ -176,6 +194,14 @@ public class AllyPoint : MonoBehaviour
         Debug.Log("本次攻击力加成"+GamePointBoard.Instance.attackAddition);
         Debug.Log("本次攻击力加成倍率"+GamePointBoard.Instance.attackMultiple);
         Debug.Log("本次造成伤害"+Mathf.RoundToInt((GamePointBoard.Instance.attack+GamePointBoard.Instance.attackAddition)*GamePointBoard.Instance.attackMultiple));
+        if (GamePointBoard.Instance.attackMultiple>=2)
+        {
+            tipText.text = "由于宝牌，我方造成了" + Mathf.RoundToInt((GamePointBoard.Instance.attack + GamePointBoard.Instance.attackAddition) * GamePointBoard.Instance.attackMultiple)+"点伤害！";
+        }
+        else
+        {
+            tipText.text = "我方造成了" + Mathf.RoundToInt((GamePointBoard.Instance.attack + GamePointBoard.Instance.attackAddition) * GamePointBoard.Instance.attackMultiple) + "点伤害！";
+        }
         GamePointBoard.Instance.enemyCurrentHealth -= Mathf.RoundToInt((GamePointBoard.Instance.attack+GamePointBoard.Instance.attackAddition)*GamePointBoard.Instance.attackMultiple); 
         DynamicEventBus.Publish("AfterPlayerAttackEvent");
         GamePointBoard.Instance.ResetDamageMultipl();
@@ -210,5 +236,20 @@ public class AllyPoint : MonoBehaviour
         currentKills += 1;
         // 将更新后的数字转换回字符串赋值给Text组件的text属性以显示
         Kills.text = currentKills.ToString();
+    }
+    IEnumerator FadeOut()
+    {
+        float elapsedTime = 0f;
+        Color color = fadeImage.color;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            color.a = Mathf.Clamp01(elapsedTime / fadeDuration);
+            fadeImage.color = color;
+            yield return null;
+        }
+        // 渐变完成后切换场景
+        SceneManager.LoadScene(nextSceneName);
     }
 }

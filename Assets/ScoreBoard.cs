@@ -19,9 +19,9 @@ public class ScoreBoard : MonoBehaviour
 
     public void OnRoundEnd(){
         Debug.Log("Round ended");
-        transform.DOMove(new Vector3(py, 0, 0), 0.1f).SetEase(Ease.OutBack);
-        transform.DOScale(new Vector3(ps, ps, ps), 0.1f).SetEase(Ease.OutBack);
-        Button.SetActive(true);
+        //transform.DOMove(new Vector3(py, 0, 0), 0.1f).SetEase(Ease.OutBack);
+        //transform.DOScale(new Vector3(ps, ps, ps), 0.1f).SetEase(Ease.OutBack);
+        //Button.SetActive(true);
     }
 
 

@@ -19,7 +19,8 @@ public class CardDack : MonoBehaviour
     [SerializeField] public List<CardString> discardDeck = new List<CardString>();
     [SerializeField] public bool hasStartAnim = true;
     private static CardDack _instance;
-
+    public AudioSource drawCard;
+    public AudioSource shuffleCard;
     public static CardDack Instance
     {
         get
@@ -71,7 +72,8 @@ public class CardDack : MonoBehaviour
         //洗牌
         numberOfCards = 52;
         ShuffleCards(cardsDeck);
-        isShuffled=true;
+        shuffleCard.Play();
+        isShuffled =true;
     }
 
     public void ShuffleCards(List<CardString> cardsPoint)
@@ -106,6 +108,7 @@ public class CardDack : MonoBehaviour
 
     public CardString DrawCard()
     {
+        drawCard.Play();
         numberOfCards -= 1;
         if (cardsDeck.Count == 0)
         {
@@ -148,7 +151,7 @@ public class CardDack : MonoBehaviour
         {
             if (card.isTreasure)
             {
-                string logMessage = $"卡堆中第{countPrinted + 1}张宝牌: {card.suit + card.point}在牌堆中的位置是: {cardsDeck.IndexOf(card) + 1}";
+                string logMessage = $"卡堆中第{countPrinted + 1}张宝牌:{card.suit + card.point} 在牌堆中的位置是: {cardsDeck.IndexOf(card) + 1}";
                 Debug.Log(logMessage);
                 logDisplayText.text += logMessage + "\n"; // 更新UI显示
                 countPrinted++;

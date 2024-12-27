@@ -6,14 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Balatro-Feel.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
     path: Assets/Scenes/Beginning.scene
     guid: 712229eaee3d8b64e9a5a43aad21b62f
   - enabled: 1
+    path: Assets/Scenes/Guide.scene
+    guid: dc8b287031c0e154e98584c2c1251919
+  - enabled: 1
     path: Assets/Scenes/21points.unity
     guid: b8f9ae96db1a4d94bbec54b5aef5beb0
+  - enabled: 1
+    path: Assets/Scenes/DeathWorld.scene
+    guid: 8d3ddf3f8411f144a80f5b9895df9a53
   m_configObjects: {}
   m_SlimFeaturesWeixinMiniGame:
     AllocateOverhead: 1
