@@ -22,6 +22,6 @@ MonoBehaviour:
   isUsedReturn: 0
   canUse: 0
   isHidden: 0
-  remark: "\u9020\u6210\u4F24\u5BB3\u65F6\u83B7\u53D6\u6240\u9020\u6210\u4F24\u5BB3\u6570\u503C20%\u7684\u751F\u547D\u3002\r\n"
+  remark: "\u9020\u6210\u4F24\u5BB3\u65F6\u83B7\u53D610+\u6240\u9020\u6210\u4F24\u5BB3\u6570\u503C20%\u7684\u751F\u547D\u3002\r\n"
   skillEffect:
   - {fileID: 11400000, guid: 8622722e28bf9cd48ba4e2f9362b875d, type: 2}

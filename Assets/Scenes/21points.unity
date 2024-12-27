@@ -284,8 +284,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 0
-  currentHealth: 10
-  attack: 3
+  currentHealth: 20
+  attack: 4
   attackAddition: 0
   injuryReduction: 0
   attackMultiple: 1
@@ -7257,7 +7257,7 @@ MonoBehaviour:
   enemyHolder: {fileID: 1772936770}
   playerHolder: {fileID: 667881467}
   enemy: {fileID: 0}
-  enemyIndex: 1
+  enemyIndex: 0
   E0dieDialogue: {fileID: 1213837239}
   E1dieDialogue: {fileID: 604682422}
   E2dieDialogue: {fileID: 367596132}
