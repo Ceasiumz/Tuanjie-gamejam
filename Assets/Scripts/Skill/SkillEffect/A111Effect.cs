@@ -30,7 +30,7 @@ public class A111Effect : BaseEffect
         {
             if (card.name=="7")
             {
-                GamePointBoard.Instance.attackAddition += 7;
+                GamePointBoard.Instance.attack += 7;
             }
         }
         

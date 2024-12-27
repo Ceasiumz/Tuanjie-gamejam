@@ -98,6 +98,8 @@ public class EnemyAchive : MonoBehaviour
         if(enemyIndex >= enemyList.Count){
             enemyIndex = 0;
             infinityTurn++;
+            infinityAddAttack += 5* infinityTurn;
+            infinityAddHealth += 10* infinityTurn;
         }
         SelectEnemy(enemyIndex);
         AddListeners(enemy);

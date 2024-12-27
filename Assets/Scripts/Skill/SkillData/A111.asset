@@ -23,6 +23,6 @@ MonoBehaviour:
   canUse: 0
   isHidden: 0
   remark: "\u9020\u6210\u4F24\u5BB3\u65F6\u4F60\u7684\u624B\u724C\u4E2D\u6BCF\u6709\u4E00\u5F207
-    \u4F60\u672C\u6B21\u9020\u6210\u7684\u4F24\u5BB3\u989D\u5916+7\r\n"
+    \u4F60\u7684\u653B\u51FB\u529B\u6C38\u4E45\u4E0A\u53477\r\n"
   skillEffect:
   - {fileID: 11400000, guid: 69c76cf2c25128c4096e99fc183111fa, type: 2}

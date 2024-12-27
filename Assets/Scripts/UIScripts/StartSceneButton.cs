@@ -9,6 +9,7 @@ public class StartSceneButton : MonoBehaviour
     public Button playButton; // 在编辑器中拖放按钮
     public VideoClip beginning; // 在编辑器中拖放VideoClip
     public VideoPlayer video;
+    public AudioSource audioSource;
     public string nextSceneName; // 视频播放完毕后要切换的场景名称
 
     void Start()
@@ -21,9 +22,9 @@ public class StartSceneButton : MonoBehaviour
     {
         Debug.Log("开始播放视频");
         // 启用并播放视频
+        audioSource.Play();
         video.clip = beginning;
         video.Play();
-
         // 监听视频播放完毕事件
         video.loopPointReached += OnVideoEnded;
     }
